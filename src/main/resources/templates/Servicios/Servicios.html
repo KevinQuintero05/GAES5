@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <table  class="table table-dark table-striped">
+    <thead>
+    <tr>
+      <th>nomservicio</th>
+      <th>tipo</th>
+      <th>descripcion</th>
+
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each=" servicio: ${servicios}">
+      <td th:text="${servicio.nomservicio}"></td>
+      <td th:text="${servicio.descripcion}"></td>
+      <td th:text="${servicio.tipo}"></td>
+
+      <td>
+        <a th:href="@{'/servicios/edit/' + ${servicio.idservicio }}">Edit<i class="bi bi-pencil-square"></i></a>
+      </td>
+      <td>
+        <a th:href="@{'/servicios/delete/' + ${servicio.idservicio }}">Delete<i class="bi bi-trash-fill"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
