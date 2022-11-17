@@ -1,5 +1,7 @@
-package com.example.demo.entity;
+package com.example.demo.controller;
 
+import com.example.demo.entity.Pqrs;
+import com.example.demo.entity.Usuario;
 import com.example.demo.repository.IPqrsRepository;
 import com.example.demo.repository.IUsuarioRepository;
 import com.sun.org.apache.xpath.internal.operations.Mod;

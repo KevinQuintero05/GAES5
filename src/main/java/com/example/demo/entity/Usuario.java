@@ -48,9 +48,9 @@ public class Usuario {
     private Role role;
     private String direccion;
 
-    private int telefono;
+    private String telefono;
 
-    private int edad;
+    private String edad;
 
 
 
