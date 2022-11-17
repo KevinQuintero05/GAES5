@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div layout:fragment="content">
+    <form method="post" th:action="@{/pqrs/save}" th:object="${pqrs}">
+        <input placeholder="grupo de interes" type="text" name="" required th:field="*{grupointeres}"><br>
+        <input placeholder="persona de interes" type="text" name="" required th:field="*{personainteres}">
+        <input placeholder="departamento" type="text" name="" required th:field="*{departamento}">
+        <input placeholder="ciudad" type="text" name="" required th:field="*{ciudad}">
+        <input placeholder="asuntopqrs" type="text" name="" required th:field="*{asuntopqrs}">
+        <textarea  th:field="*{descripcion}" placeholder="descripcion" required></textarea><br>
+        <input placeholder="email" type="text" name="" required th:field="*{email}">
+        <select th:field="*{usuario}" required>
+            <th:block th:each="usuario: ${usuarios} ">
+                <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
+            </th:block>
+        </select>
+
+        <input type="submit" value="Save">
+    </form>
+</div>
+<body>
+
+</body>
+</html>

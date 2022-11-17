@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <table  class="table table-dark table-striped">
+    <thead>
+    <tr>
+      <th>Numero</th>
+
+      <th>Grupo</th>
+
+      <th>Persona de Interes</th>
+      <th>Departamento</th>
+      <th>Ciudad</th>
+      <th>Asunto</th>
+      <th>Descripcion</th>
+      <th>Fecha de Registro</th>
+      <th>Autor</th>
+      <th>Email</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each=" pqrs: ${pqrsList}">
+      <td th:text="${pqrs.noregistro}"></td>
+      <td th:text="${pqrs.grupointeres}"></td>
+      <td th:text="${pqrs.personainteres}"></td>
+      <td th:text="${pqrs.departamento}"></td>
+      <td th:text="${pqrs.ciudad}"></td>
+      <td th:text="${pqrs.asuntopqrs}"></td>
+      <td th:text="${pqrs.descripcion}"></td>
+      <td th:text="${pqrs.fecharegistroPQRS}"></td>
+      <td th:text="${pqrs.email}"></td>
+      <td th:text="${pqrs.usuario.nombreusuario}"></td>
+      <td>
+        <a th:href="@{'/pqrs/edit/' + ${pqrs.noregistro }}">Edit<i class="bi bi-pencil-square"></i></a>
+      </td>
+      <td>
+        <a th:href="@{'/pqrs/delete/' + ${pqrs.noregistro }}">Delete<i class="bi bi-trash-fill"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
