@@ -4,7 +4,6 @@ import com.example.demo.entity.Pqrs;
 import com.example.demo.entity.Usuario;
 import com.example.demo.repository.IPqrsRepository;
 import com.example.demo.repository.IUsuarioRepository;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +22,13 @@ public class PqrsController {
     @Autowired
     private IUsuarioRepository iUsuarioRepository;
 
-    @GetMapping("/pqrs")
+    @GetMapping("/pqrs/all")
     public String GetPqrs(Model model){
 
         try{
             List<Pqrs> pqrsList = iPqrsRepository.findAll();
             model.addAttribute("pqrsList", pqrsList);
-            return "Pqrs/Pqrs";
+            return "AtencionCliente/Pqrs/Pqrs";
         }catch (Exception ex){
             return "error";
         }
@@ -40,7 +39,7 @@ public class PqrsController {
         List<Usuario> usuarios = iUsuarioRepository.findAll();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("pqrs", new Pqrs());
-        return "Pqrs/Create";
+        return "AtencionCliente/Pqrs/Create";
     }
 
     @PostMapping("/pqrs/save")
@@ -54,7 +53,7 @@ public class PqrsController {
         Pqrs pqrsbd = iPqrsRepository.findById(id).get();
         model.addAttribute("usuarios", iUsuarioRepository.findAll());
         model.addAttribute("pqrs",pqrsbd);
-        return "pqrs/edit";
+        return "AtencionCliente/pqrs/edit";
     }
 
     @PostMapping("/pqrs/update/{id}")
