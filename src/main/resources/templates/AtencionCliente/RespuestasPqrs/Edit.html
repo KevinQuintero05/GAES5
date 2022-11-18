@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div layout:fragment="content">
+    <form method="post" th:action="@{/respuestas/update/{id}(id=${respuesta.idrespuesta})}" th:object="${respuesta}">
+
+
+        <textarea  th:field="*{contenido}" placeholder="contenido de la respuesta" required></textarea><br>
+
+        <select th:field="*{pqrs}" required>
+            <th:block th:each="pqrs: ${pqrsList} ">
+                <option th:text="${pqrs.descripcion}" th:value="${pqrs.noregistro}"></option>
+            </th:block>
+        </select>
+
+        <input type="submit" value="Update">
+    </form>
+</div>
+<body>
+
+</body>
+</html>
