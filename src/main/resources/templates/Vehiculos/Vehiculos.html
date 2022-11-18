@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <table  class="table table-dark table-striped">
+    <thead>
+    <tr>
+      <th>ID Del Vehiculo</th>
+      <th>Placa</th>
+      <th>Tipovehiculo</th>
+      <th>Capacidad</th>
+      <th>Marca</th>
+      <th>Soat</th>
+      <th>Modelo</th>
+      <th>Descripcion</th>
+      <th>Estado del vehiculo</th>
+      <th>Servicio</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each=" vehiculo: ${vehiculosList}">
+      <td th:text="${vehiculo.idvehiculo}"></td>
+      <td th:text="${vehiculo.placa}"></td>
+      <td th:text="${vehiculo.tipovehiculo}"></td>
+      <td th:text="${vehiculo.capacidad}"></td>
+      <td th:text="${vehiculo.marca}"></td>
+      <td th:text="${vehiculo.soat}"></td>
+      <td th:text="${vehiculo.modelo}"></td>
+      <td th:text="${vehiculo.descripcion}"></td>
+      <td th:text="${vehiculo.estadovehiculo}"></td>
+      <td th:text="${vehiculo.servicio.nomservicio}"></td>
+
+
+      <td>
+        <a th:href="@{'/vehiculos/edit/' + ${vehiculo.idvehiculo}}">Edit<i class="bi bi-pencil-square"></i></a>
+      </td>
+      <td>
+        <a th:href="@{'/vehiculos/delete/' + ${vehiculo.idvehiculo}}">Delete<i class="bi bi-trash-fill"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
