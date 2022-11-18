@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div layout:fragment="content">
+    <form method="post" th:action="@{/vehiculos/save}" th:object="${vehiculos}">
+        <input placeholder="placa" type="text" name="" required th:field="*{placa}">
+        <input placeholder="tipo de vehiculo" type="text" name="" required th:field="*{tipovehiculo}">
+        <input placeholder="capacidad" type="text" name="" required th:field="*{capacidad}">
+        <input placeholder="marca" type="text" name="" required th:field="*{marca}">
+        <input placeholder="soat" type="text" name="" required th:field="*{soat}">
+        <input placeholder="modelo" type="text" name="" required th:field="*{modelo}">
+        <textarea  th:field="*{descripcion}" placeholder="descripcion" required></textarea><br>
+        <input placeholder="estado del vehiculo" type="text" name="" required th:field="*{estadovehiculo}">
+        <select th:field="*{servicio}" required>
+            <th:block th:each="servicio: ${servicios} ">
+                <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
+            </th:block>
+        </select>
+
+        <input type="submit" value="Save">
+    </form>
+</div>
+<body>
+
+</body>
+</html>

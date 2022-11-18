@@ -4,7 +4,6 @@ import com.example.demo.entity.Pqrs;
 import com.example.demo.entity.Usuario;
 import com.example.demo.repository.IPqrsRepository;
 import com.example.demo.repository.IUsuarioRepository;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
