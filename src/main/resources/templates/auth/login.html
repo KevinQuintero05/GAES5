@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Login</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <form th:action="@{/login}" method="POST" class="form-signin">
+    <h3 th:text="Login"></h3>
+    <input type="text" name="email" th:placeholder="Email" /> <br /><br />
+    <input type="password" th:placeholder="Password" name="password" /> <br /><br />
+    <button type="Submit" th:text="Login"></button> | <a th:href="@{|/register|}" th:text="'Register'"></a><br />
+    <div th:if="${param.error}"><p>Email or Password is invalid.</p></div> <br />
+  </form>
+</div>
+</body>
+</html>

@@ -6,14 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.jws.WebParam;
 import java.util.List;
 
 @Controller
 public class UsuarioController {
 
-    @Autowired
+    /*@Autowired
     private IUsuarioRepository iUsuarioRepository;
 
     @GetMapping("users")
@@ -31,5 +32,10 @@ public class UsuarioController {
     private String GetShowCreateUser(Model model){
         model.addAttribute("usuario", new Usuario());
         return "Usuarios/Create";
+    }*/
+
+    @RequestMapping(value = {"/dashboard"}, method = RequestMethod.GET)
+    public String homePage(){
+        return "usuario/dashboard";
     }
 }
