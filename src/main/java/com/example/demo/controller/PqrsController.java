@@ -45,11 +45,11 @@ public class PqrsController {
     @PostMapping("/pqrs/save")
     public String SavePqrs(Pqrs pqrs){
         iPqrsRepository.save(pqrs);
-        return "redirect:/pqrs";
+        return "redirect:/pqrs/all";
     }
 
     @GetMapping("/pqrs/edit/{id}")
-    public String shouUpdatePqrs(Model model, @PathVariable long id){
+    public String showUpdatePqrs(Model model, @PathVariable long id){
         Pqrs pqrsbd = iPqrsRepository.findById(id).get();
         model.addAttribute("usuarios", iUsuarioRepository.findAll());
         model.addAttribute("pqrs",pqrsbd);
@@ -60,12 +60,12 @@ public class PqrsController {
     public String updatePqrs(@PathVariable("id") long id, Pqrs pqrs, Model model){
         pqrs.setNoregistro(id);
         iPqrsRepository.save(pqrs);
-        return "redirect:/pqrs";
+        return "redirect:/pqrs/all";
     }
 
     @GetMapping("/pqrs/delete/{id}")
     public String deletePqrs(Model model, @PathVariable long id){
         iPqrsRepository.deleteById(id);
-        return "redirect:/pqrs";
+        return "redirect:/pqrs/all";
     }
 }

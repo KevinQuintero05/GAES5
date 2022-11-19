@@ -36,7 +36,7 @@ public class Pqrs {
     @Column(length = 50, nullable = false)
     private String asuntopqrs;
 
-    @Column(length = 50, nullable = false)
+    @Column(columnDefinition = "text")
     private String descripcion;
 
     @CreationTimestamp

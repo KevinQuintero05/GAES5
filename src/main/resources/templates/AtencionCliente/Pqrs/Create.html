@@ -7,7 +7,7 @@
     <title>Title</title>
 </head>
 <div layout:fragment="content">
-    <form method="post" th:action="@{/pqrs/save}" th:object="${pqrs}">
+    <!--<form method="post" th:action="@{/pqrs/save}" th:object="${pqrs}">
         <input placeholder="grupo de interes" type="text" name="" required th:field="*{grupointeres}"><br>
         <input placeholder="persona de interes" type="text" name="" required th:field="*{personainteres}">
         <input placeholder="departamento" type="text" name="" required th:field="*{departamento}">
@@ -15,59 +15,56 @@
         <input placeholder="asuntopqrs" type="text" name="" required th:field="*{asuntopqrs}">
         <textarea  th:field="*{descripcion}" placeholder="descripcion" required></textarea><br>
         <input placeholder="email" type="text" name="" required th:field="*{email}">
-        <select th:field="*{usuario}" required>
-            <th:block th:each="usuario: ${usuarios} ">
-                <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
-            </th:block>
-        </select>
+
 
         <input type="submit" value="Save">
-    </form>
+    </form>-->
 
     <form method="post"th:action="@{/pqrs/save}" th:object="${pqrs}">
-        <div class="mb-3">
-            <label  class="form-label">Grupo de Interes</label>
-            <select th:field="*{grupointeres}" class="form-select" aria-label="Default select example">
-                <option selected>Seleccione</option>
-                <option th:value="${grupointeres}">Aduto mayor</option>
-                <option th:value="${grupointeres}">ciudadano</option>
-                <option th:value="${grupointeres}">comunidad Internacional</option>
-                <option th:value="${grupointeres}">Empresa</option>
-                <option th:value="${grupointeres}">Entidades del estado y/o Autoridades</option>
-                <option th:value="${grupointeres}">Persona con discapacidad</option>
-                <option th:value="${grupointeres}">Servidor Publico</option>
 
-            </select>
-        </div>
         <div class="mb-3">
-            <label  class="form-label">Persona de Interes</label>
-            <input type="text" class="form-control" name="" required th:field="*{personainteres}">
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Grupo de Interes</label>
-            <select th:field="*{grupointeres}" class="form-select" aria-label="Default select example">
-                <option selected>Seleccione</option>
-                <option th:value="${grupointeres}">Aduto mayor</option>
-                <option th:value="${grupointeres}">ciudadano</option>
-                <option th:value="${grupointeres}">comunidad Internacional</option>
-                <option th:value="${grupointeres}">Empresa</option>
-                <option th:value="${grupointeres}">Entidades del estado y/o Autoridades</option>
-                <option th:value="${grupointeres}">Persona con discapacidad</option>
-                <option th:value="${grupointeres}">Servidor Publico</option>
-
-            </select>
+            <label  class="form-label">grupo de interes</label>
+            <input class="form-control"  rows="3" th:field="*{grupointeres}" required>
         </div>
 
-
-
-
-
+        <div class="mb-3">
+            <label  class="form-label">persona de interes</label>
+            <input class="form-control"  rows="3" th:field="*{personainteres}" required>
+        </div>
 
         <div class="mb-3">
-            <label  class="form-label">Descripcion</label>
+            <label  class="form-label">Departamento</label>
+            <input class="form-control"  rows="3" th:field="*{departamento}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Ciudad</label>
+            <input class="form-control"  rows="3" th:field="*{ciudad}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">asunto pqrs</label>
+            <input class="form-control"  rows="3" th:field="*{asuntopqrs}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">descripcion</label>
             <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
         </div>
-        <br>
+
+        <div class="mb-3">
+            <label  class="form-label">Correo Electronico</label>
+            <input type="text" class="form-control" name="" required th:field="*{email}">
+        </div>
+
+        <div class="mb-3">
+            <select th:field="*{usuario}"  class="form-select" required>
+                <th:block th:each="usuario: ${usuarios} ">
+                    <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
+                </th:block>
+            </select>
+        </div>
+
         <input type="submit" class="btn btn-dark" value="Guargar">
     </form>
 

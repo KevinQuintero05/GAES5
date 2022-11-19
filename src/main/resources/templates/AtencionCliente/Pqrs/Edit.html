@@ -9,7 +9,7 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <form method="post" th:action="@{/pqrs/update/{id}(id=${pqrs.noregistro})}" th:object="${pqrs}">
+    <!-- <form method="post" th:action="@{/pqrs/update/{id}(id=${pqrs.noregistro})}" th:object="${pqrs}">
         <input placeholder="grupo de interes" type="text" name="" required th:field="*{grupointeres}"><br>
         <input placeholder="persona de interes" type="text" name="" required th:field="*{personainteres}">
         <input placeholder="departamento" type="text" name="" required th:field="*{departamento}">
@@ -23,6 +23,54 @@
             </th:block>
         </select>
         <input type="submit" value="Update">
+    </form>-->
+
+    <form method="post" th:action="@{/pqrs/update/{id}(id=${pqrs.noregistro})}" th:object="${pqrs}">
+
+        <div class="mb-3">
+            <label  class="form-label">grupo de interes</label>
+            <input class="form-control"  rows="3" th:field="*{grupointeres}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">persona de interes</label>
+            <input class="form-control"  rows="3" th:field="*{personainteres}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Departamento</label>
+            <input class="form-control"  rows="3" th:field="*{departamento}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Ciudad</label>
+            <input class="form-control"  rows="3" th:field="*{ciudad}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">asunto pqrs</label>
+            <input class="form-control"  rows="3" th:field="*{asuntopqrs}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">descripcion</label>
+            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Correo Electronico</label>
+            <input type="text" class="form-control" name="" required th:field="*{email}">
+        </div>
+
+        <div class="mb-3">
+            <select th:field="*{usuario}"  class="form-select" required>
+                <th:block th:each="usuario: ${usuarios} ">
+                    <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <input type="submit" class="btn btn-dark" value="Actualizar">
     </form>
 </div>
 </body>
