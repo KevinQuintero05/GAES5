@@ -23,8 +23,6 @@ public class Valoracion {
     @Column(columnDefinition = "text")
     private String comentario;
 
-    @Column(length = 50, nullable = false)
-    private String idservicio;
 
     @ManyToOne
     @JoinColumn(name = "idservicio")

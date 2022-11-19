@@ -31,7 +31,7 @@ public class ValoracionController {
     public String GetValoraciones (Model model){
         try{
            List<Valoracion> valoracionList = iValoracionRepository.findAll();
-           model.addAttribute("valoracionList", valoracionList);
+           model.addAttribute("valoraciones", valoracionList);
            return "AtencionCliente/Valoraciones/Valoraciones";
         } catch (Exception ex){
             return "error";
@@ -63,7 +63,7 @@ public class ValoracionController {
         return "AtencionCliente/Valoraciones/Edit";
     }
 
-    
+
     @PostMapping("/valoraciones/update/{id}")
     public String updateValoracion(@PathVariable("id") long id, Valoracion valoracion, Model model){
         valoracion.setIdvaloracionservicio(id);

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div layout:fragment="content">
+
+    <form method="post" th:action="@{/valoraciones/save}" th:object="${valoracion}">
+        <div class="mb-3">
+            <label  class="form-label">Puntuacion</label>
+            <input type="text" class="form-control" name="" required th:field="*{puntuacion}">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">comentario</label>
+            <textarea type="text" class="form-control" name="" required th:field="*{comentario}"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <select th:field="*{servicio}"  class="form-select" required>
+                <th:block th:each="servicio: ${servicios} ">
+                    <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <select th:field="*{usuario}"  class="form-select" required>
+                <th:block th:each="usuario: ${usuarios} ">
+                    <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <br>
+        <input type="submit" class="btn btn-dark" value="Guardar">
+    </form>
+
+</div>
+
+<body>
+
+</body>
+</html>
