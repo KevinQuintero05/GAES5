@@ -22,7 +22,7 @@ public class ServicioController {
         try {
             List<Servicio> servicios = iservicioRepository.findAll();
             model.addAttribute("servicios", servicios);
-            return "Servicios/Servicios";
+            return "Services/Servicios/Servicios";
         } catch (Exception ex){
             return "error";
         }
@@ -31,7 +31,7 @@ public class ServicioController {
     @GetMapping("/servicios/new")
     public String GetShowCreateServicio(Model model){
         model.addAttribute("servicio", new Servicio());
-        return "Servicios/Create";
+        return "Services/Servicios/Create";
     }
 
     @PostMapping("/servicios/save")
@@ -44,7 +44,7 @@ public class ServicioController {
     public String showUpdateServicios(Model model, @PathVariable long id){
         Servicio serviciobd = iservicioRepository.findById(id).get();
         model.addAttribute("servicio", serviciobd);
-        return "servicios/edit";
+        return "Services/Servicios/edit";
     }
 
     @PostMapping("/servicios/update/{id}")

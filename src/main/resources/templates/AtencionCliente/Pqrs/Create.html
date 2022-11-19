@@ -23,6 +23,54 @@
 
         <input type="submit" value="Save">
     </form>
+
+
+    <form method="post"th:action="@{/pqrs/save}" th:object="${pqrs}">
+        <div class="mb-3">
+            <label  class="form-label">Grupo de Interes</label>
+            <select th:field="*{grupointeres}" class="form-select" aria-label="Default select example">
+                <option selected>Seleccione</option>
+                <option th:value="${grupointeres}">Aduto mayor</option>
+                <option th:value="${grupointeres}">ciudadano</option>
+                <option th:value="${grupointeres}">comunidad Internacional</option>
+                <option th:value="${grupointeres}">Empresa</option>
+                <option th:value="${grupointeres}">Entidades del estado y/o Autoridades</option>
+                <option th:value="${grupointeres}">Persona con discapacidad</option>
+                <option th:value="${grupointeres}">Servidor Publico</option>
+
+            </select>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Persona de Interes</label>
+            <input type="text" class="form-control" name="" required th:field="*{personainteres}">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Grupo de Interes</label>
+            <select th:field="*{grupointeres}" class="form-select" aria-label="Default select example">
+                <option selected>Seleccione</option>
+                <option th:value="${grupointeres}">Aduto mayor</option>
+                <option th:value="${grupointeres}">ciudadano</option>
+                <option th:value="${grupointeres}">comunidad Internacional</option>
+                <option th:value="${grupointeres}">Empresa</option>
+                <option th:value="${grupointeres}">Entidades del estado y/o Autoridades</option>
+                <option th:value="${grupointeres}">Persona con discapacidad</option>
+                <option th:value="${grupointeres}">Servidor Publico</option>
+
+            </select>
+        </div>
+
+
+
+
+
+
+        <div class="mb-3">
+            <label  class="form-label">Descripcion</label>
+            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
+        </div>
+        <br>
+        <input type="submit" class="btn btn-dark" value="Guargar">
+    </form>
 </div>
 <body>
 

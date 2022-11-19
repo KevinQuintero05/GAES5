@@ -16,21 +16,32 @@
       <th>tipo</th>
       <th>descripcion</th>
 
-      <th>Edit</th>
-      <th>Delete</th>
+      <th></th>
+      <th></th>
     </tr>
     </thead>
     <tbody>
     <tr th:each=" servicio: ${servicios}">
       <td th:text="${servicio.nomservicio}"></td>
-      <td th:text="${servicio.descripcion}"></td>
       <td th:text="${servicio.tipo}"></td>
+      <td th:text="${servicio.descripcion}"></td>
 
+      <!--
       <td>
-        <a th:href="@{'/servicios/edit/' + ${servicio.idservicio }}">Edit<i class="bi bi-pencil-square"></i></a>
+        <a th:href="@{'/servicios/edit/' + ${servicio.idservicio }}">Edit</a>
       </td>
       <td>
-        <a th:href="@{'/servicios/delete/' + ${servicio.idservicio }}">Delete<i class="bi bi-trash-fill"></i></a>
+        <a th:href="@{'/servicios/delete/' + ${servicio.idservicio }}">Delete</a>
+      </td>
+
+      -->
+
+      <td>
+        <button type="button" class="btn btn-light"><a th:href="@{'/servicios/edit/' + ${servicio.idservicio }}" style="text-decoration:none; color:#000">Editar</a></button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger"><a th:href="@{'/servicios/delete/' + ${servicio.idservicio }}" style="text-decoration:none; color:#fff">Eliminar</a></button>
+
       </td>
     </tr>
     </tbody>

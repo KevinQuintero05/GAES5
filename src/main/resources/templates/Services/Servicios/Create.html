@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div layout:fragment="content">
+    <!--<form method="post" th:action="@{/servicios/save}" th:object="${servicio}">
+        <input placeholder="name" type="text" name="" required th:field="*{nomservicio}"><br>
+        <textarea  th:field="*{descripcion}" placeholder="descripcion" required></textarea><br>
+        <input type="text" required th:field="*{tipo}"><br>
+
+        <input type="submit" value="Save">
+    </form>-->
+
+    <form method="post" th:action="@{/servicios/save}" th:object="${servicio}">
+        <div class="mb-3">
+            <label  class="form-label">Nombre del Servicio</label>
+            <input type="text" class="form-control" name="" required th:field="*{nomservicio}">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Tipo de Servicio </label>
+            <input type="text" class="form-control" name="" required th:field="*{tipo}">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Descripcion</label>
+            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
+        </div>
+        <br>
+        <input type="submit" class="btn btn-dark" value="Guargar">
+    </form>
+
+</div>
+
+
+
+
+
+<body>
+
+</body>
+</html>
