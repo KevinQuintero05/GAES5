@@ -5,7 +5,7 @@
       lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Respuestas PQRS</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -16,21 +16,25 @@
             <th>Contenido</th>
             <th>Pqrs a responder</th>
 
-            <th>Edit</th>
-            <th>Delete</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each=" respuesta: ${respuestasPqrs}">
             <td th:text="${respuesta.idrespuesta}"></td>
             <td th:text="${respuesta.contenido}"></td>
-            <td th:text="${respuesta.pqrs.noregistro}"></td>
+            <td th:text="${respuesta.pqrs.descripcion}"></td>
+
+
             <td>
-                <a th:href="@{'/respuestas/edit/' + ${respuesta.idrespuesta }}">Edit<i class="bi bi-pencil-square"></i></a>
+                <button type="button" class="btn btn-light"><a th:href="@{'/respuestas/edit/' + ${respuesta.idrespuesta }}" style="text-decoration:none; color:#000">Editar</a></button>
             </td>
             <td>
-                <a th:href="@{'/respuestas/delete/' + ${respuesta.idrespuesta }}">Delete<i class="bi bi-trash-fill"></i></a>
+                <button type="button" class="btn btn-danger"><a th:href="@{'/respuestas/delete/' + ${respuesta.idrespuesta }}" style="text-decoration:none; color:#fff">Eliminar</a></button>
+
             </td>
+
         </tr>
         </tbody>
     </table>

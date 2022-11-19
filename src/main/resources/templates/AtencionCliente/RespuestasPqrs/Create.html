@@ -4,21 +4,26 @@
       layout:decorate="~{layout}" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Responder PQRS</title>
 </head>
 <div layout:fragment="content">
     <form method="post" th:action="@{/respuestas/save}" th:object="${respuesta}">
 
+        <div class="mb-3">
+            <label  class="form-label">contenido</label>
+            <textarea class="form-control"  rows="3" th:field="*{contenido}" placeholder="contenido" required></textarea>
+        </div>
 
-        <textarea th:field="*{contenido}" placeholder="contenido de la respuesta" required></textarea><br>
+        <div class="mb-3">
+            <select th:field="*{pqrs}"  class="form-select" required>
+                <th:block th:each="pqrs: ${pqrsList} ">
+                    <option th:text="${pqrs.descripcion}" th:value="${pqrs.noregistro}"></option>
+                </th:block>
+            </select>
+        </div>
+        <br>
 
-        <select th:field="*{pqrs}" required>
-            <th:block th:each="pqrs: ${pqrsList} ">
-                <option th:text="${pqrs.descripcion}" th:value="${pqrs.noregistro}"></option>
-            </th:block>
-        </select>
-
-        <input type="submit" value="Save">
+        <input type="submit" class="btn btn-dark" value="Guardar">
     </form>
 </div>
 <body>
