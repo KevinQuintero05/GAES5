@@ -3,6 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}"
       lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -41,10 +42,10 @@
 
 
       <td>
-        <a th:href="@{'/vehiculos/edit/' + ${vehiculo.idvehiculo}}">Edit<i class="bi bi-pencil-square"></i></a>
+        <button type="button" class="btn btn-light"><a th:href="@{'/vehiculos/edit/' + ${vehiculo.idvehiculo}}" style="text-decoration:none; color:#000">Editar</a></button>
       </td>
       <td>
-        <a th:href="@{'/vehiculos/delete/' + ${vehiculo.idvehiculo}}">Delete<i class="bi bi-trash-fill"></i></a>
+        <button type="button" class="btn btn-danger"><a th:href="@{'/vehiculos/delete/' + ${vehiculo.idvehiculo}}" style="text-decoration:none; color:#fff">Eliminar</a></button>
       </td>
     </tr>
     </tbody>
