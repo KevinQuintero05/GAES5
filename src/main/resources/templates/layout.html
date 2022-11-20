@@ -12,10 +12,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}" />
     <!-- Icono -->
     <link th:href="@{/img/LOGO B 1 vareacion 1 Black.png}" rel="shortcut icon" type="image/x-icon">
 
     <link rel="stylesheet" th:href="@{/css/main.css}">
+
+
 </head>
 <body>
 <!-- Main Navigation -->
@@ -40,7 +43,8 @@
 
                 <!-- Servicios -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Nuestros Servicios </a>
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false"> Nuestros Servicios </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                         <!-- Submenu servicios -->
@@ -61,15 +65,14 @@
                         </li>
 
 
-
-
                     </ul>
                 </li>
 
 
                 <!-- Atención al Cliente -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Atencion al Cliente </a>
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false"> Atencion al Cliente </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                         <!-- Submenu PQRS -->
@@ -81,7 +84,8 @@
                             </ul>
                         </li>
                         <!-- Submenu Respuestas PQRS -->
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Respuestas PQRS</a>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Respuestas
+                            PQRS</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" th:href="@{/respuestas/all}">All</a></li>
                                 <li><a class="dropdown-item" th:href="@{/respuestas/new}">Create</a></li>
@@ -102,15 +106,18 @@
                 </li>
 
 
-
             </ul>
             <form class="d-flex" role="search">
 
+
+
                 <button sec:authorize="isAuthenticated()" class="btn btn-danger" type="button"><a th:href="@{/logout}" style="text-decoration:none; color:#fff">Cerrar Sesión</a></button>
                 <div sec:authorize="hasRole('ROLE_ANONYMOUS')">
-                    <button class="btn btn-danger" type="button"><a th:href="@{|/login|}" th:text="'Ingresar'" style="text-decoration:none; color:#fff"></a></button>
-                    
-                    <button class="btn btn-danger" type="button"><a th:href="@{|/register|}" th:text="'Registrarse'" style="text-decoration:none; color:#fff"></a></button>
+                    <button class="btn btn-danger" type="button"><a th:href="@{|/login|}" th:text="'Ingresar'"  style="text-decoration:none; color:#fff"></a>
+                    </button>
+
+                    <button class="btn btn-danger" type="button"><a th:href="@{|/register|}" th:text="'Registrarse'" style="text-decoration:none; color:#fff"></a>
+                    </button>
 
                 </div>
 
@@ -118,15 +125,11 @@
             </form>
 
 
-
         </div>
     </div>
 </nav>
 
-
-
-
-
+<!-- ==================== CONTENID0 ==================== -->
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-12">
@@ -139,13 +142,52 @@
 </div>
 
 <!-- Footer -->
-<footer class="container py-5">
+<!--
+<footer class="blog-footer">
     <div class="row">
+
         <div class="col-md-12">
-            <p class="text-muted">&copy; 2022 CONCORD COMPANY ENTERPRISES CORPORATION.</p>
+            <p class="text-muted">&copy; 2022 CONCORD.</p>
         </div>
     </div>
 </footer>
+
+-->
+
+<div class="container my-5" >
+
+    <footer class="bg-dark text-center text-white" style="width: 100%;  bottom: 0;">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="bi bi-google"></i></a>
+
+                <!-- GitHub -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="bi bi-github"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="bi bi-linkedin"></i></a>
+
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 CONCORD
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+</div>
+
 
 
 </body>

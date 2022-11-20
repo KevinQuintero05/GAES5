@@ -1,15 +1,80 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
 <head>
-    <title>User Dashboard</title>
+    <meta charset="UTF-8">
+    <title>Cliente</title>
 </head>
 <body>
-<h2>Welcome to User Dashboard</h2>
-<p>Logged as: <span sec:authentication="name"></span></p>
-<p>Has role: <span sec:authentication="authorities"></span></p>
-<div>
+<div layout:fragment="content">
+    <p>Bienvenido: <span sec:authentication="name"></span></p>
+    <p>Rol: <span sec:authentication="authorities"></span></p>
+    <!--
     <p><a th:href="@{/}">Home</a></p>
     <p><a th:href="@{/logout}">Log out</a></p>
+    -->
+    <section>
+        <div class="card mb-3">
+            <img th:src="@{/img/Movil.jpg}"  class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Tu viaje comienza aqui!</h5>
+                <p class="card-text">Reserve un vehivulo que se ajuste a sus necesidades.</p>
+                <p class="card-text"><small class="text-muted"></small><a style="background: #d00; border: #d00;" href="../Modulo de reservas/Formulario reserva/index.html" class="btn btn-danger">ir a reservas</a></p>
+            </div>
+        </div>
+
+
+        <div class="card-group">
+            <div class="card">
+                <img th:src="@{/img/slide1.jpg}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Crear una Reserva</h5>
+                    <p class="card-text">En CONCORD contamos con una amplia gama de vehiculos y servicios que se
+                        adecuane a sus necesidades</p>
+                    <a th:href=@{/newcronogramareservas} class="btn btn-primary">Crear Reserva </a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">La confirmacion de las reservas se hacen un aves que se realice el pago
+                        del servicio</small>
+                </div>
+            </div>
+            <div class="card">
+                <img th:src="@{/img/disinfection-6823044_1920.png}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Protocolos de bioseguridad</h5>
+                    <p class="card-text">En CONCORD nos preocupa tu seguridad, es por esto que implementamos protocolos
+                        de bioseguridad a nuestros servicios</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Nuestris vehiculos son desinfectadod una vez que se termine el
+                        servicio</small>
+                </div>
+            </div>
+            <div class="card">
+                <img th:src="@{/img/headset-6617715_1280-1.png}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Atencion al Cliente</h5>
+                    <p class="card-text">En CONCORD contamos con el personal altamente calificado para atender a sus
+                        necesidades y consultas</p>
+                    <p class="card-text"><small class="text-muted"></small><a style="background: #d00; border: #d00;"
+                                                                              th:href="@{/newpqrs}"
+                                                                              class="btn btn-danger">Crear una Pqrs</a>
+                    </p>
+                    <p class="card-text"><small class="text-muted"></small><a style="background: #d00; border: #d00;"
+                                                                              th:href="@{/newvaloracion}"
+                                                                              class="btn btn-danger">Calificar un
+                        Servicio</a></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Recuerde que el chofer solo conduce el vehiculo segum l;a ruta
+                        programada</small>
+                </div>
+            </div>
+        </div>
+
+    </section>
 </div>
 </body>
 </html>

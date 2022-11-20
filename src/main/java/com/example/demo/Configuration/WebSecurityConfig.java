@@ -52,8 +52,8 @@ public class WebSecurityConfig {
         http.authorizeRequests()
         // URL Acceso por Rol
                 .antMatchers("/", "/login", "/register").permitAll()
-                .antMatchers("/admin/**", "/servicios/**","/pqrs/all","/vehiculos/**","/respuestas/all","/respuestas/new","/respuestas/save").hasAnyAuthority("ADMIN")
-                .antMatchers("/pqrs/all","/respuestas/all","/valoraciones/**").hasAnyAuthority("USER")
+                .antMatchers("/admin/**", "/servicios/**","/pqrs/**","/vehiculos/**","/respuestas/all","/respuestas/new","/respuestas/save").hasAnyAuthority("ADMIN")
+                .antMatchers("/pqrs/**","/respuestas/all","/valoraciones/**").hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
                 //formulario login
