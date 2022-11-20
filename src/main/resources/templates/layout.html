@@ -14,18 +14,16 @@
             crossorigin="anonymous"></script>
     <!-- Icono -->
     <link th:href="@{/img/LOGO B 1 vareacion 1 Black.png}" rel="shortcut icon" type="image/x-icon">
+
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
 <!-- Main Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
 
-
-
-            <img th:src="@{/img/LOGO-B1-sin-relleno-blanco.png}" width="200px"
-                 style="padding:15px; height: 100%;" class="img-fluid" alt="Responsive image">
-
-
+        <img th:src="@{/img/LOGO-B1-sin-relleno-blanco.png}" width="200px"
+             style="padding:15px; height: 100%;" class="img-fluid" alt="Responsive image">
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,80 +34,99 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Servicios
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/servicios}">All</a></li>
-                        <li><a class="dropdown-item" th:href="@{/servicios/new}">Create</a></li>
-
-                    </ul>
-
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a>
                 </li>
 
+
+                <!-- Servicios -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Pqrs
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/pqrs/all}">All</a></li>
-                        <li><a class="dropdown-item" th:href="@{/pqrs/new}">Create</a></li>
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Nuestros Servicios </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                    </ul>
+                        <!-- Submenu servicios -->
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Servicios</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" th:href="@{/servicios}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/servicios/new}">Create</a></li>
 
-                </li>
+                            </ul>
+                        </li>
+                        <!-- Submenu vehiculos -->
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Nuestra Flota</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" th:href="@{/vehiculos}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/vehiculos/new}">Create</a></li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Respuestas
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/respuestas/all}">All</a></li>
-                        <li><a class="dropdown-item" th:href="@{/respuestas/new}">Create</a></li>
-                    </ul>
-                </li>
+                            </ul>
+                        </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Valoraciones
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/valoraciones/all}">All</a></li>
-                        <li><a class="dropdown-item" th:href="@{/valoraciones/new}">Create</a></li>
-                    </ul>
-                </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Vehiculos
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/vehiculos}">All</a></li>
-                        <li><a class="dropdown-item" th:href="@{/vehiculos/new}">Create</a></li>
+
 
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+
+                <!-- Atención al Cliente -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Atencion al Cliente </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                        <!-- Submenu PQRS -->
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">PQRS</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" th:href="@{/pqrs/all}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/pqrs/new}">Create</a></li>
+
+                            </ul>
+                        </li>
+                        <!-- Submenu Respuestas PQRS -->
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Respuestas PQRS</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" th:href="@{/respuestas/all}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/respuestas/new}">Create</a></li>
+
+                            </ul>
+                        </li>
+                        <!-- Submenu Valoraciones -->
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Valoraciones</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" th:href="@{/valoraciones/all}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/valoraciones/new}">Create</a></li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
                 </li>
+
+
+
             </ul>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-danger" type="submit">Buscar</button>
+
+                <button sec:authorize="isAuthenticated()" class="btn btn-danger" type="button"><a th:href="@{/logout}" style="text-decoration:none; color:#fff">Cerrar Sesión</a></button>
+                <div sec:authorize="hasRole('ROLE_ANONYMOUS')">
+                    <button class="btn btn-danger" type="button"><a th:href="@{|/login|}" th:text="'Ingresar'" style="text-decoration:none; color:#fff"></a></button>
+                    
+                    <button class="btn btn-danger" type="button"><a th:href="@{|/register|}" th:text="'Registrarse'" style="text-decoration:none; color:#fff"></a></button>
+
+                </div>
+
+
             </form>
+
+
 
         </div>
     </div>
 </nav>
+
+
+
+
+
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-12">

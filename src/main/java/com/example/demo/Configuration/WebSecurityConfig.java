@@ -52,8 +52,8 @@ public class WebSecurityConfig {
         http.authorizeRequests()
         // URL Acceso por Rol
                 .antMatchers("/", "/login", "/register").permitAll()
-                .antMatchers("/admin/**", "/servicios/**","/vehiculos/**").hasAnyAuthority("ADMIN")
-                .antMatchers("/pqrs/**","/respuestas/all","/valoraciones/**").hasAnyAuthority("USER")
+                .antMatchers("/admin/**", "/servicios/**","/pqrs/all","/vehiculos/**","/respuestas/all","/respuestas/new","/respuestas/save").hasAnyAuthority("ADMIN")
+                .antMatchers("/pqrs/all","/respuestas/all","/valoraciones/**").hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
                 //formulario login
@@ -80,6 +80,6 @@ public class WebSecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/img/**", "/js/**", "/webjars/**");
+        return (web) -> web.ignoring().antMatchers("/static/**","/img/**", "/js/**", "/css/**");
     }
 }
