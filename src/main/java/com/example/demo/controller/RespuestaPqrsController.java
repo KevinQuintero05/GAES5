@@ -33,6 +33,17 @@ public class RespuestaPqrsController {
         }
     }
 
+    @GetMapping("/respuestas-usuario/all")
+    public String GetRespuestasUsuario(Model model){
+        try{
+            List<RespuestaPqrs> respuestasPqrs = iRespuestaPqrsRepository.findAll();
+            model.addAttribute("respuestasPqrs", respuestasPqrs);
+            return "AtencionCliente/RespuestasPqrs/Respuestas-usuario";
+        }catch (Exception ex){
+            return "error";
+        }
+    }
+
     @GetMapping("/respuestas/new")
     public String GetShowCreateRespuesta(Model model){
         List<Pqrs> pqrsList = iPqrsRepository.findAll();

@@ -85,7 +85,8 @@
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Respuestas
                             PQRS</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/respuestas/all}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/respuestas/all}">Administrador</a></li>
+                                <li><a class="dropdown-item" th:href="@{/respuestas-usuario/all}">Cliente</a></li>
                                 <li><a class="dropdown-item" th:href="@{/respuestas/new}">Create</a></li>
 
                             </ul>
@@ -93,8 +94,9 @@
                         <!-- Submenu Valoraciones -->
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Valoraciones</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/valoraciones/all}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/valoraciones/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/valoraciones-usuarios/all}">Hechas por los clientes</a></li>
+                                <li><a class="dropdown-item" th:href="@{/valoraciones-usuarios/all}">Admin</a></li>
+                                <li><a class="dropdown-item" th:href="@{/valoraciones-usuarios/new}">Create</a></li>
 
                             </ul>
                         </li>
@@ -151,7 +153,9 @@
 </footer>
 
 -->
-
+<br>
+<br>
+<br>
 <footer class="text-center text-white fixed-bottom" style="background-color: #000;">
 
     <!-- Copyright -->

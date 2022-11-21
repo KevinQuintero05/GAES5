@@ -8,7 +8,7 @@
 </head>
 <div layout:fragment="content">
 
-  <form method="post" th:action="@{/valoraciones/update/{id}(id=${valoracion.idvaloracionservicio})}" th:object="${valoracion}">
+  <form method="post" th:action="@{/valoraciones-usuarios/update/{id}(id=${valoracion.idvaloracionservicio})}" th:object="${valoracion}">
     <div class="mb-3">
       <label  class="form-label">Puntuacion</label>
       <input type="text" class="form-control" name="" required th:field="*{puntuacion}">

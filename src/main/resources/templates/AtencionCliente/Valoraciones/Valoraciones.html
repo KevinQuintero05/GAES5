@@ -18,8 +18,7 @@
             <th>Servicio Reservado</th>
             <th>realizado por:</th>
 
-            <th></th>
-            <th></th>
+
         </tr>
         </thead>
         <tbody>
@@ -30,13 +29,7 @@
             <td th:text="${valoracion.servicio.nomservicio}"></td>
             <td th:text="${valoracion.usuario.nombreusuario}"></td>
 
-            <td>
-                <button type="button" class="btn btn-light"><a th:href="@{'/valoraciones/edit/' + ${valoracion.idvaloracionservicio }}" style="text-decoration:none; color:#000">Editar</a></button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-danger"><a th:href="@{'/valoraciones/delete/' + ${valoracion.idvaloracionservicio }}" style="text-decoration:none; color:#fff">Eliminar</a></button>
 
-            </td>
         </tr>
         </tbody>
     </table>

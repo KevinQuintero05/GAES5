@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Respuestas PQRS</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <table class="table table-dark table-striped">
+    <thead>
+    <tr>
+      <th>Gestion Numero:</th>
+      <th>Pqrs a responder</th>
+      <th>Contenido</th>
+
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each=" respuesta: ${respuestasPqrs}">
+      <td th:text="${respuesta.idrespuesta}"></td>
+      <td th:text="${respuesta.pqrs.descripcion}"></td>
+      <td th:text="${respuesta.contenido}"></td>
+
+
+
+
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

@@ -1,32 +1,81 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"lang="en">
 <head>
   <title>Login</title>
 </head>
+
 <body>
-<form th:action="@{/register}" th:object="${usuario}" method="post">
-  <h3>Registration</h3>
-  <input type="text" th:field="*{nombreusuario}" placeholder="Nombre de Usuario" /> <br/><br/>
-  <input type="text" th:field="*{nombres}" placeholder="Nombres" /> <br/><br/>
-  <input type="text" th:field="*{apellidos}" placeholder="Apellidos" /> <br/><br/>
-  <input type="text" th:field="*{telefono}" placeholder="Numero de Telefono" /> <br/><br/>
-  <input type="email" th:field="*{email}" placeholder="Email" /> <br/><br/>
-  <input type="number" th:field="*{nocedula}" placeholder="Numero de Cedula" /> <br/><br/>
-  <input type="text" th:field="*{direccion}" placeholder="Direccion" /> <br/><br/>
-  <input type="number" th:field="*{edad}" placeholder="Edad" /> <br/><br/>
-  <input type="password" th:field="*{password}" placeholder="Password" /> <br/><br/>
-  <select th:field="*{role}" required>
-    <option value="">Select</option>
-    <option value="ADMIN">ADMIN</option>
-    <option value="USER">USER</option>
-  </select> <br/><br/>
-  <button type="submit">Register</button> | <a th:href="@{|/login|}" th:text="'Log in'"></a>
-  <span th:utext="${successMessage}"></span>
-  <div th:if="${bindingResult!=null && bindingResult.getAllErrors()!=null}">
-    <ul th:each="data : ${bindingResult.getAllErrors()}">
-      <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
-    </ul>
-  </div>
-</form>
+<div layout:fragment="content">
+  <form th:action="@{/register}" th:object="${usuario}" method="post">
+    <h3>Registro de datos</h3>
+
+    <div class="mb-3">
+      <label  class="form-label">Nombre de Usuario</label>
+      <input class="form-control" type="text" th:field="*{nombreusuario}" placeholder="Nombre de Usuario" />
+    </div>
+
+    <div class="mb-3">
+      <label  class="form-label">Nombres del Cliente a Registrarse</label>
+      <input class="form-control" type="text" th:field="*{nombres}" placeholder="Nombres" />
+    </div>
+
+    <div class="mb-3">
+      <label  class="form-label">Apellidos del Cliente a Registrarse</label>
+      <input class="form-control" type="text" th:field="*{apellidos}" placeholder="Apellidos" />
+    </div>
+
+    <div class="mb-3">
+      <label  class="form-label">Correo Electronico</label>
+      <input class="form-control" type="email" th:field="*{email}" placeholder="Email" />
+    </div>
+
+    <div class="mb-3">
+      <label  class="form-label">Numero de Contacto</label>
+      <input class="form-control" type="text" th:field="*{telefono}" placeholder="Numero de Telefono" />
+    </div>
+
+    <div class="mb-3">
+      <label  class="form-label">Numero de Cedula de Ciudadania</label>
+      <input class="form-control" type="number" th:field="*{nocedula}" placeholder="Numero de Cedula" />
+    </div>
+
+    <div class="mb-3">
+      <label  class="form-label">Direccion</label>
+      <input class="form-control" type="text" th:field="*{direccion}" placeholder="Direccion" />
+    </div>
+
+    <div class="mb-3">
+      <label  class="form-label">Edad</label>
+      <input class="form-control" type="number" th:field="*{edad}" placeholder="Edad" />
+    </div>
+
+    <div class="mb-3">
+      <label  class="form-label">Contraseña</label>
+      <input class="form-control" type="password" th:field="*{password}" placeholder="Password" />
+    </div>
+
+    <div class="mb-3">
+
+      <select th:field="*{role}" class="form-select" required>
+        <option value="">Select</option>
+        <option value="ADMIN">ADMIN</option>
+        <option value="USER">USER</option>
+      </select>
+    </div>
+
+    <button type="submit"  class="btn btn-danger">Guardar Registro</button> | <button type="button" class="btn btn-darkt"><a th:href="@{|/login|}" th:text="'Log in'" style="text-decoration:none; color:#000"></a></button>
+    <span th:utext="${successMessage}"></span>
+    <div th:if="${bindingResult!=null && bindingResult.getAllErrors()!=null}">
+      <ul th:each="data : ${bindingResult.getAllErrors()}">
+        <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+      </ul>
+    </div>
+  </form>
+  <br>
+  <br>
+  <br>
+</div>
 </body>
 </html>

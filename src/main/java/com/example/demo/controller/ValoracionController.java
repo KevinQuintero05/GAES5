@@ -38,7 +38,18 @@ public class ValoracionController {
         }
     }
 
-    @GetMapping("/valoraciones/new")
+    @GetMapping("/valoraciones-usuarios/all")
+    public String GetValoracionesUsuarios (Model model){
+        try{
+            List<Valoracion> valoracionList = iValoracionRepository.findAll();
+            model.addAttribute("valoraciones", valoracionList);
+            return "AtencionCliente/Valoraciones/Valoraciones-usuarios";
+        } catch (Exception ex){
+            return "error";
+        }
+    }
+
+    @GetMapping("/valoraciones-usuarios/new")
     public String GetShowCreateValoracion(Model model){
         List<Servicio> servicios = iservicioRepository.findAll();
         List<Usuario> usuarios = iUsuarioRepository.findAll();
@@ -48,13 +59,13 @@ public class ValoracionController {
         return "AtencionCliente/Valoraciones/Create";
     }
 
-    @PostMapping("/valoraciones/save")
+    @PostMapping("/valoraciones-usuarios/save")
     public String SaveValoracion(Valoracion valoracion){
         iValoracionRepository.save(valoracion);
-        return "redirect:/valoraciones/all";
+        return "redirect:/valoraciones-usuarios/all";
     }
 
-    @GetMapping("/valoraciones/edit/{id}")
+    @GetMapping("/valoraciones-usuarios/edit/{id}")
     public String ShowUpdateValoracion(Model model, @PathVariable long id){
         Valoracion valoracionbd = iValoracionRepository.findById(id).get();
         model.addAttribute("usuarios", iUsuarioRepository.findAll());
@@ -64,16 +75,16 @@ public class ValoracionController {
     }
 
 
-    @PostMapping("/valoraciones/update/{id}")
+    @PostMapping("/valoraciones-usuarios/update/{id}")
     public String updateValoracion(@PathVariable("id") long id, Valoracion valoracion, Model model){
         valoracion.setIdvaloracionservicio(id);
         iValoracionRepository.save(valoracion);
-        return "redirect:/valoraciones/all";
+        return "redirect:/valoraciones-usuarios/all";
     }
 
-    @GetMapping("/valoraciones/delete/{id}")
+    @GetMapping("/valoraciones-usuarios/delete/{id}")
     public String deleteValoracion(Model model,@PathVariable long id){
         iValoracionRepository.deleteById(id);
-        return "redirect:/valoraciones/all";
+        return "redirect:/valoraciones-usuarios/all";
     }
 }
