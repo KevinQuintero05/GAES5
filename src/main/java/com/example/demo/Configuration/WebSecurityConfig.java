@@ -51,7 +51,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
         // URL Acceso por Rol
-                .antMatchers("/", "/login", "/register").permitAll()
+                .antMatchers("/concord", "/login", "/register").permitAll()
                 .antMatchers("/admin/**", "/servicios/**","/pqrs/**","/vehiculos/**","/respuestas/all","/respuestas/new","/respuestas/save").hasAnyAuthority("ADMIN")
                 .antMatchers("/pqrs/**","/respuestas/all","/valoraciones/**").hasAnyAuthority("USER")
                 .anyRequest().authenticated()
@@ -67,7 +67,7 @@ public class WebSecurityConfig {
                 // logout
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/concord")
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/access-denied");
