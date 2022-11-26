@@ -6,10 +6,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Pqrs</title>
+
+  <th:block layout:fragment="addhead">
+    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  </th:block>
 </head>
 <body>
 <div layout:fragment="content">
-  <table  class="table table-dark table-striped" style="justify-content: center;">
+  <table  id="supplierTable" class="table table-dark table-striped" style="justify-content: center;">
     <thead>
     <tr>
       <th>Numero</th>
@@ -51,6 +55,16 @@
     </tr>
     </tbody>
   </table>
+</div>
+
+<div layout:fragment="addjs">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+  <script>
+        $(document).ready(function () {
+            $('#supplierTable').DataTable();
+        });
+    </script>
 </div>
 </body>
 </html>
