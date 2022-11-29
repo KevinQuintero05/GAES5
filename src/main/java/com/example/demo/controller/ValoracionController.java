@@ -7,12 +7,16 @@ import com.example.demo.repository.IUsuarioRepository;
 import com.example.demo.repository.IValoracionRepository;
 import com.example.demo.repository.IservicioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -60,7 +64,14 @@ public class ValoracionController {
     }
 
     @PostMapping("/valoraciones-usuarios/save")
-    public String SaveValoracion(Valoracion valoracion){
+    public String SaveValoracion(@Valid Valoracion valoracion, BindingResult result){
+       if (result.hasErrors()){
+           return "AtencionCliente/Valoraciones/Create";
+        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Usuario loginUser = (Usuario)authentication.getPrincipal();
+
+        valoracion.setUsuario(loginUser);
         iValoracionRepository.save(valoracion);
         return "redirect:/valoraciones-usuarios/all";
     }
@@ -77,6 +88,10 @@ public class ValoracionController {
 
     @PostMapping("/valoraciones-usuarios/update/{id}")
     public String updateValoracion(@PathVariable("id") long id, Valoracion valoracion, Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Usuario loginUser = (Usuario)authentication.getPrincipal();
+
+        valoracion.setUsuario(loginUser);
         valoracion.setIdvaloracionservicio(id);
         iValoracionRepository.save(valoracion);
         return "redirect:/valoraciones-usuarios/all";

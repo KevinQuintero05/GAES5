@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "valoracionservicios")
@@ -17,9 +19,11 @@ public class Valoracion {
     @Column(name = "idvaloracionservicio", unique = true)
     private Long idvaloracionservicio;
 
+    @NotEmpty
     @Column(length = 50, nullable = false)
     private String puntuacion;
 
+    @NotEmpty
     @Column(columnDefinition = "text")
     private String comentario;
 

@@ -27,8 +27,8 @@
       <th>Fecha de Registro</th>
       <th>Email</th>
       <th>Autor</th>
-      <th></th>
-      <th></th>
+
+
     </tr>
     </thead>
     <tbody>
@@ -45,13 +45,11 @@
       <td th:text="${pqrs.usuario.nombreusuario}"></td>
 
 
-      <td>
-        <button type="button" class="btn btn-light"><a th:href="@{'/pqrs/edit/' + ${pqrs.noregistro }}" style="text-decoration:none; color:#000">Editar</a></button>
-      </td>
-      <td>
-        <button type="button" class="btn btn-danger"><a th:href="@{'/pqrs/delete/' + ${pqrs.noregistro }}" style="text-decoration:none; color:#fff">Eliminar</a></button>
 
-      </td>
+
+
+
+
     </tr>
     </tbody>
   </table>

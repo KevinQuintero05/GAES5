@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}"lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Crear Pqrs</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <div layout:fragment="content">
     <!--<form method="post" th:action="@{/pqrs/save}" th:object="${pqrs}">
@@ -19,130 +21,152 @@
 
         <input type="submit" value="Save">
     </form>-->
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid" alt="Responsive image">
+        </div>
+        <br>
 
-    <form method="post"th:action="@{/pqrs/save}" th:object="${pqrs}">
+    </header>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
+            <form method="post"th:action="@{/pqrs/save}" th:object="${pqrs}">
+                <h2>Radique su PQRS</h2>
+                <br>
+                <div class="borde"></div>
+                <h3>Estimado cliente, recuerde que la respuesta a su solicitud sera enviada a su direccion de correo electronico o podra ser consulada en la plataforma</h3>
+                <br>
 
-        <div class="mb-3">
-            <label  class="form-label">grupo de interes</label>
-            <select th:field="*{grupointeres}" class="form-select" required>
-                <option value="seleccione">seleccione...</option>
-                <option value="adulto mayor">Adulto mayor</option>
-                <option value="ciudadano">ciudadano</option>
-                <option value="comunidad Internacional">comunidad Internacional</option>
-                <option value="Empresa">Empresa</option>
-                <option value="Entidades del estado y/o Autoridades">Entidades del estado y/o Autoridades</option>
-                <option value="Persona con discapacidad">Persona con discapacidad</option>
-                <option value="Servidor Publico">Servidor Publico</option>
-            </select>
+                <div class="mb-3">
+                    <label  class="form-label">grupo de interes</label>
+                    <select th:field="*{grupointeres}" class="form-select"  >
+                        <option value="">seleccione...</option>
+                        <option value="adulto mayor">Adulto mayor</option>
+                        <option value="ciudadano">ciudadano</option>
+                        <option value="comunidad Internacional">comunidad Internacional</option>
+                        <option value="Empresa">Empresa</option>
+                        <option value="Entidades del estado y/o Autoridades">Entidades del estado y/o Autoridades</option>
+                        <option value="Persona con discapacidad">Persona con discapacidad</option>
+                        <option value="Servidor Publico">Servidor Publico</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('grupointeres')}" th:errors="*{grupointeres}"></div>
+
+                <div class="mb-3">
+                    <label  class="form-label">persona de interes</label>
+                    <select th:field="*{personainteres}" class="form-select"  >
+                        <option value="">seleccione...</option>
+                        <option value="Persona natural">Persona natural</option>
+                        <option value="Persona Juridica">Persona Juridica</option>
+                        <option value="Representante de una entidad">Representante de una entidad</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('personainteres')}" th:errors="*{personainteres}"></div>
+
+                <div class="mb-3">
+                    <label  class="form-label">Departamento</label>
+                    <select th:field="*{departamento}" class="form-select"  >
+                        <option value="">seleccione...</option>
+                        <option value="Amazonas">Amazonas</option>
+                        <option value="Antioquia">Antioquia</option>
+                        <option value="Arauca">Arauca</option>
+                        <option value="BogotA">Bogotá</option>
+                        <option value="Bolivar">Bolívar</option>
+                        <option value="Boyaca">Boyacá</option>
+                        <option value="Caldas">Caldas</option>
+                        <option value="Caqueta">Caquetá</option>
+                        <option value="Casanare">Casanare</option>
+                        <option value="Cauca">Cauca</option>
+                        <option value="Cesar">Cesar</option>
+                        <option value="Choco">Chocó</option>
+                        <option value="Cordoba">Córdoba</option>
+                        <option value="Cundinamarca">Cundinamarca</option>
+                        <option value="Guainia">Guainía</option>
+                        <option value="Guaviare">Guaviare</option>
+                        <option value="Huila">Huila</option>
+                        <option value="Guajira">Guajira</option>
+                        <option value="Magdalena">Magdalena</option>
+                        <option value="Meta">Meta</option>
+                        <option value="Nariño">Nariño</option>
+                        <option value="NorteSantander">Norte de Santander</option>
+                        <option value="Putumayo">Putumayo</option>
+                        <option value="Quindio">Quindío</option>
+                        <option value="Risaralda">Risaralda</option>
+                        <option value="Santander">Santander</option>
+                        <option value="Sucre">Sucre</option>
+                        <option value="Tolima">Tolima</option>
+                        <option value="ValleCauca">Valle del Cauca</option>
+                        <option value="Vaupés">Vaupés</option>
+                        <option value="Vichada">Vichada</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('departamento')}" th:errors="*{departamento}"></div>
+
+                <div class="mb-3">
+                    <label  class="form-label">Ciudad</label>
+                    <select th:field="*{ciudad}" class="form-select"  >
+                        <option value="">seleccione...</option>
+                        <option value="Bogota">Bogotá</option>
+                        <option value="Medellin">Medellin</option>
+                        <option value="Cali">Cali</option>
+                        <option value="Barranquilla">Barranquilla</option>
+                        <option value="Cartagena">Cartagena de indias</option>
+                        <option value="Soacha">Soacha</option>
+                        <option value="Cucuta">Cucuta</option>
+                        <option value="Soledad">Soledad</option>
+                        <option value="Bucaramanga">Bucaramanga</option>
+                        <option value="Bello">Bello</option>
+                        <option value="Villavicencio">Villavicencio</option>
+                        <option value="Ibague">Ibagué</option>
+                        <option value="SantaMarta">Santa Marta</option>
+                        <option value="Huila">Huila</option>
+                        <option value="Valledupar">Valledupar</option>
+                        <option value="Manizales">Manizales</option>
+                        <option value="Pereira">Pereira</option>
+                        <option value="Montería">Montería</option>
+                        <option value="Neiva">Neiva</option>
+                        <option value="Pasto">Pasto</option>
+                        <option value="Armenia">Armenia</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></div>
+
+                <div class="mb-3">
+                    <label  class="form-label">asunto pqrs</label>
+                    <select th:field="*{asuntopqrs}" class="form-select"  >
+                        <option value="">seleccione...</option>
+                        <option value="Pregunta">Pregunta</option>
+                        <option value="Queja">Queja</option>
+                        <option value="Reclamo">Reclamo</option>
+                        <option value="Sugerencia">Sugerencia</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('asuntopqrs')}" th:errors="*{asuntopqrs}"></div>
+
+                <div class="mb-3">
+                    <label  class="form-label">descripcion</label>
+                    <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion"  ></textarea>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+                <!--<div class="mb-3">
+                    <label  class="form-label">Correo Electronico</label>
+                    <input type="text" class="form-control" name="" required th:field="*{email}">
+                </div>-->
+
+                <!--<div class="mb-3">
+                    <select th:field="*{usuario}"  class="form-select" required>
+                        <th:block th:each="usuario: ${usuarios} ">
+                            <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
+                        </th:block>
+                    </select>
+                </div>-->
+                <br>
+                <input type="submit" class="btn btn-danger" value="Guardar">
+            </form>
         </div>
 
-        <div class="mb-3">
-            <label  class="form-label">persona de interes</label>
-            <select th:field="*{personainteres}" class="form-select" required>
-                <option value="seleccione">seleccione...</option>
-                <option value="Persona natural">Persona natural</option>
-                <option value="Persona Juridica">Persona Juridica</option>
-                <option value="Representante de una entidad">Representante de una entidad</option>
-            </select>
-        </div>
+    </div>
 
-        <div class="mb-3">
-            <label  class="form-label">Departamento</label>
-            <select th:field="*{departamento}" class="form-select" required>
-                <option value="seleccione">seleccione...</option>
-                <option value="Amazonas">Amazonas</option>
-                <option value="Antioquia">Antioquia</option>
-                <option value="Arauca">Arauca</option>
-                <option value="BogotA">Bogotá</option>
-                <option value="Bolivar">Bolívar</option>
-                <option value="Boyaca">Boyacá</option>
-                <option value="Caldas">Caldas</option>
-                <option value="Caqueta">Caquetá</option>
-                <option value="Casanare">Casanare</option>
-                <option value="Cauca">Cauca</option>
-                <option value="Cesar">Cesar</option>
-                <option value="Choco">Chocó</option>
-                <option value="Cordoba">Córdoba</option>
-                <option value="Cundinamarca">Cundinamarca</option>
-                <option value="Guainia">Guainía</option>
-                <option value="Guaviare">Guaviare</option>
-                <option value="Huila">Huila</option>
-                <option value="Guajira">Guajira</option>
-                <option value="Magdalena">Magdalena</option>
-                <option value="Meta">Meta</option>
-                <option value="Nariño">Nariño</option>
-                <option value="NorteSantander">Norte de Santander</option>
-                <option value="Putumayo">Putumayo</option>
-                <option value="Quindio">Quindío</option>
-                <option value="Risaralda">Risaralda</option>
-                <option value="Santander">Santander</option>
-                <option value="Sucre">Sucre</option>
-                <option value="Tolima">Tolima</option>
-                <option value="ValleCauca">Valle del Cauca</option>
-                <option value="Vaupés">Vaupés</option>
-                <option value="Vichada">Vichada</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">Ciudad</label>
-            <select th:field="*{ciudad}" class="form-select" required>
-                <option value="Bogota">Bogotá</option>
-                <option value="Medellin">Medellin</option>
-                <option value="Cali">Cali</option>
-                <option value="Barranquilla">Barranquilla</option>
-                <option value="Cartagena">Cartagena de indias</option>
-                <option value="Soacha">Soacha</option>
-                <option value="Cucuta">Cucuta</option>
-                <option value="Soledad">Soledad</option>
-                <option value="Bucaramanga">Bucaramanga</option>
-                <option value="Bello">Bello</option>
-                <option value="Villavicencio">Villavicencio</option>
-                <option value="Ibague">Ibagué</option>
-                <option value="SantaMarta">Santa Marta</option>
-                <option value="Huila">Huila</option>
-                <option value="Valledupar">Valledupar</option>
-                <option value="Manizales">Manizales</option>
-                <option value="Pereira">Pereira</option>
-                <option value="Montería">Montería</option>
-                <option value="Neiva">Neiva</option>
-                <option value="Pasto">Pasto</option>
-                <option value="Armenia">Armenia</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">asunto pqrs</label>
-            <select th:field="*{asuntopqrs}" class="form-select" required>
-                <option value="seleccione">seleccione...</option>
-                <option value="Pregunta">Pregunta</option>
-                <option value="Queja">Queja</option>
-                <option value="Reclamo">Reclamo</option>
-                <option value="Sugerencia">Sugerencia</option>
-            </select>
-        </div>
-
-
-        <div class="mb-3">
-            <label  class="form-label">descripcion</label>
-            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">Correo Electronico</label>
-            <input type="text" class="form-control" name="" required th:field="*{email}">
-        </div>
-
-        <div class="mb-3">
-            <select th:field="*{usuario}"  class="form-select" required>
-                <th:block th:each="usuario: ${usuarios} ">
-                    <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
-                </th:block>
-            </select>
-        </div>
-
-        <input type="submit" class="btn btn-dark" value="Guardar">
-    </form>
 
 </div>
 <body>

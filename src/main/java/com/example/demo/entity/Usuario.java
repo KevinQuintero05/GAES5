@@ -11,7 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
@@ -34,17 +36,25 @@ public class Usuario implements UserDetails {
     )
     private Long idusuario;
 
+    @NotEmpty
     private String nombreusuario;
 
+    @NotEmpty
+    @Column(length = 50, nullable = false)
     private String nombres;
 
+    @NotEmpty
+    @Column(length = 50, nullable = false)
     private String apellidos;
 
+    @NotEmpty
     @NotNull(message = "Email cannot be empty")
     @Email(message = "Please enter a valid email address")
     @Column(name = "email", unique = true)
     private String email;
 
+    @NotEmpty
+    @Size(min = 8)
     @NotNull(message = "Password cannot be empty")
     @Length(min = 7, message = "Password should be atleast 7 characters long")
     @Column(name = "password")
@@ -52,6 +62,8 @@ public class Usuario implements UserDetails {
 
     private String estadocuenta;
 
+    @NotEmpty
+    @Size(min = 10)
     @Column(name = "nocedula", unique = true)
     private String nocedula;
 
@@ -66,10 +78,14 @@ public class Usuario implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @NotEmpty
     private String direccion;
 
+    @NotEmpty
+    @Size(min = 10)
     private String telefono;
 
+    @NotEmpty
     private String edad;
 
     @Column(name = "locked")
