@@ -66,7 +66,8 @@ public class ValoracionController {
     @PostMapping("/valoraciones-usuarios/save")
     public String SaveValoracion(@Valid Valoracion valoracion, BindingResult result){
        if (result.hasErrors()){
-           return "AtencionCliente/Valoraciones/Create";
+
+           return "redirect:/valoraciones-usuarios/new";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Usuario loginUser = (Usuario)authentication.getPrincipal();
