@@ -4,7 +4,8 @@
       layout:decorate="~{layout}"lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Crear vehiculos</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <div layout:fragment="content">
    <!-- <form method="post" th:action="@{/vehiculos/save}" th:object="${vehiculos}">
@@ -25,6 +26,15 @@
         <input type="submit" value="Save">
     </form>
     -->
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid" alt="Responsive image">
+        </div>
+        <br>
+
+    </header>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
 
     <form method="post" th:action="@{/vehiculos/save}" th:object="${vehiculos}">
 
@@ -81,4 +91,6 @@
 
     </form>
 
+        </div>
+    </div>
 </div>
