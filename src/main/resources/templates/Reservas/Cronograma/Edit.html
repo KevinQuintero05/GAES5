@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cronograma Reservas</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+
+    <form method="post" th:action="@{/cronograma/update/{id}(id=${cronograma.noReserva})}" th:object="${cronograma}">
+
+        <div class="mb-3">
+            <label  class="form-label">fecha Registro</label>
+            <input class="form-control"  rows="3" th:field="*{fechaRegistro}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">fecha partida</label>
+            <input class="form-control"  rows="3" th:field="*{fechaPartida}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">fecha llegada</label>
+            <input class="form-control"  rows="3" th:field="*{fechaLlegada}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">ciudad Destino</label>
+            <input class="form-control"  rows="3" th:field="*{ciudadDestino}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">ciudad Origen </label>
+            <input class="form-control"  rows="3" th:field="*{ciudadOrigen}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">direccion Origen</label>
+            <input class="form-control"  rows="3" th:field="*{direccionOrigen}" required>
+
+            <div class="mb-3">
+                <label  class="form-label">direccion Destino</label>
+                <input class="form-control"  rows="3" th:field="*{direccionDestino}" required>
+
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" class="form-control">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+
+            <div class="mb-3">
+                <select th:field="*{conductor}"  class="form-select" required>
+                    <th:block th:each="conductor: ${conductor} ">
+                        <option th:text="${conductor}" th:value="${conductor.idConductor}"></option>
+                    </th:block>
+                </select>
+            </div>
+
+            <input type="submit" class="btn btn-dark" value="Actualizar">
+
+    </form>
+</div>
+</body>
+</html>

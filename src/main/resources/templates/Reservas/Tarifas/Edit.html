@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Tarifas</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+
+    <form method="post" th:action="@{/tarifas/update/{id}(id=${tarifas.idTarifa})}" th:object="${tarifas}">
+
+        <div class="mb-3">
+            <label  class="form-label">Ruta</label>
+            <input class="form-control"  rows="3" th:field="*{ruta}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">tarifa Ruta</label>
+            <input class="form-control"  rows="3" th:field="*{tarifaRuta}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">servicio</label>
+            <input class="form-control"  rows="3" th:field="*{servicio}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">tarifa Servicio</label>
+            <input class="form-control"  rows="3" th:field="*{tarifaServicio}" required>
+        </div>
+
+            <div class="mb-3">
+                <select th:field="*{cronograma}"  class="form-select" required>
+                    <th:block th:each="cronograma: ${cronograma} ">
+                        <option th:text="${cronograma}" th:value="${cronograma.noReserva}"></option>
+                    </th:block>
+                </select>
+            </div>
+
+            <input type="submit" class="btn btn-dark" value="Actualizar">
+
+    </form>
+</div>
+</body>
+</html>

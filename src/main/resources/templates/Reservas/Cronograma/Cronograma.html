@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cronograma</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <table  class="table table-dark table-striped" style="justify-content: center;">
+        <thead>
+        <tr>
+            <th>Numero Reserva</th>
+
+            <th>fecha Registro</th>
+            <th>fecha partida</th>
+            <th>fecha llegada</th>
+            <th>Ciudad destino</th>
+            <th>Ciudad Origen</th>
+            <th>direccionOrigen</th>
+            <th>direccionDestino</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" cronograma: ${cronogramaList}">
+            <td th:text="${cronograma.noReserva}"></td>
+            <td th:text="${cronograma.fechaRegistro}"></td>
+            <td th:text="${cronograma.fechaPartida}"></td>
+            <td th:text="${cronograma.fechaLlegada}"></td>
+            <td th:text="${cronograma.ciudadDestino}"></td>
+            <td th:text="${cronograma.ciudadOrigen}"></td>
+            <td th:text="${cronograma.direccionOrigen}"></td>
+            <td th:text="${cronograma.direccionDestino}"></td>
+            <td th:text="${cronograma.conductor.idConductor}"></td>
+
+            <td>
+                <button type="button" class="btn btn-light"><a th:href="@{'/cronograma/edit/' + ${cronograma.noReserva }}" style="text-decoration:none; color:#000">Editar</a></button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger"><a th:href="@{'/cronograma/delete/' + ${cronograma.noReserva }}" style="text-decoration:none; color:#fff">Eliminar</a></button>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

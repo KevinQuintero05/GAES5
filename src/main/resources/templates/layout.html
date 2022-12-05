@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,13 +43,13 @@
 
 
                 <!-- Servicios -->
-                <li class="nav-item dropdown">
+                <li  sec:authorize="hasAnyAuthority('ADMIN')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false"> Nuestros Servicios </a>
+                       aria-haspopup="true" aria-expanded="false"> Servicios </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                         <!-- Submenu servicios -->
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Servicios</a>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Lista de Servicios</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" th:href="@{/servicios}">All</a></li>
                                 <li><a class="dropdown-item" th:href="@{/servicios/new}">Create</a></li>
@@ -56,10 +57,10 @@
                             </ul>
                         </li>
                         <!-- Submenu vehiculos -->
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Nuestra Flota</a>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Flota</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/vehiculos}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/vehiculos/new}">Create</a></li>
+                                <li ><a class="dropdown-item" th:href="@{/vehiculos}">All</a></li>
+                                <li ><a class="dropdown-item" th:href="@{/vehiculos/new}">Create</a></li>
 
                             </ul>
                         </li>
@@ -74,39 +75,73 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                         <!-- Submenu PQRS -->
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">PQRS</a>
+                        <li sec:authorize="hasAnyAuthority('USER')" class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">PQRS</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/pqrs/all}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/pqrs/new}">Create</a></li>
-
+                                <li ><a  class="dropdown-item" th:href="@{/pqrs/all}">All</a></li>
+                                <li ><a  class="dropdown-item" th:href="@{/pqrs/new}">Create</a></li>
                             </ul>
                         </li>
                         <!-- Submenu Respuestas PQRS -->
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Respuestas
                             PQRS</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/respuestas/all}">Administrador</a></li>
-                                <li><a class="dropdown-item" th:href="@{/respuestas-usuario/all}">Cliente</a></li>
-                                <li><a class="dropdown-item" th:href="@{/respuestas/new}">Create</a></li>
 
+                                <li sec:authorize="hasAnyAuthority('ADMIN')"><a class="dropdown-item" th:href="@{/respuestas/all}">Registro</a></li>
+                                <li sec:authorize="hasAnyAuthority('ADMIN')"><a class="dropdown-item" th:href="@{/respuestas/new}">Crear</a></li>
+                                <li sec:authorize="hasAnyAuthority('USER')"><a class="dropdown-item" th:href="@{/respuestas-usuario/all}">Registro</a></li>
                             </ul>
                         </li>
                         <!-- Submenu Valoraciones -->
+                        <div  sec:authorize="hasAnyAuthority('ADMIN')">
+                        </div>
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Valoraciones</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/valoraciones-usuarios/all}">Hechas por los clientes</a></li>
-                                <li><a class="dropdown-item" th:href="@{/valoraciones-usuarios/all}">Admin</a></li>
-                                <li><a class="dropdown-item" th:href="@{/valoraciones-usuarios/new}">Create</a></li>
 
+                                <li sec:authorize="hasAnyAuthority('USER')"><a class="dropdown-item" th:href="@{/valoraciones-usuarios/all}">Registro</a></li>
+
+                                <li sec:authorize="hasAnyAuthority('ADMIN')"><a class="dropdown-item" th:href="@{/valoraciones/all}">Hechas por los clientes</a></li>
+
+                                <li sec:authorize="hasAnyAuthority('USER')"><a class="dropdown-item" th:href="@{/valoraciones-usuarios/new}">Create</a></li>
                             </ul>
                         </li>
-
-
                     </ul>
                 </li>
 
+                <!-- Conductor -->
+                <li  sec:authorize="hasAnyAuthority('ADMIN')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false"> Reservas </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                        <!-- Submenu Conductores -->
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Conductores</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" th:href="@{/conductor/}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/conductor/new}">Create</a></li>
+
+                            </ul>
+                        </li>
+                        <!-- Submenu cronograma -->
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Cronograma Reservas</a>
+                            <ul class="dropdown-menu">
+                                <li ><a class="dropdown-item" th:href="@{/cronograma/all}">All</a></li>
+                                <li ><a class="dropdown-item" th:href="@{/cronograma/new}">Create</a></li>
+                            </ul>
+                        </li>
+
+                         <!-- Submenu Tarifas -->
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">tarifas</a>
+                             <ul class="dropdown-menu">
+                                 <li ><a class="dropdown-item" th:href="@{/tarifas/all}">All</a></li>
+                                 <li ><a class="dropdown-item" th:href="@{/tarifas/new}">Create</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
+
             <form class="d-flex" role="search">
 
 
@@ -128,6 +163,7 @@
         </div>
     </div>
 </nav>
+
 
 <!-- ==================== CONTENID0 ==================== -->
 <div class="container">
@@ -163,6 +199,7 @@
         © 2020 Copyright:
         <a class="text-white" >CONCORD</a>
     </div>
+
     <!-- Copyright -->
 </footer>
 

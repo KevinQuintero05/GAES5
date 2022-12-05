@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarifas</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <table  class="table table-dark table-striped" style="justify-content: center;">
+        <thead>
+        <tr>
+            <th>id Tarifa</th>
+
+            <th>Ruta</th>
+            <th>Tarifa Ruta</th>
+            <th>servicio</th>
+            <th>Tarifa servicio</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tarifas: ${tarifasList}">
+            <td th:text="${tarifas.idTarifa}"></td>
+            <td th:text="${tarifas.ruta}"></td>
+            <td th:text="${tarifas.tarifaRuta}"></td>
+            <td th:text="${tarifas.servicio}"></td>
+            <td th:text="${tarifas.TarifaServicio}"></td>
+            <td th:text="${tarifas.cronograma.noReserva}"></td>
+
+            <td>
+                <button type="button" class="btn btn-light"><a th:href="@{'/tarifas/edit/' + ${tarifas.idTarifa }}" style="text-decoration:none; color:#000">Editar</a></button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger"><a th:href="@{'/tarifas/delete/' + ${tarifas.idTarifa }}" style="text-decoration:none; color:#fff">Eliminar</a></button>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
