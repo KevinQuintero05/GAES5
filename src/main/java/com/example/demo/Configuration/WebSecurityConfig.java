@@ -52,7 +52,11 @@ public class WebSecurityConfig {
         http.authorizeRequests()
         // URL Acceso por Rol
                 .antMatchers("/concord", "/login", "/register").permitAll()
+<<<<<<< HEAD
+                .antMatchers("/admin/**", "/servicios/**","/pqrs/**","/vehiculos/**","/respuestas/**", "/valoraciones/**", "/conductor/**", "/cronograma/**","/tarifas/**").hasAnyAuthority("ADMIN")
+=======
                 .antMatchers("/admin/**", "/servicios/**","/pqrs-admin/**","/vehiculos/**","/respuestas/**", "/valoraciones/**").hasAnyAuthority("ADMIN")
+>>>>>>> c03ab3b73872517056e3efe563eac0b7e28d3299
                 .antMatchers("/pqrs/**","/respuestas-usuario/**","/valoraciones-usuarios/**").hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .and()

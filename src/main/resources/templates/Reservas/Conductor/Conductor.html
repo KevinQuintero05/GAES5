@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conductor</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <table  class="table table-dark table-striped" style="justify-content: center;">
+        <thead>
+        <tr>
+            <th>id Conductor</th>
+            <th>Categoria Licencia</th>
+            <th>Arl</th>
+            <th>Cedula</th>
+            <th>Eps</th>
+            <th>Seguro</th>
+            <th>Telefono</th>
+
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" conductor: ${conductor}">
+            <td th:text="${conductor.idConductor}"></td>
+            <td th:text="${conductor.categoria_licencia}"></td>
+            <td th:text="${conductor.arl}"></td>
+            <td th:text="${conductor.cedula}"></td>
+            <td th:text="${conductor.eps}"></td>
+            <td th:text="${conductor.seguro}"></td>
+            <td th:text="${conductor.telefono}"></td>
+
+            <td>
+                <button type="button" class="btn btn-light"><a th:href="@{'/conductor/edit/' + ${conductor.idConductor }}" style="text-decoration:none; color:#000">Editar</a></button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger"><a th:href="@{'/conductor/delete/' + ${conductor.idConductor }}" style="text-decoration:none; color:#fff">Eliminar</a></button>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

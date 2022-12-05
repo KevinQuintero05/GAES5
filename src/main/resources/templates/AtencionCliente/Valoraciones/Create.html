@@ -25,7 +25,7 @@
             <form method="post" th:action="@{/valoraciones-usuarios/save}" th:object="${valoracion}">
                 <div class="mb-3">
                     <label class="form-label">Puntuacion</label>
-                    <select class="form-control" th:field="*{puntuacion}" required>
+                    <select class="form-control" th:field="*{puntuacion}">
                         <option value="">seleccione...</option>
                         <option value="Buena">Buena</option>
                         <option value="Regular">Regular</option>
@@ -38,7 +38,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">comentario</label>
-                    <textarea type="text" class="form-control" th:field="*{comentario}" required></textarea>
+                    <textarea type="text" class="form-control" th:field="*{comentario}"></textarea>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('comentario')}"
                      th:errors="*{comentario}"></div>
@@ -47,7 +47,6 @@
                     <label class="form-label">Seleccione el Servicio que usted ha reservado:</label>
                     <select th:field="*{servicio}" class="form-select" required>
                         <th:block th:each="servicio: ${servicios} ">
-                            <option value="">seleccione...</option>
                             <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
                         </th:block>
                     </select>

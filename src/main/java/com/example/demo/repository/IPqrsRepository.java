@@ -11,10 +11,8 @@ import java.util.List;
 
 @Repository
 public interface IPqrsRepository extends JpaRepository<Pqrs, Long> {
-
-
-    @Query("SELECT p FROM Pqrs p WHERE p.usuario.idusuario = :id")
-    List<Pqrs> getPqrsByIdusuario(@Param("id")Long id);
+    @Query(value = "SELECT * FROM pqrs  WHERE idusuario = idusuario",nativeQuery = true)
+    List<Pqrs> getPqrsByIdusuario(@Param("idusuario")long idusuario);
 
 
 }
