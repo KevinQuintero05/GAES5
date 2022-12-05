@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,30 +19,37 @@ public class Pqrs {
     @Column(name = "noregistro", unique = true)
     private Long noregistro;
 
+    @NotEmpty
     @Column(length = 50, nullable = false)
     private String grupointeres;
 
+    @NotEmpty
     @Column(length = 50, nullable = false)
     private String personainteres;
 
+    @NotEmpty
     @Column(length = 50, nullable = false)
     private String departamento;
 
+    @NotEmpty
     @Column(length = 50, nullable = false)
     private String ciudad;
 
     /*@Column(length = 50, nullable = false)
     private String servicioreservado;*/
 
+    @NotEmpty
     @Column(length = 50, nullable = false)
     private String asuntopqrs;
 
+    @NotEmpty
     @Column(columnDefinition = "text")
     private String descripcion;
 
     @CreationTimestamp
     @Column(length = 50, updatable = false)
     private LocalDateTime fecharegistroPQRS;
+
 
     @Column(length = 50, nullable = false)
     private String email;
@@ -50,6 +58,7 @@ public class Pqrs {
     @JoinColumn(name = "idusuario")
     @JsonBackReference
     private Usuario usuario;
+
 
 
 }

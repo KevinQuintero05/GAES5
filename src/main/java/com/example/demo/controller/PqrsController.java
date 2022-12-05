@@ -5,12 +5,18 @@ import com.example.demo.entity.Usuario;
 import com.example.demo.repository.IPqrsRepository;
 import com.example.demo.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -26,7 +32,12 @@ public class PqrsController {
     public String GetPqrs(Model model){
 
         try{
-            List<Pqrs> pqrsList = iPqrsRepository.findAll();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            Usuario loginUser = (Usuario)authentication.getPrincipal();
+
+            List<Pqrs> pqrsList = iPqrsRepository.getPqrsByIdusuario(loginUser.getIdusuario());
+
+            //List<Pqrs> pqrsList = iPqrsRepository.findAll();
             model.addAttribute("pqrsList", pqrsList);
             return "AtencionCliente/Pqrs/Pqrs";
         }catch (Exception ex){
@@ -34,8 +45,21 @@ public class PqrsController {
         }
     }
 
+    //ADMIN
+    @GetMapping("/pqrs-admin/all")
+    public String GetPqrsAdmin(Model model){
+
+        try{
+            List<Pqrs> pqrsList = iPqrsRepository.findAll();
+            model.addAttribute("pqrsList", pqrsList);
+            return "AtencionCliente/Pqrs/Pqrs-Admin";
+        }catch (Exception ex){
+            return "error";
+        }
+    }
+
     @GetMapping("/pqrs/new")
-    public  String GetShowCreatePqrs(Model model){
+    public  String GetShowCreatePqrs(Model model ){
         List<Usuario> usuarios = iUsuarioRepository.findAll();
         model.addAttribute("usuarios", usuarios);
         model.addAttribute("pqrs", new Pqrs());
@@ -43,7 +67,20 @@ public class PqrsController {
     }
 
     @PostMapping("/pqrs/save")
-    public String SavePqrs(Pqrs pqrs){
+    public String SavePqrs(@Valid Pqrs pqrs, BindingResult result){
+
+        if(result.hasErrors()){
+            return "AtencionCliente/Pqrs/Create";
+        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Usuario loginUser = (Usuario)authentication.getPrincipal();
+
+        pqrs.setUsuario(loginUser);
+
+        pqrs.setEmail(loginUser.getEmail());
+
+        //pqrs.setRespondidapor(loginUser.getNombres());
+
         iPqrsRepository.save(pqrs);
         return "redirect:/pqrs/all";
     }
@@ -56,12 +93,24 @@ public class PqrsController {
         return "AtencionCliente/pqrs/edit";
     }
 
+
+
     @PostMapping("/pqrs/update/{id}")
     public String updatePqrs(@PathVariable("id") long id, Pqrs pqrs, Model model){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Usuario loginUser = (Usuario)authentication.getPrincipal();
+
+        pqrs.setUsuario(loginUser);
+
+        pqrs.setEmail(loginUser.getEmail());
+
         pqrs.setNoregistro(id);
         iPqrsRepository.save(pqrs);
         return "redirect:/pqrs/all";
     }
+
+
 
     @GetMapping("/pqrs/delete/{id}")
     public String deletePqrs(Model model, @PathVariable long id){

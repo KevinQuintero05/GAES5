@@ -3,26 +3,27 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}"
       lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>vehiculos</title>
 </head>
 <body>
+
 <div layout:fragment="content">
-  <table  class="table table-dark table-striped">
+  <table  class="table table-hover table-dark">
     <thead>
     <tr>
-      <th>ID Del Vehiculo</th>
+      <th>ID Vehiculo</th>
       <th>Placa</th>
-      <th>Tipovehiculo</th>
+      <th>Tipo vehiculo</th>
       <th>Capacidad</th>
       <th>Marca</th>
       <th>Soat</th>
       <th>Modelo</th>
       <th>Descripcion</th>
-      <th>Estado del vehiculo</th>
+      <th>Estado vehiculo</th>
       <th>Servicio</th>
+
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -39,7 +40,6 @@
       <td th:text="${vehiculo.descripcion}"></td>
       <td th:text="${vehiculo.estadovehiculo}"></td>
       <td th:text="${vehiculo.servicio.nomservicio}"></td>
-
 
       <td>
         <button type="button" class="btn btn-light"><a th:href="@{'/vehiculos/edit/' + ${vehiculo.idvehiculo}}" style="text-decoration:none; color:#000">Editar</a></button>

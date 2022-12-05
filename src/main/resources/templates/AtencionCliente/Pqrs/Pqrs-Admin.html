@@ -6,10 +6,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Pqrs</title>
-<<<<<<< HEAD
-=======
-
->>>>>>> f44513cef6493374868e99ae7ada5e8860629339
   <th:block layout:fragment="addhead">
     <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
   </th:block>
@@ -31,8 +27,8 @@
       <th>Fecha de Registro</th>
       <th>Email</th>
       <th>Autor</th>
-      <th></th>
-      <th></th>
+
+
     </tr>
     </thead>
     <tbody>
@@ -49,21 +45,15 @@
       <td th:text="${pqrs.usuario.nombreusuario}"></td>
 
 
-      <td>
-        <button type="button" class="btn btn-light"><a th:href="@{'/pqrs/edit/' + ${pqrs.noregistro }}" style="text-decoration:none; color:#000">Editar</a></button>
-      </td>
-      <td>
-        <button type="button" class="btn btn-danger"><a th:href="@{'/pqrs/delete/' + ${pqrs.noregistro }}" style="text-decoration:none; color:#fff">Eliminar</a></button>
 
-      </td>
+
+
+
+
     </tr>
     </tbody>
   </table>
 </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> f44513cef6493374868e99ae7ada5e8860629339
 <div layout:fragment="addjs">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>

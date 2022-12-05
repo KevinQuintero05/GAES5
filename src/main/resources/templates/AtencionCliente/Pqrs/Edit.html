@@ -58,17 +58,10 @@
         </div>
 
         <div class="mb-3">
-            <label  class="form-label">Correo Electronico</label>
-            <input type="text" class="form-control" name="" required th:field="*{email}">
+            <label  class="form-label">email</label>
+            <input  readonly class="form-control"  rows="3" th:field="*{email}"  required>
         </div>
 
-        <div class="mb-3">
-            <select th:field="*{usuario}"  class="form-select" required>
-                <th:block th:each="usuario: ${usuarios} ">
-                    <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
-                </th:block>
-            </select>
-        </div>
 
         <input type="submit" class="btn btn-dark" value="Actualizar">
     </form>

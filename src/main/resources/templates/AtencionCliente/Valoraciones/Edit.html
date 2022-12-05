@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}"lang="en">
+      layout:decorate="~{layout}" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Editar Valoracion</title>
+    <meta charset="UTF-8">
+    <title>Editar Valoracion</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <div layout:fragment="content">
 
-  <form method="post" th:action="@{/valoraciones-usuarios/update/{id}(id=${valoracion.idvaloracionservicio})}" th:object="${valoracion}">
-    <div class="mb-3">
-      <label  class="form-label">Puntuacion</label>
-      <input type="text" class="form-control" name="" required th:field="*{puntuacion}">
-    </div>
-    <div class="mb-3">
-      <label  class="form-label">comentario</label>
-      <textarea type="text" class="form-control" name="" required th:field="*{comentario}"></textarea>
-    </div>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
+            <h2>Edite su valoracion</h2>
+            <div class="borde"></div>
 
-    <div class="mb-3">
-      <select th:field="*{servicio}"  class="form-select" required>
-        <th:block th:each="servicio: ${servicios} ">
-          <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
-        </th:block>
-      </select>
-    </div>
+            <br>
 
-    <div class="mb-3">
-      <select th:field="*{usuario}"  class="form-select" required>
-        <th:block th:each="usuario: ${usuarios} ">
-          <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
-        </th:block>
-      </select>
-    </div>
+            <form method="post" th:action="@{/valoraciones-usuarios/update/{id}(id=${valoracion.idvaloracionservicio})}"
+                  th:object="${valoracion}">
+                <div class="mb-3">
+                    <label class="form-label">Puntuacion</label>
+                    <select class="form-control" th:field="*{puntuacion}">
+                        <option value="">Select</option>
+                        <option value="Buena">Buena</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Mala">Mala</option>
+                    </select>
+                    <!--<input type="text" class="form-control" name="" required th:field="*{puntuacion}">-->
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('puntuacion')}"
+                     th:errors="*{puntuacion}"></div>
 
-    <br>
-    <input type="submit" class="btn btn-dark" value="Actualizar">
-  </form>
+                <div class="mb-3">
+                    <label class="form-label">comentario</label>
+                    <textarea type="text" class="form-control" name="" required th:field="*{comentario}"></textarea>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('comentario')}"
+                     th:errors="*{comentario}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Seleccione el Servicio que usted ha reservado:</label>
+                    <select th:field="*{servicio}" class="form-select" required>
+                        <th:block th:each="servicio: ${servicios} ">
+                            <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('servicio')}" th:errors="*{servicio}"></div>
+
+
+                <br>
+                <input type="submit" class="btn btn-danger" value="Actualizar">
+            </form>
+        </div>
+    </div>
 
 </div>
 
