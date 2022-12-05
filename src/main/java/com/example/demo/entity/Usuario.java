@@ -82,7 +82,7 @@ public class Usuario implements UserDetails {
     private String direccion;
 
     @NotEmpty
-    @Size(min = 10)
+    @Size(min = 10,  message = "El Numero de telefono debe de tener minimo 10 numeros")
     private String telefono;
 
     @NotEmpty

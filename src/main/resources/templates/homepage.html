@@ -3,10 +3,66 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 <head>
-    <title>Homepage</title>
+    <title>CONCORD</title>
+    <style>
+        .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+    <link rel="canonical" th:href="@{https://getbootstrap.com/docs/5.2/examples/carousel/}">
+
+
 </head>
 <body>
 <div layout:fragment="content">
+    <!--
     <h2>Welcome to Homepage</h2>
     <p sec:authorize="hasRole('ROLE_ANONYMOUS')">Text visible to anonymous.</p>
     <p sec:authorize="hasRole('USER')">Text visible to user.</p>
@@ -24,6 +80,142 @@
         <p sec:authorize="hasAuthority('USER')"><a th:href="@{|/dashboard|}" th:text="'User Dashboard'"></a></p>
         <p sec:authorize="hasAuthority('ADMIN')"><a th:href="@{|/admin/dashboard|}" th:text="'Admin Dashboard'"></a></p>
         <a th:href="@{/logout}">Log out</a>
+    </div>
+    -->
+    <main>
+
+        <!--========================================================== -->
+                            <!-- SLIDER DE IMAGENES-->
+        <!--========================================================== -->
+
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img th:src="@{/img/slide1.jpg}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img th:src="@{/img/slide2.jpg}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img th:src="@{/img/slide3.jpg}" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+
+        <!--========================================================== -->
+        <!-- TIPOS DE SERVICIOS-->
+        <!--========================================================== -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">Tours <span class="text-muted"></span></h2>
+                <p class="lead">Te ayudamos a planear y ejecutar su viaje ideal en Colombia, de acuerdo con sus gustos y presupuesto.</p>
+            </div>
+            <div class="col-md-5">
+             <img th:src="@{/img/bus.jpg}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500">
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1">Vehiculo sin Chofer <span class="text-muted">Rentar un vehiculo.</span></h2>
+                <p class="lead">Nuestra misión es proporcionar a nuestros clientes los vehiculos quemas se ajusten asus necesidades.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img th:src="@{/img/viaje.jpg}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">Vehículo con chofer. <span class="text-muted">Rentando un vehiculo.</span></h2>
+                <p class="lead">El mejor conductor a su disposición para trayectos comodos y sin preocupaciones.</p>
+            </div>
+            <div class="col-md-5">
+                <img th:src="@{/img/conconductor.jpg}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500">
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+        <!--========================================================== -->
+        <!-- Preguntas Frecuentes -->
+        <!--========================================================== -->
+        <h2>Preguntas Frecuentes <i class="fa-solid fa-comment-dots"></i></h2>
+
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Donde realizo el Pago de mis reservas?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="background: #d3d3d3; color: #000;">
+                    <div class="accordion-body">
+                        <strong>El pago de nuestros servicios pueden realizarse desde otras plataformas de pago, ya sea PSE o por medio de trasacciones bancarias o de tarjeta de credito. No en la platafroma de la pagina</code>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Usan los protocolos de Bioseguridad?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="background: #d3d3d3; color: #000;">
+                    <div class="accordion-body">
+                        <strong>Por supuesto, de acuerdo con las politicas y dictamenes del gobierno Nacional y de las politicas de nuestra empresa, nuestra priodridad es su seguridad <code></code>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Que hago si el vehiculo que he reservado no llega al punto a la dirreccion de partida acordado?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample" style="background: #d3d3d3; color: #000;">
+                    <div class="accordion-body">
+                        <strong>En todo caso debe de estar pendiente de las notificaciones y/o fecha y lugar programados de la reserva, tambien puede contactarnos y resolver sus inquietudes<code> </code>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                        porque en mi agenda aparece reserva en espera de confirmacion?
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample" style="background: #d3d3d3; color: #000;">
+                    <div class="accordion-body">
+                        <strong>Como politica de la empresa, las reservas solo se confirman cuando el pago o la trasaccion del mismo por el servicio alquilado se realice</code>
+                    </div>
+                </div>
+
+    </main>
+    <br>
+    <div class="text-center">
+        <img th:src="@{/img/LOGO B1 sin relleno negro.png}" class="img-fluid" width="50%" >
     </div>
 </div>
 </body>

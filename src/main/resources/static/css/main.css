@@ -20,3 +20,9 @@
   border-bottom: solid 3px #d00;
   padding: 5px;
 }
+
+/*===================SLIDER DE IMAGENES==========================*/
+
+.carousel-inner {
+    max-height:39rem !important;
+}
