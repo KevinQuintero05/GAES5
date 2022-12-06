@@ -9,8 +9,14 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <p>Bienvenido: <span sec:authentication="name"></span></p>
-    <p>Rol: <span sec:authentication="authorities"></span></p>
+    <div class="card mb-3">
+        <img th:src="@{/img/admin1.jpg}"  class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Bienvenido: <span sec:authentication="name"></span></h5>
+            <p class="card-text">Rol: <span sec:authentication="authorities"></span></p>
+            <p class="card-text"><small class="text-muted"></small><a  th:href="@{/cronograma/all}" class="btn btn-danger">ir a reservas</a></p>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-sm-6">
