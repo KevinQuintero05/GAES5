@@ -4,84 +4,14 @@
       layout:decorate="~{layout}">
 <head>
     <title>CONCORD</title>
-    <style>
-        .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>
     <link rel="canonical" th:href="@{https://getbootstrap.com/docs/5.2/examples/carousel/}">
 
 
 </head>
 <body>
 <div layout:fragment="content">
-    <!--
-    <h2>Welcome to Homepage</h2>
-    <p sec:authorize="hasRole('ROLE_ANONYMOUS')">Text visible to anonymous.</p>
-    <p sec:authorize="hasRole('USER')">Text visible to user.</p>
-    <p sec:authorize="hasRole('ADMIN')">Text visible to admin.</p>
-    <p sec:authorize="isAuthenticated()">Text visible only to authenticated users.</p>
 
-    <div sec:authorize="hasRole('ROLE_ANONYMOUS')">
-        <p><a th:href="@{|/login|}" th:text="'Log in'"></a></p>
-        <p><a th:href="@{|/register|}" th:text="'Register'"></a></p>
-    </div>
-
-    <div sec:authorize="isAuthenticated()">
-        <p>Logged as: <span sec:authentication="name"></span></p>
-        <p>Has role: <span sec:authentication="authorities"></span></p>
-        <p sec:authorize="hasAuthority('USER')"><a th:href="@{|/dashboard|}" th:text="'User Dashboard'"></a></p>
-        <p sec:authorize="hasAuthority('ADMIN')"><a th:href="@{|/admin/dashboard|}" th:text="'Admin Dashboard'"></a></p>
-        <a th:href="@{/logout}">Log out</a>
-    </div>
-    -->
     <main>
 
         <!--========================================================== -->

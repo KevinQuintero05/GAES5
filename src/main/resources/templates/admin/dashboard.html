@@ -11,10 +11,48 @@
 <div layout:fragment="content">
     <p>Bienvenido: <span sec:authentication="name"></span></p>
     <p>Rol: <span sec:authentication="authorities"></span></p>
-    <!--
-    <p><a th:href="@{/}">Home</a></p>
-    <p><a th:href="@{/logout}">Log out</a></p>
-    -->
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-calendar"></i> Cronograma de reservas</h5>
+                    <p class="card-text">Lista acualizada de reservas que realizan los clientes regisrados.</p>
+                    <a  th:href="@{/cronograma/all}" class="btn btn-danger">ir al cornograma</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-clipboard"></i> Gesion de vehiculos</h5>
+                    <p class="card-text">revise o edite el registro de cehiculos de la flota.</p>
+                    <a  th:href="@{/vehiculos}" class="btn btn-danger">ir a gestion de servicios</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>Usuarios Registrados en el sistema</h2>
+    <table  class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th>ID Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+
+            <th>Rol</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" usuario: ${usuarioList}">
+            <td th:text="${usuario.idusuario}"></td>
+            <td th:text="${usuario.nombres}"></td>
+            <td th:text="${usuario.apellidos}"></td>
+
+            <td th:text="${usuario.role}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 </body>

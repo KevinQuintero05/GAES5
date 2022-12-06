@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}" />
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}"/>
     <!-- Icono -->
     <link th:href="@{/img/LOGO B 1 vareacion 1 Black.png}" rel="shortcut icon" type="image/x-icon">
 
@@ -30,8 +30,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
 
-        <img th:src="@{/img/LOGO-B1-sin-relleno-blanco.png}" width="200px"
-             style="padding:15px; height: 100%;" class="img-fluid" alt="Responsive image">
+        <a class="nav-link active" aria-current="page" th:href="@{/concord}"><img th:src="@{/img/LOGO-B1-sin-relleno-blanco.png}" width="200px"
+             style="padding:15px; height: 100%;" class="img-fluid" alt="Responsive image"></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,18 +42,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/concord}">Inicio</a>
+
                 </li>
 
 
                 <!-- Servicios -->
-                <li  sec:authorize="hasAnyAuthority('ADMIN')" class="nav-item dropdown">
+                <li sec:authorize="hasAnyAuthority('ADMIN')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"> Servicios </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                         <!-- Submenu servicios -->
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Lista de Servicios</a>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Lista de
+                            Servicios</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" th:href="@{/servicios}">All</a></li>
                                 <li><a class="dropdown-item" th:href="@{/servicios/new}">Create</a></li>
@@ -63,8 +64,8 @@
                         <!-- Submenu vehiculos -->
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Flota</a>
                             <ul class="dropdown-menu">
-                                <li ><a class="dropdown-item" th:href="@{/vehiculos}">All</a></li>
-                                <li ><a class="dropdown-item" th:href="@{/vehiculos/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/vehiculos}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/vehiculos/new}">Create</a></li>
 
                             </ul>
                         </li>
@@ -73,27 +74,29 @@
 
 
                 <!-- Atención al Cliente -->
-                <li class="nav-item dropdown">
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"> Atencion al Cliente </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-<<<<<<< HEAD
+
                         <!-- Submenu PQRS -->
-=======
+
                         <!-- Submenu PQRS (Cliente)-->
->>>>>>> c03ab3b73872517056e3efe563eac0b7e28d3299
-                        <li sec:authorize="hasAnyAuthority('USER')" class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">PQRS</a>
+
+                        <li sec:authorize="hasAnyAuthority('USER')" class="dropdown-submenu"><a
+                                class="dropdown-item dropdown-toggle" href="">PQRS</a>
                             <ul class="dropdown-menu">
-                                <li ><a  class="dropdown-item" th:href="@{/pqrs/all}">All</a></li>
-                                <li ><a  class="dropdown-item" th:href="@{/pqrs/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/pqrs/all}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/pqrs/new}">Create</a></li>
                             </ul>
                         </li>
 
                         <!-- Submenu PQRS (Admin)-->
-                        <li sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">PQRS</a>
+                        <li sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown-submenu"><a
+                                class="dropdown-item dropdown-toggle" href="">PQRS</a>
                             <ul class="dropdown-menu">
-                                <li ><a  class="dropdown-item" th:href="@{/pqrs-admin/all}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/pqrs-admin/all}">All</a></li>
                             </ul>
                         </li>
 
@@ -102,34 +105,43 @@
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Respuestas
                             PQRS</a>
                             <ul class="dropdown-menu">
-<<<<<<< HEAD
 
-=======
->>>>>>> c03ab3b73872517056e3efe563eac0b7e28d3299
-                                <li sec:authorize="hasAnyAuthority('ADMIN')"><a class="dropdown-item" th:href="@{/respuestas/all}">Registro</a></li>
-                                <li sec:authorize="hasAnyAuthority('ADMIN')"><a class="dropdown-item" th:href="@{/respuestas/new}">Crear</a></li>
-                                <li sec:authorize="hasAnyAuthority('USER')"><a class="dropdown-item" th:href="@{/respuestas-usuario/all}">Registro</a></li>
+                                <li sec:authorize="hasAnyAuthority('ADMIN')"><a class="dropdown-item"
+                                                                                th:href="@{/respuestas/all}">Registro</a>
+                                </li>
+                                <li sec:authorize="hasAnyAuthority('ADMIN')"><a class="dropdown-item"
+                                                                                th:href="@{/respuestas/new}">Crear</a>
+                                </li>
+                                <li sec:authorize="hasAnyAuthority('USER')"><a class="dropdown-item"
+                                                                               th:href="@{/respuestas-usuario/all}">Registro</a>
+                                </li>
                             </ul>
                         </li>
                         <!-- Submenu Valoraciones -->
-                        <div  sec:authorize="hasAnyAuthority('ADMIN')">
+                        <div sec:authorize="hasAnyAuthority('ADMIN')">
                         </div>
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Valoraciones</a>
                             <ul class="dropdown-menu">
 
-                                <li sec:authorize="hasAnyAuthority('USER')"><a class="dropdown-item" th:href="@{/valoraciones-usuarios/all}">Registro</a></li>
+                                <li sec:authorize="hasAnyAuthority('USER')"><a class="dropdown-item"
+                                                                               th:href="@{/valoraciones-usuarios/all}">Registro</a>
+                                </li>
 
-                                <li sec:authorize="hasAnyAuthority('ADMIN')"><a class="dropdown-item" th:href="@{/valoraciones/all}">Hechas por los clientes</a></li>
+                                <li sec:authorize="hasAnyAuthority('ADMIN')"><a class="dropdown-item"
+                                                                                th:href="@{/valoraciones/all}">Hechas
+                                    por los clientes</a></li>
 
-                                <li sec:authorize="hasAnyAuthority('USER')"><a class="dropdown-item" th:href="@{/valoraciones-usuarios/new}">Create</a></li>
+                                <li sec:authorize="hasAnyAuthority('USER')"><a class="dropdown-item"
+                                                                               th:href="@{/valoraciones-usuarios/new}">Create</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-<<<<<<< HEAD
+
 
                 <!-- Conductor -->
-                <li  sec:authorize="hasAnyAuthority('ADMIN')" class="nav-item dropdown">
+                <li sec:authorize="hasAnyAuthority('ADMIN')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"> Reservas </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -143,38 +155,41 @@
                             </ul>
                         </li>
                         <!-- Submenu cronograma -->
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Cronograma Reservas</a>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Cronograma
+                            Reservas</a>
                             <ul class="dropdown-menu">
-                                <li ><a class="dropdown-item" th:href="@{/cronograma/all}">All</a></li>
-                                <li ><a class="dropdown-item" th:href="@{/cronograma/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/cronograma/all}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/cronograma/new}">Create</a></li>
                             </ul>
                         </li>
 
-                         <!-- Submenu Tarifas -->
+                        <!-- Submenu Tarifas -->
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">tarifas</a>
-                             <ul class="dropdown-menu">
-                                 <li ><a class="dropdown-item" th:href="@{/tarifas/all}">All</a></li>
-                                 <li ><a class="dropdown-item" th:href="@{/tarifas/new}">Create</a></li>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" th:href="@{/tarifas/all}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/tarifas/new}">Create</a></li>
 
                             </ul>
                         </li>
                     </ul>
                 </li>
 
-=======
->>>>>>> c03ab3b73872517056e3efe563eac0b7e28d3299
+
             </ul>
 
             <form class="d-flex" role="search">
 
 
-
-                <button sec:authorize="isAuthenticated()" class="btn btn-danger" type="button"><a th:href="@{/logout}" style="text-decoration:none; color:#fff">Cerrar Sesión</a></button>
+                <button sec:authorize="isAuthenticated()" class="btn btn-danger" type="button"><a th:href="@{/logout}"
+                                                                                                  style="text-decoration:none; color:#fff">Cerrar
+                    Sesión</a></button>
                 <div sec:authorize="hasRole('ROLE_ANONYMOUS')">
-                    <button class="btn btn-danger" type="button"><a th:href="@{|/login|}" th:text="'Ingresar'"  style="text-decoration:none; color:#fff"></a>
+                    <button class="btn btn-danger" type="button"><a th:href="@{|/login|}" th:text="'Ingresar'"
+                                                                    style="text-decoration:none; color:#fff"></a>
                     </button>
 
-                    <button class="btn btn-danger" type="button"><a th:href="@{|/register|}" th:text="'Registrarse'" style="text-decoration:none; color:#fff"></a>
+                    <button class="btn btn-danger" type="button"><a th:href="@{|/register|}" th:text="'Registrarse'"
+                                                                    style="text-decoration:none; color:#fff"></a>
                     </button>
 
                 </div>
@@ -191,17 +206,19 @@
 <!--========================================================== -->
 <!-- CONTENIDO -->
 <!--========================================================== -->
-<div class="container">
-    <div class="row mt-3">
-        <div class="col-md-12">
-            <div class="table-responsive">
-            <!-- Content Section -->
-            <section layout:fragment="content">
-                <p>This is filled by the content template.</p>
-            </section>
+<div class="container-fluid">
+    <div class="p-2 bg-light border">
+        <div class="row md-3">
+            <div class="container">
+                <div class="table-responsive">
+                    <!-- Content Section -->
+                    <section layout:fragment="content">
+                        <p>This is filled by the content template.</p>
+                    </section>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- Footer -->
@@ -224,7 +241,7 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright:
-        <a class="text-white" > <img th:src="@{/img/LOGO-B1-sin-relleno-blanco.png}" class="img-fluid" width="7%" ></a>
+        <a class="text-white"> <img th:src="@{/img/LOGO-B1-sin-relleno-blanco.png}" class="img-fluid" width="7%"></a>
     </div>
 
     <!-- Copyright -->
