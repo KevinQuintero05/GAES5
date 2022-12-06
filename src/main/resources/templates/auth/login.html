@@ -79,25 +79,21 @@
       <div class="align-self-center w-100 px-lg-3 py-lg-3 p-3">
         <h1 class="font-weight-bold mb-3">INGRESA AQUI</h1>
         <form class="mb-3" th:action="@{/login}" method="POST" >
-          <div class="mb-4">
+          <div class="mb-3">
             <label for="usuario" class="form-label font-weight-bold">Email</label>
-            <input class="form-control bg-dark-x border-0" type="email" name="email" id="correo" th:placeholder="Email">
+            <input class="form-control bg-dark-x border-0" style="color: #fff" type="email" name="email" id="correo" th:placeholder="Email">
           </div>
 
           <div class="mb-4">
             <label for="contraseña" class="form-label font-weight-bold">Contraseña</label>
-            <input class="form-control bg-dark-x border-0 mb-2" type="password" name="password" id="contraseña" th:placeholder="Password">
+            <input class="form-control bg-dark-x border-0 mb-2" style="color: #fff" type="password" name="password" id="contraseña" th:placeholder="Password">
 
 
           </div>
 
-          <br>
-
           <button type="Submit" class="btn btn-danger"  id="log1" >Iniciar Sesion</button>
           <div th:if="${param.error}"><p>Email or Password is invalid.</p></div> <br />
 
-          <div>
-            <br>
 
 
             <p class="d-inline-block mb-0">¿Todavia no tienes una cuenta?</p> <a
