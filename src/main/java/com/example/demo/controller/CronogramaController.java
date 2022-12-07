@@ -2,11 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Cronograma;
 import com.example.demo.entity.Conductor;
-import com.example.demo.entity.Servicio;
-import com.example.demo.entity.Solicitudes;
-import com.example.demo.entity.Vehiculos;
-import com.example.demo.repository.*;
-import com.example.demo.repository.IservicioRepository;
+import com.example.demo.repository.ICronogramaRepository;
+import com.example.demo.repository.IConductorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,14 +22,6 @@ public class CronogramaController {
     @Autowired
     private IConductorRepository iConductorRepository;
 
-    @Autowired
-    private IservicioRepository iservicioRepository;
-
-    @Autowired
-    private ISolicitudesRepository iSolicitudesRepository;
-
-    @Autowired
-    private IVehiculosRepository iVehiculosRepository;
 
     @GetMapping("/cronograma/all")
     public String GetCronograma(Model model){
@@ -49,13 +38,7 @@ public class CronogramaController {
     @GetMapping("/cronograma/new")
     public  String GetShowCreateCronograma(Model model){
         List<Conductor> conductor = iConductorRepository.findAll();
-        List<Servicio> servicio = iservicioRepository.findAll();
-        List<Solicitudes> solicitudes = iSolicitudesRepository.findAll();
-        List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
         model.addAttribute("conductor", conductor);
-        model.addAttribute("servicio", servicio);
-        model.addAttribute("solicitudes", solicitudes);
-        model.addAttribute("vehiculos", vehiculos);
         model.addAttribute("cronograma", new Cronograma());
         return "Reservas/Cronograma/Create";
     }
@@ -70,9 +53,6 @@ public class CronogramaController {
     public String showUpdateCronograma(Model model, @PathVariable long id){
         Cronograma cronogramabd = iCronogramaRepository.findById(id).get();
         model.addAttribute("conductor", iConductorRepository.findAll());
-        model.addAttribute("servicio", iservicioRepository.findAll());
-        model.addAttribute("solicitudes", iSolicitudesRepository.findAll());
-        model.addAttribute("vehiculos", iVehiculosRepository.findAll());
         model.addAttribute("cronograma",cronogramabd);
         return "Reservas/Cronograma/edit";
     }

@@ -53,39 +53,15 @@
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <select th:field="*{conductor}"  class="form-select" required>
-                        <th:block th:each="conductor: ${conductor} ">
-                            <option th:text="${conductor.cedula}" th:value="${conductor.idConductor}"></option>
-                        </th:block>
-                    </select>
-                </div>
+            <div class="mb-3">
+                <select th:field="*{conductor}"  class="form-select" required>
+                    <th:block th:each="conductor: ${conductor} ">
+                        <option th:text="${conductor}" th:value="${conductor.idConductor}"></option>
+                    </th:block>
+                </select>
+            </div>
 
-                <div class="mb-3">
-                    <select th:field="*{servicio}"  class="form-select" required>
-                        <th:block th:each="servicio: ${servicio} ">
-                            <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
-                        </th:block>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <select th:field="*{solicitudes}"  class="form-select" required>
-                        <th:block th:each="solicitudes: ${solicitudes} ">
-                            <option th:text="${solicitudes.estadoReserva}" th:value="${solicitudes.idSolicitudes}"></option>
-                        </th:block>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <select th:field="*{vehiculos}"  class="form-select" required>
-                        <th:block th:each="vehiculos: ${vehiculos} ">
-                            <option th:text="${vehiculos.placa}" th:value="${vehiculos.idvehiculo}"></option>
-                        </th:block>
-                    </select>
-                </div>
-
-                <input type="submit" class="btn btn-dark" value="Actualizar">
+            <input type="submit" class="btn btn-dark" value="Actualizar">
 
     </form>
 </div>
