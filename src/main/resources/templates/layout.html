@@ -141,13 +141,13 @@
 
 
                 <!-- Conductor -->
-                <li sec:authorize="hasAnyAuthority('ADMIN')" class="nav-item dropdown">
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"> Reservas </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                         <!-- Submenu Conductores -->
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Conductores</a>
+                        <li sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Conductores</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" th:href="@{/conductor/}">All</a></li>
                                 <li><a class="dropdown-item" th:href="@{/conductor/new}">Create</a></li>
