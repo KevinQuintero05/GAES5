@@ -82,12 +82,19 @@
                 <div class="mb-3">
 
                     <select th:field="*{role}" class="form-select" required>
-                        <option value="">Select</option>
+                        <option value="">[ ROL ]</option>
                         <option value="ADMIN">ADMIN</option>
                         <option value="USER">USER</option>
                     </select>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
+
+                <div class="form-check">
+                    <input class="form-check-input" required type="checkbox" value="" id="flexCheckIndeterminate">
+                    <label class="form-check-label" for="flexCheckIndeterminate">
+                        Autorizo el tratamiento de datos bajo mi consentimiento.
+                    </label>
+                </div>
 
 
                 <button type="submit" class="btn btn-danger">Guardar Registro</button>

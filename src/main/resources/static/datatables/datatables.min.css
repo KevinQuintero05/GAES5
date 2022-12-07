@@ -19,3 +19,10 @@ table.dataTable{clear:both;margin-top:6px !important;margin-bottom:6px !importan
   position: absolute !important;
 }
 
+.page-item.active .page-link {
+    background-color: #b1b1b1 !important;
+    border: 1px solid white;
+}
+.page-link {
+    color: black !important;
+}
