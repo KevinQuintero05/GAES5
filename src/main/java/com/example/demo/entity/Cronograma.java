@@ -50,19 +50,18 @@ public class Cronograma {
     private Conductor conductor;
 
     @ManyToOne
-    @JoinColumn(name = "idServicio")
+    @JoinColumn(name = "idservicio")
     @JsonBackReference
     private Servicio servicio;
 
     @ManyToOne
-    @JoinColumn(name = "idVehiculo")
-    @JsonBackReference
-    private Vehiculos vehiculos;
-
-    @ManyToOne
-    @JoinColumn(name = "idSolicitud")
+    @JoinColumn(name = "idSolicitudes")
     @JsonBackReference
     private Solicitudes solicitudes;
 
+    @ManyToOne
+    @JoinColumn(name = "idvehiculo")
+    @JsonBackReference
+    private Vehiculos vehiculos;
 
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitudes</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <table  class="table table-dark table-striped" style="justify-content: center;">
+        <thead>
+        <tr>
+            <th>Numero Solicitud</th>
+
+            <th>estado Reserva</th>
+            <th>fecha Registro</th>
+            <th>fecha partida</th>
+            <th>fecha llegada</th>
+            <th>Ciudad destino</th>
+            <th>Ciudad Origen</th>
+            <th>direccionOrigen</th>
+            <th>direccionDestino</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" solicitudes: ${solicitudesList}">
+            <td th:text="${solicitudes.idSolicitudes}"></td>
+            <td th:text="${solicitudes.estadoReserva}"></td>
+            <td th:text="${solicitudes.fechaRegistro}"></td>
+            <td th:text="${solicitudes.fechaPartida}"></td>
+            <td th:text="${solicitudes.fechaLlegada}"></td>
+            <td th:text="${solicitudes.ciudadDestino}"></td>
+            <td th:text="${solicitudes.ciudadOrigen}"></td>
+            <td th:text="${solicitudes.direccionOrigen}"></td>
+            <td th:text="${solicitudes.direccionDestino}"></td>
+            <td th:text="${solicitudes.vehiculos.idvehiculo}"></td>
+            <td th:text="${solicitudes.servicio.idservicio}"></td>
+            <td th:text="${solicitudes.usuario.idusuario}"></td>
+
+            <td>
+                <button type="button" class="btn btn-light"><a th:href="@{'/solicitudes/edit/' + ${solicitudes.idSolicitudes}}" style="text-decoration:none; color:#000">Editar</a></button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger"><a th:href="@{'/solicitudes/delete/' + ${solicitudes.idSolicitudes}}" style="text-decoration:none; color:#fff">Eliminar</a></button>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -10,14 +10,14 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "solicitudes")
+@Table(name ="solicitudes")
 @Getter
 @Setter
 public class Solicitudes {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idSolicitud", unique = true)
-    private Long idSolicitud;
+    @Column(name = "idSolicitudes", unique = true)
+    private Long idSolicitudes;
 
     @Column(length = 50, nullable = false)
     private String estadoReserva;

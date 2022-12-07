@@ -53,7 +53,10 @@ public class WebSecurityConfig {
         // URL Acceso por Rol
                 .antMatchers("/concord", "/login", "/register").permitAll()
 
-                .antMatchers("/admin/**", "/servicios/**","/pqrs/**","/vehiculos/**","/respuestas/**", "/valoraciones/**", "/conductor/**", "/cronograma/**","/tarifas/**", "/Solicitudes/**").hasAnyAuthority("ADMIN")
+
+                .antMatchers("/admin/**", "/servicios/**","/pqrs/**","/vehiculos/**","/respuestas/**", "/valoraciones/**", "/conductor/**", "/cronograma/**","/tarifas/**", "/solicitudes/**").hasAnyAuthority("ADMIN")
+
+
 
                 .antMatchers("/pqrs/**","/respuestas-usuario/**","/valoraciones-usuarios/**").hasAnyAuthority("USER")
                 .anyRequest().authenticated()
@@ -82,6 +85,6 @@ public class WebSecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/static/**","/img/**", "/js/**", "/css/**");
+        return (web) -> web.ignoring().antMatchers("/static/**","/img/**", "/js/**", "/css/**","/datatables/**","/jquery/**");
     }
 }

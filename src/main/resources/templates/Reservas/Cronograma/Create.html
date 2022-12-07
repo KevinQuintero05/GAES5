@@ -4,7 +4,7 @@
       layout:decorate="~{layout}"lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Crear Pqrs</title>
+    <title>Crear Reserva</title>
 </head>
 <div layout:fragment="content">
 
@@ -98,6 +98,32 @@
                  </th:block>
              </select>
          </div>
+
+        <div class="mb-3">
+            <select th:field="*{servicio}"  class="form-select" required>
+                <th:block th:each="servicio: ${servicio} ">
+                    <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <select th:field="*{solicitudes}"  class="form-select" required>
+                <th:block th:each="solicitudes: ${solicitudes} ">
+                    <option th:text="${solicitudes.estadoReserva}" th:value="${solicitudes.idSolicitudes}"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <select th:field="*{vehiculos}"  class="form-select" required>
+                <th:block th:each="vehiculos: ${vehiculos} ">
+                    <option th:text="${vehiculos.placa}" th:value="${vehiculos.idvehiculo}"></option>
+                </th:block>
+            </select>
+        </div>
+
+
 
          <input type="submit" class="btn btn-dark" value="Guardar">
      </form>

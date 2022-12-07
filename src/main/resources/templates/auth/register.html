@@ -1,81 +1,119 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}"lang="en">
+      layout:decorate="~{layout}" lang="en">
 <head>
-  <title>Login</title>
+    <title>Registrarse</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 
 <body>
 <div layout:fragment="content">
-  <form th:action="@{/register}" th:object="${usuario}" method="post">
-    <h3>Registro de datos</h3>
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
+                 alt="Responsive image">
+        </div>
+        <br>
 
-    <div class="mb-3">
-      <label  class="form-label">Nombre de Usuario</label>
-      <input class="form-control" type="text" th:field="*{nombreusuario}" placeholder="Nombre de Usuario" />
+    </header>
+
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
+            <form th:action="@{/register}" th:object="${usuario}" method="post" class="formulario" id="formulario">
+                <h3>Registro de datos</h3>
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre de Usuario</label>
+                    <input class="form-control" type="text" th:field="*{nombreusuario}"
+                           placeholder="Nombre de Usuario"/>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('nombreusuario')}" th:errors="*{nombreusuario}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nombres del Cliente a Registrarse</label>
+                    <input class="form-control" type="text" th:field="*{nombres}" placeholder="Nombres"/>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Apellidos del Cliente a Registrarse</label>
+                    <input class="form-control" type="text" th:field="*{apellidos}" placeholder="Apellidos"/>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Correo Electronico</label>
+                    <input class="form-control" type="email" th:field="*{email}" placeholder="Email"/>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Numero de Contacto</label>
+                    <input class="form-control" type="text" th:field="*{telefono}" placeholder="Numero de Telefono"/>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Numero de Cedula de Ciudadania</label>
+                    <input class="form-control" type="number" th:field="*{nocedula}" placeholder="Numero de Cedula"/>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('nocedula')}" th:errors="*{nocedula}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Direccion</label>
+                    <input class="form-control" type="text" th:field="*{direccion}" placeholder="Direccion"/>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Edad</label>
+                    <input class="form-control" type="number" th:field="*{edad}" placeholder="Edad"/>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></div>
+
+                <div class="mb-3">
+                    <label  class="form-label">Contraseña</label>
+                    <input class="form-control" type="password" th:field="*{password}" placeholder="Password" />
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
+                <div class="mb-3">
+
+                    <select th:field="*{role}" class="form-select" required>
+                        <option value="">[ ROL ]</option>
+                        <option value="ADMIN">ADMIN</option>
+                        <option value="USER">USER</option>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
+
+                <div class="form-check">
+                    <input class="form-check-input" required type="checkbox" value="" id="flexCheckIndeterminate">
+                    <label class="form-check-label" for="flexCheckIndeterminate">
+                        Autorizo el tratamiento de datos bajo mi consentimiento.
+                    </label>
+                </div>
+
+
+                <button type="submit" class="btn btn-danger">Guardar Registro</button>
+                |
+                <button type="button" class="btn btn-darkt"><a th:href="@{|/login|}" th:text="'Log in'"
+                                                               style="text-decoration:none; color:#fff"></a></button>
+                <span th:utext="${successMessage}"></span>
+                <div th:if="${bindingResult!=null && bindingResult.getAllErrors()!=null}">
+                    <!--<ul th:each="data : ${bindingResult.getAllErrors()}">
+                        <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+                    </ul>-->
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div class="mb-3">
-      <label  class="form-label">Nombres del Cliente a Registrarse</label>
-      <input class="form-control" type="text" th:field="*{nombres}" placeholder="Nombres" />
-    </div>
-
-    <div class="mb-3">
-      <label  class="form-label">Apellidos del Cliente a Registrarse</label>
-      <input class="form-control" type="text" th:field="*{apellidos}" placeholder="Apellidos" />
-    </div>
-
-    <div class="mb-3">
-      <label  class="form-label">Correo Electronico</label>
-      <input class="form-control" type="email" th:field="*{email}" placeholder="Email" />
-    </div>
-
-    <div class="mb-3">
-      <label  class="form-label">Numero de Contacto</label>
-      <input class="form-control" type="text" th:field="*{telefono}" placeholder="Numero de Telefono" />
-    </div>
-
-    <div class="mb-3">
-      <label  class="form-label">Numero de Cedula de Ciudadania</label>
-      <input class="form-control" type="number" th:field="*{nocedula}" placeholder="Numero de Cedula" />
-    </div>
-
-    <div class="mb-3">
-      <label  class="form-label">Direccion</label>
-      <input class="form-control" type="text" th:field="*{direccion}" placeholder="Direccion" />
-    </div>
-
-    <div class="mb-3">
-      <label  class="form-label">Edad</label>
-      <input class="form-control" type="number" th:field="*{edad}" placeholder="Edad" />
-    </div>
-
-    <div class="mb-3">
-      <label  class="form-label">Contraseña</label>
-      <input class="form-control" type="password" th:field="*{password}" placeholder="Password" />
-    </div>
-
-    <div class="mb-3">
-
-      <select th:field="*{role}" class="form-select" required>
-        <option value="">Select</option>
-        <option value="ADMIN">ADMIN</option>
-        <option value="USER">USER</option>
-      </select>
-    </div>
-
-    <button type="submit"  class="btn btn-danger">Guardar Registro</button> | <button type="button" class="btn btn-darkt"><a th:href="@{|/login|}" th:text="'Log in'" style="text-decoration:none; color:#000"></a></button>
-    <span th:utext="${successMessage}"></span>
-    <div th:if="${bindingResult!=null && bindingResult.getAllErrors()!=null}">
-      <ul th:each="data : ${bindingResult.getAllErrors()}">
-        <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
-      </ul>
-    </div>
-  </form>
-  <br>
-  <br>
-  <br>
+    <br>
+    <br>
+    <br>
 </div>
+    <script th:src="@{/js/formulario.js}"></script>
 </body>
 </html>

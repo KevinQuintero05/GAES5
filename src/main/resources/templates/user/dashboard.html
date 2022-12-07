@@ -9,9 +9,10 @@
 </head>
 <body>
 <div layout:fragment="content">
+    <!--
     <p>Bienvenido: <span sec:authentication="name"></span></p>
     <p>Rol: <span sec:authentication="authorities"></span></p>
-    <!--
+
     <p><a th:href="@{/}">Home</a></p>
     <p><a th:href="@{/logout}">Log out</a></p>
     -->
@@ -19,9 +20,9 @@
         <div class="card mb-3">
             <img th:src="@{/img/Movil.jpg}"  class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Tu viaje comienza aqui!</h5>
-                <p class="card-text">Reserve un vehivulo que se ajuste a sus necesidades.</p>
-                <p class="card-text"><small class="text-muted"></small><a style="background: #d00; border: #d00;" href="../Modulo de reservas/Formulario reserva/index.html" class="btn btn-danger">ir a reservas</a></p>
+                <h5 class="card-title">Bienvenido: <span sec:authentication="name"></span></h5>
+                <p class="card-text">Rol: <span sec:authentication="authorities"></span></p>
+                <p class="card-text"><small class="text-muted"></small><a  th:href="@{/cronograma/all}" class="btn btn-danger">ir a reservas</a></p>
             </div>
         </div>
 
@@ -33,7 +34,7 @@
                     <h5 class="card-title">Crear una Reserva</h5>
                     <p class="card-text">En CONCORD contamos con una amplia gama de vehiculos y servicios que se
                         adecuane a sus necesidades</p>
-                    <a th:href=@{/newcronogramareservas} class="btn btn-primary">Crear Reserva </a>
+                    <a th:href=@{/newcronogramareservas} class="btn btn-secondary">Crear Reserva </a>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">La confirmacion de las reservas se hacen un aves que se realice el pago
@@ -48,7 +49,7 @@
                         de bioseguridad a nuestros servicios</p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Nuestris vehiculos son desinfectadod una vez que se termine el
+                    <small class="text-muted">Nuestros vehiculos son desinfectadod una vez que se termine el
                         servicio</small>
                 </div>
             </div>
@@ -58,11 +59,11 @@
                     <h5 class="card-title">Atencion al Cliente</h5>
                     <p class="card-text">En CONCORD contamos con el personal altamente calificado para atender a sus
                         necesidades y consultas</p>
-                    <p class="card-text"><small class="text-muted"></small><a style="background: #d00; border: #d00;"
+                    <p class="card-text"><small class="text-muted"></small><a
                                                                               th:href="@{/pqrs/new}"
                                                                               class="btn btn-danger">Crear una Pqrs</a>
                     </p>
-                    <p class="card-text"><small class="text-muted"></small><a style="background: #d00; border: #d00;"
+                    <p class="card-text"><small class="text-muted"></small><a
                                                                               th:href="@{/valoraciones-usuarios/new}"
                                                                               class="btn btn-danger">Calificar un
                         Servicio</a></p>

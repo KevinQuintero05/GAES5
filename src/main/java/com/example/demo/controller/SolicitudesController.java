@@ -48,33 +48,33 @@ public class SolicitudesController {
     @GetMapping("/solicitudes/new")
     public String GetShowCreateSolicitudes(Model model) {
         List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
-        List<Servicio> servicios = iservicioRepository.findAll();
-        List<Usuario> usuarios = iUsuarioRepository.findAll();
+        List<Servicio> servicio = iservicioRepository.findAll();
+        List<Usuario> usuario = iUsuarioRepository.findAll();
         model.addAttribute("vehiculos", vehiculos);
-        model.addAttribute("servicios", servicios);
-        model.addAttribute("usuarios", usuarios);
-        model.addAttribute("solicitud", new Solicitudes());
+        model.addAttribute("servicio", servicio);
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("solicitudes", new Solicitudes());
         return "Reservas/Solicitudes/Create";
     }
     @PostMapping("/solicitudes/save")
     public String SaveSolicitudes(Solicitudes solicitudes){
         iSolicitudesRepository.save(solicitudes);
-        return "redirect:/Solicitudes/all";
+        return "redirect:/solicitudes/all";
     }
     @GetMapping("/solicitudes/edit/{id}")
     public String showUpdatesSolicitudes(Model model, @PathVariable long id){
-        Solicitudes solicitudesbd = isolicitudesRepository.findById(id).get();
+        Solicitudes solicitudesbd = iSolicitudesRepository.findById(id).get();
         model.addAttribute("vehiculos", iVehiculosRepository.findAll());
-        model.addAttribute("servicios", iserviciosRepository.findAll());
-        model.addAttribute("usuarios", iVehiculosRepository.findAll());
+        model.addAttribute("servicio", iservicioRepository.findAll());
+        model.addAttribute("usuario", iUsuarioRepository.findAll());
         model.addAttribute("solicitudes",solicitudesbd);
         return "Reservas/Solicitudes/edit";
     }
     @PostMapping("/solicitudes/update/{id}")
-    public String updateSolicitudes(@PathVariable("id") long id, solicitudes solicitudes, Model model){
+    public String updateSolicitudes(@PathVariable("id") long id, Solicitudes solicitudes, Model model){
         solicitudes.setIdSolicitudes(id);
         iSolicitudesRepository.save(solicitudes);
-        return "redirect:/tarifas/all";
+        return "redirect:/solicitudes/all";
     }
 
     @GetMapping("/solicitudes/delete/{id}")
@@ -82,5 +82,4 @@ public class SolicitudesController {
         iSolicitudesRepository.deleteById(id);
         return "redirect:/solicitudes/all";
     }
-}
 }

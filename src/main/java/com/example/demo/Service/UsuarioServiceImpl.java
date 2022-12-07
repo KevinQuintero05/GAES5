@@ -37,17 +37,17 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
         Optional<Usuario> existingUserEmail = usuarioRepository.findByEmail(usuario.getEmail());
         if(existingUserEmail.isPresent()){
             userExists = true;
-            message = "Este correo ya esta resgitrado!";
+            message = "Este correo ya esta resgitrado!.";
         }
 
         Optional<Usuario> existingUserMobile = usuarioRepository.findByTelefono(usuario.getTelefono());
         if(existingUserMobile.isPresent()){
             userExists = true;
-            message = "Este numero de telefono ya esta resgitrado!";
+            message = "Este numero de telefono ya esta resgitrado!.";
         }
 
         if (existingUserEmail.isPresent() && existingUserMobile.isPresent()) {
-            message = "Tanto el correo como el numero de telefono ya esisten ";
+            message = "Tanto el correo como el numero de telefono ya existen!.";
         }
 
         System.out.println("existingUserEmail.isPresent() - "+existingUserEmail.isPresent()+"existingUserMobile.isPresent() - "+existingUserMobile.isPresent());

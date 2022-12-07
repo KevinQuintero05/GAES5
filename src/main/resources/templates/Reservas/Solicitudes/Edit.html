@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Solicitudes </title>
+</head>
+<body>
+<div layout:fragment="content">
+
+
+    <form method="post" th:action="@{/solicitudes/update/{id}(id=${solicitudes.idSolicitudes})}" th:object="${solicitudes}">
+
+        <div class="mb-3">
+            <label  class="form-label">Estado Reserva</label>
+            <input class="form-control"  rows="3" th:field="*{estadoReserva}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">fecha Registro</label>
+            <input class="form-control"  rows="3" th:field="*{fechaRegistro}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">fecha partida</label>
+            <input class="form-control"  rows="3" th:field="*{fechaPartida}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">fecha llegada</label>
+            <input class="form-control"  rows="3" th:field="*{fechaLlegada}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">ciudad Destino</label>
+            <input class="form-control"  rows="3" th:field="*{ciudadDestino}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">ciudad Origen </label>
+            <input class="form-control"  rows="3" th:field="*{ciudadOrigen}" required>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">direccion Origen</label>
+            <input class="form-control"  rows="3" th:field="*{direccionOrigen}" required>
+
+            <div class="mb-3">
+                <label  class="form-label">direccion Destino</label>
+                <input class="form-control"  rows="3" th:field="*{direccionDestino}" required>
+
+
+                <div class="mb-3">
+                    <select th:field="*{vehiculos}"  class="form-select" required>
+                        <th:block th:each="vehiculos: ${vehiculos} ">
+                            <option th:text="${vehiculos.placa}" th:value="${vehiculos.idvehiculo}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <select th:field="*{servicio}"  class="form-select" required>
+                        <th:block th:each="servicio: ${servicio} ">
+                            <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <select th:field="*{usuario}"  class="form-select" required>
+                        <th:block th:each="usuario: ${usuario} ">
+                            <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+            <input type="submit" class="btn btn-dark" value="Actualizar">
+
+    </form>
+</div>
+</body>
+</html>
