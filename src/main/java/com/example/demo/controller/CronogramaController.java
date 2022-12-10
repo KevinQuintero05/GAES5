@@ -1,17 +1,29 @@
 package com.example.demo.controller;
 
+import com.example.demo.Enums.TipoReporteEnum;
+import com.example.demo.Service.FacturaReservaService;
 import com.example.demo.entity.Cronograma;
 import com.example.demo.entity.Conductor;
+import com.example.demo.entity.FacturaReservaDTO;
 import com.example.demo.repository.ICronogramaRepository;
 import com.example.demo.repository.IConductorRepository;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class CronogramaController {
@@ -21,6 +33,9 @@ public class CronogramaController {
 
     @Autowired
     private IConductorRepository iConductorRepository;
+
+    @Autowired
+    private FacturaReservaService facturaReservaService;
 
 
     @GetMapping("/cronograma/all")
@@ -69,5 +84,23 @@ public class CronogramaController {
         iCronogramaRepository.deleteById(id);
         return "redirect:/cronograma/all";
     }
+
+    /* ------------ Reporte --------------------*/
+    @GetMapping("/cronograma/tarifa")
+    public ResponseEntity<Resource> download(@RequestParam Map<String, Object> params) throws JRException, IOException, SQLException {
+        FacturaReservaDTO dto = facturaReservaService.obtenerReporteProducto(params);
+        InputStreamResource streamResource = new InputStreamResource(dto.getStream());
+        MediaType mediaType = null;
+        if(params.get("tipo").toString().equalsIgnoreCase(TipoReporteEnum.EXCEL.name())){
+            mediaType = MediaType.APPLICATION_OCTET_STREAM;
+        }else{
+            mediaType = MediaType.APPLICATION_PDF;
+        }
+
+        return ResponseEntity.ok().header("Content-Disposition", "inline; filename=\"" + dto.getFileName() + "\"")
+                .contentLength(dto.getLenght()).contentType(mediaType).body(streamResource);
+
+    }
+
 }
 

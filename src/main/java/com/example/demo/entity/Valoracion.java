@@ -27,7 +27,6 @@ public class Valoracion {
     @Column(columnDefinition = "text")
     private String comentario;
 
-
     @ManyToOne
     @JoinColumn(name = "idservicio")
     @JsonBackReference
