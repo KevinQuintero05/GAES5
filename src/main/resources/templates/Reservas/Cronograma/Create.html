@@ -1,109 +1,121 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}"lang="en">
+      layout:decorate="~{layout}" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Crear Pqrs</title>
+    <title>Crear</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <div layout:fragment="content">
 
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
+                 alt="Responsive image">
+        </div>
+        <br>
 
-    <form method="post"th:action="@{/cronograma/save}" th:object="${cronograma}">
+    </header>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
+            <form method="post" th:action="@{/cronograma/save}" th:object="${cronograma}">
 
-        <div class="mb-3">
-             <label  class="form-label">Fecha Registro</label>
-             <input type="text" class="form-control" name="" required th:field="*{fechaRegistro}">
-         </div>
+                <div class="mb-3">
+                    <label class="form-label">Fecha Registro</label>
+                    <input type="text" class="form-control" name="" required th:field="*{fechaRegistro}">
+                </div>
 
-         <div class="mb-3">
-             <label  class="form-label">Fecha Partida</label>
-             <input type="text" class="form-control" name="" required th:field="*{fechaPartida}">
-         </div>
+                <div class="mb-3">
+                    <label class="form-label">Fecha Partida</label>
+                    <input type="text" class="form-control" name="" required th:field="*{fechaPartida}">
+                </div>
 
-         <div class="mb-3">
-             <label  class="form-label">Fecha Llegada</label>
-             <input type="text" class="form-control" name="" required th:field="*{fechaLlegada}">
-         </div>
+                <div class="mb-3">
+                    <label class="form-label">Fecha Llegada</label>
+                    <input type="text" class="form-control" name="" required th:field="*{fechaLlegada}">
+                </div>
 
-         <div class="mb-3">
-             <label  class="form-label">Ciudad destino</label>
-             <select th:field="*{ciudadDestino}" class="form-select" required>
-                 <option value="Bogota">Bogotá</option>
-                 <option value="Medellin">Medellin</option>
-                 <option value="Cali">Cali</option>
-                 <option value="Barranquilla">Barranquilla</option>
-                 <option value="Cartagena">Cartagena de indias</option>
-                 <option value="Soacha">Soacha</option>
-                 <option value="Cucuta">Cucuta</option>
-                 <option value="Soledad">Soledad</option>
-                 <option value="Bucaramanga">Bucaramanga</option>
-                 <option value="Bello">Bello</option>
-                 <option value="Villavicencio">Villavicencio</option>
-                 <option value="Ibague">Ibagué</option>
-                 <option value="SantaMarta">Santa Marta</option>
-                 <option value="Huila">Huila</option>
-                 <option value="Valledupar">Valledupar</option>
-                 <option value="Manizales">Manizales</option>
-                 <option value="Pereira">Pereira</option>
-                 <option value="Montería">Montería</option>
-                 <option value="Neiva">Neiva</option>
-                 <option value="Pasto">Pasto</option>
-                 <option value="Armenia">Armenia</option>
-             </select>
-         </div>
+                <div class="mb-3">
+                    <label class="form-label">Ciudad destino</label>
+                    <select th:field="*{ciudadDestino}" class="form-select" required>
+                        <option value="Bogota">Bogotá</option>
+                        <option value="Medellin">Medellin</option>
+                        <option value="Cali">Cali</option>
+                        <option value="Barranquilla">Barranquilla</option>
+                        <option value="Cartagena">Cartagena de indias</option>
+                        <option value="Soacha">Soacha</option>
+                        <option value="Cucuta">Cucuta</option>
+                        <option value="Soledad">Soledad</option>
+                        <option value="Bucaramanga">Bucaramanga</option>
+                        <option value="Bello">Bello</option>
+                        <option value="Villavicencio">Villavicencio</option>
+                        <option value="Ibague">Ibagué</option>
+                        <option value="SantaMarta">Santa Marta</option>
+                        <option value="Huila">Huila</option>
+                        <option value="Valledupar">Valledupar</option>
+                        <option value="Manizales">Manizales</option>
+                        <option value="Pereira">Pereira</option>
+                        <option value="Montería">Montería</option>
+                        <option value="Neiva">Neiva</option>
+                        <option value="Pasto">Pasto</option>
+                        <option value="Armenia">Armenia</option>
+                    </select>
+                </div>
 
-         <div class="mb-3">
-             <label  class="form-label">Ciudad origen</label>
-             <select th:field="*{ciudadOrigen}" class="form-select" required>
-                 <option value="Bogota">Bogotá</option>
-                 <option value="Medellin">Medellin</option>
-                 <option value="Cali">Cali</option>
-                 <option value="Barranquilla">Barranquilla</option>
-                 <option value="Cartagena">Cartagena de indias</option>
-                 <option value="Soacha">Soacha</option>
-                 <option value="Cucuta">Cucuta</option>
-                 <option value="Soledad">Soledad</option>
-                 <option value="Bucaramanga">Bucaramanga</option>
-                 <option value="Bello">Bello</option>
-                 <option value="Villavicencio">Villavicencio</option>
-                 <option value="Ibague">Ibagué</option>
-                 <option value="SantaMarta">Santa Marta</option>
-                 <option value="Huila">Huila</option>
-                 <option value="Valledupar">Valledupar</option>
-                 <option value="Manizales">Manizales</option>
-                 <option value="Pereira">Pereira</option>
-                 <option value="Montería">Montería</option>
-                 <option value="Neiva">Neiva</option>
-                 <option value="Pasto">Pasto</option>
-                 <option value="Armenia">Armenia</option>
-             </select>
-         </div>
+                <div class="mb-3">
+                    <label class="form-label">Ciudad origen</label>
+                    <select th:field="*{ciudadOrigen}" class="form-select" required>
+                        <option value="Bogota">Bogotá</option>
+                        <option value="Medellin">Medellin</option>
+                        <option value="Cali">Cali</option>
+                        <option value="Barranquilla">Barranquilla</option>
+                        <option value="Cartagena">Cartagena de indias</option>
+                        <option value="Soacha">Soacha</option>
+                        <option value="Cucuta">Cucuta</option>
+                        <option value="Soledad">Soledad</option>
+                        <option value="Bucaramanga">Bucaramanga</option>
+                        <option value="Bello">Bello</option>
+                        <option value="Villavicencio">Villavicencio</option>
+                        <option value="Ibague">Ibagué</option>
+                        <option value="SantaMarta">Santa Marta</option>
+                        <option value="Huila">Huila</option>
+                        <option value="Valledupar">Valledupar</option>
+                        <option value="Manizales">Manizales</option>
+                        <option value="Pereira">Pereira</option>
+                        <option value="Montería">Montería</option>
+                        <option value="Neiva">Neiva</option>
+                        <option value="Pasto">Pasto</option>
+                        <option value="Armenia">Armenia</option>
+                    </select>
+                </div>
 
 
-         <div class="mb-3">
-             <label  class="form-label">Direccion Origen</label>
-             <input type="text" class="form-control" name="" required th:field="*{direccionOrigen}">
-         </div>
+                <div class="mb-3">
+                    <label class="form-label">Direccion Origen</label>
+                    <input type="text" class="form-control" name="" required th:field="*{direccionOrigen}">
+                </div>
 
-         <div class="mb-3">
-             <label  class="form-label">Direccion Destino</label>
-             <input type="text" class="form-control" name="" required th:field="*{direccionDestino}">
-         </div>
+                <div class="mb-3">
+                    <label class="form-label">Direccion Destino</label>
+                    <input type="text" class="form-control" name="" required th:field="*{direccionDestino}">
+                </div>
 
-         <div class="mb-3">
-             <select th:field="*{conductor}"  class="form-select" required>
-                 <th:block th:each="conductor: ${conductor} ">
-                     <option th:text="${conductor.cedula}" th:value="${conductor.idConductor}"></option>
-                 </th:block>
-             </select>
-         </div>
+                <div class="mb-3">
+                    <select th:field="*{conductor}" class="form-select" required>
+                        <th:block th:each="conductor: ${conductor} ">
+                            <option th:text="${conductor.cedula}" th:value="${conductor.idConductor}"></option>
+                        </th:block>
+                    </select>
+                </div>
 
-         <input type="submit" class="btn btn-dark" value="Guardar">
-     </form>
+                <input type="submit" class="btn btn-dark" value="Guardar">
+            </form>
 
- </div>
- <body>
+        </div>
+    </div>
+</div>
+<body>
 
- </body>
- </html>
+</body>
+</html>
