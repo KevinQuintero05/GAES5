@@ -44,8 +44,13 @@ public class ValoracionController {
 
     @GetMapping("/valoraciones-usuarios/all")
     public String GetValoracionesUsuarios (Model model){
+
         try{
-            List<Valoracion> valoracionList = iValoracionRepository.findAll();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            Usuario loginUser = (Usuario)authentication.getPrincipal();
+
+            List<Valoracion> valoracionList = iValoracionRepository.getValoracionByIdusuario(loginUser.getIdusuario());
+            //List<Valoracion> valoracionList = iValoracionRepository.findAll();
             model.addAttribute("valoraciones", valoracionList);
             return "AtencionCliente/Valoraciones/Valoraciones-usuarios";
         } catch (Exception ex){
@@ -64,10 +69,13 @@ public class ValoracionController {
     }
 
     @PostMapping("/valoraciones-usuarios/save")
-    public String SaveValoracion(@Valid Valoracion valoracion, BindingResult result){
+    public String SaveValoracion(@Valid Valoracion valoracion, BindingResult result,Model model){
 
        if (result.hasErrors()){
-
+           List<Servicio> servicios = iservicioRepository.findAll();
+           List<Usuario> usuarios = iUsuarioRepository.findAll();
+           model.addAttribute("usuarios", usuarios);
+           model.addAttribute("servicios", servicios);
            return "AtencionCliente/Valoraciones/Create";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

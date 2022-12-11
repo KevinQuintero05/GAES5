@@ -27,7 +27,8 @@
       <th>Fecha de Registro</th>
       <th>Email</th>
       <th>Autor</th>
-
+      <th>Respuesta</th>
+      <th></th>
 
     </tr>
     </thead>
@@ -43,12 +44,10 @@
       <td th:text="${pqrs.fecharegistroPQRS}"></td>
       <td th:text="${pqrs.email}"></td>
       <td th:text="${pqrs.usuario.nombreusuario}"></td>
-
-
-
-
-
-
+      <td th:text="${pqrs.respuesta}"></td>
+      <td>
+        <button type="button" class="btn btn-light"><a th:href="@{/respuestas/new}" style="text-decoration:none; color:#000">Responder</a></button>
+      </td>
 
     </tr>
     </tbody>

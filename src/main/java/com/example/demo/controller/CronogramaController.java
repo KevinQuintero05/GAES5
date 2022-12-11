@@ -86,6 +86,7 @@ public class CronogramaController {
     }
 
     /* ------------ Reporte --------------------*/
+    /*@GetMapping("/cronograma/tarifa")*/
     @GetMapping("/cronograma/tarifa")
     public ResponseEntity<Resource> download(@RequestParam Map<String, Object> params) throws JRException, IOException, SQLException {
         FacturaReservaDTO dto = facturaReservaService.obtenerReporteProducto(params);

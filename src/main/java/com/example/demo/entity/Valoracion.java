@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -27,6 +28,7 @@ public class Valoracion {
     @Column(columnDefinition = "text")
     private String comentario;
 
+    @NotNull(message = "Debe seleccionar un servicio")
     @ManyToOne
     @JoinColumn(name = "idservicio")
     @JsonBackReference

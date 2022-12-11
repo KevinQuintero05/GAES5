@@ -93,7 +93,13 @@ public class PqrsController {
         return "AtencionCliente/pqrs/edit";
     }
 
-
+    @GetMapping("/pqrs-admin/respond/{id}")
+    public String showPqrsAdmin(Model model, @PathVariable long id){
+        Pqrs pqrsbd = iPqrsRepository.findById(id).get();
+        model.addAttribute("usuarios", iUsuarioRepository.findAll());
+        model.addAttribute("pqrs",pqrsbd);
+        return "AtencionCliente/pqrs/respond";
+    }
 
     @PostMapping("/pqrs/update/{id}")
     public String updatePqrs(@PathVariable("id") long id, Pqrs pqrs, Model model){
@@ -114,7 +120,12 @@ public class PqrsController {
 
     @GetMapping("/pqrs/delete/{id}")
     public String deletePqrs(Model model, @PathVariable long id){
-        iPqrsRepository.deleteById(id);
-        return "redirect:/pqrs/all";
+        try{
+            iPqrsRepository.deleteById(id);
+            return "redirect:/pqrs/all";
+        }catch (Exception exception){
+            return "redirect:/pqrs/all";
+        }
+
     }
 }

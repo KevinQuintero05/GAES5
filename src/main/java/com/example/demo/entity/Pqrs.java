@@ -54,10 +54,14 @@ public class Pqrs {
     @Column(length = 50, nullable = false)
     private String email;
 
+    @Column(columnDefinition = "text")
+    private String respuesta;
+
     @ManyToOne
     @JoinColumn(name = "idusuario")
     @JsonBackReference
     private Usuario usuario;
+
 
 
 
