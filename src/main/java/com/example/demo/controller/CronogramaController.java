@@ -2,11 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.Enums.TipoReporteEnum;
 import com.example.demo.Service.FacturaReservaService;
-import com.example.demo.entity.Cronograma;
-import com.example.demo.entity.Conductor;
-import com.example.demo.entity.FacturaReservaDTO;
-import com.example.demo.repository.ICronogramaRepository;
-import com.example.demo.repository.IConductorRepository;
+import com.example.demo.entity.*;
+import com.example.demo.repository.*;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -14,6 +11,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +29,14 @@ public class CronogramaController {
     @Autowired
     private ICronogramaRepository iCronogramaRepository;
 
+    @Autowired
+    private IservicioRepository iservicioRepository;
+
+    @Autowired
+    private ISolicitudesRepository iSolicitudesRepository;
+
+    @Autowired
+    private IVehiculosRepository iVehiculosRepository;
     @Autowired
     private IConductorRepository iConductorRepository;
 
@@ -50,10 +56,30 @@ public class CronogramaController {
         }
     }
 
+    @GetMapping("/cronograma-cliente/all")
+    public String GetCronogramaCliente(Model model){
+
+        try{
+            List<Cronograma> cronogramaList = iCronogramaRepository.findAll();
+            model.addAttribute("cronogramaList", cronogramaList);
+            return "Reservas/Cronograma/Cronograma-cliente";
+        }catch (Exception ex){
+            return "error";
+        }
+    }
+
+
     @GetMapping("/cronograma/new")
     public  String GetShowCreateCronograma(Model model){
         List<Conductor> conductor = iConductorRepository.findAll();
         model.addAttribute("conductor", conductor);
+        List<Servicio> servicios = iservicioRepository.findAll();
+        model.addAttribute("servicios",servicios);
+        List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
+        model.addAttribute("vehiculos", vehiculos);
+        List<Solicitudes> solicitudes = iSolicitudesRepository.findAll();
+        model.addAttribute("solicitudes",solicitudes);
+
         model.addAttribute("cronograma", new Cronograma());
         return "Reservas/Cronograma/Create";
     }
@@ -67,6 +93,10 @@ public class CronogramaController {
     @GetMapping("/cronograma/edit/{id}")
     public String showUpdateCronograma(Model model, @PathVariable long id){
         Cronograma cronogramabd = iCronogramaRepository.findById(id).get();
+        model.addAttribute("conductor", iConductorRepository.findAll());
+        model.addAttribute("servicios", iservicioRepository.findAll());
+        model.addAttribute("servicios", iVehiculosRepository.findAll());
+        model.addAttribute("solicitudes", iSolicitudesRepository.findAll());
         model.addAttribute("conductor", iConductorRepository.findAll());
         model.addAttribute("cronograma",cronogramabd);
         return "Reservas/Cronograma/edit";

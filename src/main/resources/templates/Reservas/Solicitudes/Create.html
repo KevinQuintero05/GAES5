@@ -23,29 +23,21 @@
 
             <form method="post" th:action="@{/solicitudes/save}" th:object="${solicitudes}">
 
-                <div class="mb-3">
-                    <label class="form-label">Estado de la Reserva</label>
-                    <input type="text" class="form-control" name="" required th:field="*{estadoReserva}">
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Fecha Registro</label>
-                    <input type="text" class="form-control" name="" required th:field="*{fechaRegistro}">
-                </div>
 
                 <div class="mb-3">
                     <label class="form-label">Fecha Partida</label>
-                    <input type="text" class="form-control" name="" required th:field="*{fechaPartida}">
+                    <input type="Date" class="form-control" name="" required th:field="*{fechaPartida}"  min="2022-11-01" max="2023-12-31">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Fecha Llegada</label>
-                    <input type="text" class="form-control" name="" required th:field="*{fechaLlegada}">
+                    <input type="Date" class="form-control" name="" required th:field="*{fechaLlegada}" min="2022-11-01" max="2023-12-31">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Ciudad destino</label>
                     <select th:field="*{ciudadDestino}" class="form-select" required>
+                        <option value="">Seleccione...</option>
                         <option value="Bogota">Bogotá</option>
                         <option value="Medellin">Medellin</option>
                         <option value="Cali">Cali</option>
@@ -73,6 +65,7 @@
                 <div class="mb-3">
                     <label class="form-label">Ciudad origen</label>
                     <select th:field="*{ciudadOrigen}" class="form-select" required>
+                        <option value="">Seleccione...</option>
                         <option value="Bogota">Bogotá</option>
                         <option value="Medellin">Medellin</option>
                         <option value="Cali">Cali</option>
@@ -109,14 +102,16 @@
                 </div>
 
                 <div class="mb-3">
+                    <label class="form-label">Asignar vehículo</label>
                     <select th:field="*{vehiculos}" class="form-select" required>
                         <th:block th:each="vehiculos: ${vehiculos} ">
-                            <option th:text="${vehiculos.placa}" th:value="${vehiculos.idvehiculo}"></option>
+                            <option th:text="${vehiculos.descripcion}" th:value="${vehiculos.idvehiculo}"></option>
                         </th:block>
                     </select>
                 </div>
 
                 <div class="mb-3">
+                    <label class="form-label">Servicio a Solicitar</label>
                     <select th:field="*{servicio}" class="form-select" required>
                         <th:block th:each="servicio: ${servicio} ">
                             <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
@@ -124,13 +119,7 @@
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <select th:field="*{usuario}" class="form-select" required>
-                        <th:block th:each="usuario: ${usuario} ">
-                            <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
-                        </th:block>
-                    </select>
-                </div>
+
 
                 <input type="submit" class="btn btn-dark" value="Guardar">
             </form>

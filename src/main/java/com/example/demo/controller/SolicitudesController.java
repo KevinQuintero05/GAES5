@@ -9,6 +9,8 @@ import com.example.demo.repository.ISolicitudesRepository;
 import com.example.demo.repository.IservicioRepository;
 import com.example.demo.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +47,18 @@ public class SolicitudesController {
         }
     }
 
+    @GetMapping("/solicitudes-admin/all")
+    public String GetSolicitudesAdmin(Model model) {
+
+        try {
+            List<Solicitudes> solicitudesList = iSolicitudesRepository.findAll();
+            model.addAttribute("solicitudesList", solicitudesList);
+            return "Reservas/Solicitudes/Solicitudes-admin";
+        } catch (Exception ex) {
+            return "error";
+        }
+    }
+
 
 
     @GetMapping("/solicitudes/new")
@@ -60,6 +74,11 @@ public class SolicitudesController {
     }
     @PostMapping("/solicitudes/save")
     public String SaveSolicitudes(Solicitudes solicitudes){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Usuario loginUser = (Usuario)authentication.getPrincipal();
+
+        solicitudes.setUsuario(loginUser);
+
         iSolicitudesRepository.save(solicitudes);
         return "redirect:/solicitudes/all";
     }
@@ -74,6 +93,12 @@ public class SolicitudesController {
     }
     @PostMapping("/solicitudes/update/{id}")
     public String updateSolicitudes(@PathVariable("id") long id, Solicitudes solicitudes, Model model){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Usuario loginUser = (Usuario)authentication.getPrincipal();
+
+        solicitudes.setUsuario(loginUser);
+
         solicitudes.setIdSolicitudes(id);
         iSolicitudesRepository.save(solicitudes);
         return "redirect:/solicitudes/all";

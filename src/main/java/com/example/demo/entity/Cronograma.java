@@ -23,11 +23,11 @@ public class Cronograma {
     @Column(length = 50, updatable = false)
     private Date fechaRegistro;
 
-    @CreationTimestamp
+
     @Column(length = 50, updatable = false)
     private Date fechaPartida;
 
-    @CreationTimestamp
+
     @Column(length = 50, updatable = false)
     private Date fechaLlegada;
 
