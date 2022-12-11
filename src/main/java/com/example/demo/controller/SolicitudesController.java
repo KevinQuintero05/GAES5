@@ -45,6 +45,8 @@ public class SolicitudesController {
         }
     }
 
+
+
     @GetMapping("/solicitudes/new")
     public String GetShowCreateSolicitudes(Model model) {
         List<Vehiculos> vehiculos = iVehiculosRepository.findAll();

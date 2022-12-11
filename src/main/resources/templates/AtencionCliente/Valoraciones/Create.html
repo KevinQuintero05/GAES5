@@ -18,13 +18,13 @@
     </header>
     <div class="card">
         <div class="card-body" style="background: #000; color: #fff ">
-            <h2>Gracias por darnos un momento de su tiempo!</h2>
+            <h2>Gracias por darnos un momento de su tiempo!.</h2>
             <div class="borde"></div>
-            <h3>Apreciado usuario por favor responda las siguientes pregunta:</h3>
+            <h3>Apreciado usuario por favor responda las siguientes preguntas:</h3>
             <br>
             <form method="post" th:action="@{/valoraciones-usuarios/save}" th:object="${valoracion}">
                 <div class="mb-3">
-                    <label class="form-label">Puntuacion</label>
+                    <label class="form-label">Puntuación</label>
                     <select class="form-control" th:field="*{puntuacion}">
                         <option value="">seleccione...</option>
                         <option value="Buena">Buena</option>
@@ -37,7 +37,7 @@
                      th:errors="*{puntuacion}"></div>
 
                 <div class="mb-3">
-                    <label class="form-label">comentario</label>
+                    <label class="form-label">Comentario</label>
                     <textarea type="text" class="form-control" th:field="*{comentario}"></textarea>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('comentario')}"
@@ -47,7 +47,7 @@
                     <label class="form-label">Seleccione el Servicio que usted ha reservado:</label>
                     <select th:field="*{servicio}" class="form-select" >
                         <th:block th:each="servicio: ${servicios} ">
-                            <option value="">seleccione...</option>
+                            <option value="">Seleccione...</option>
                             <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
                         </th:block>
                     </select>

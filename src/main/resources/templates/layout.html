@@ -56,16 +56,16 @@
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Lista de
                             Servicios</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/servicios}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/servicios/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/servicios}">Ver</a></li>
+                                <li><a class="dropdown-item" th:href="@{/servicios/new}">Crear</a></li>
 
                             </ul>
                         </li>
                         <!-- Submenu vehiculos -->
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Flota</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/vehiculos}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/vehiculos/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/vehiculos}">Ver</a></li>
+                                <li><a class="dropdown-item" th:href="@{/vehiculos/new}">Crear</a></li>
 
                             </ul>
                         </li>
@@ -76,7 +76,7 @@
                 <!-- Atención al Cliente -->
                 <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false"> Atencion al Cliente </a>
+                       aria-haspopup="true" aria-expanded="false"> Atención al Cliente </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
 
@@ -87,8 +87,8 @@
                         <li sec:authorize="hasAnyAuthority('USER')" class="dropdown-submenu"><a
                                 class="dropdown-item dropdown-toggle" href="">PQRS</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/pqrs/all}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/pqrs/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/pqrs/all}">Ver</a></li>
+                                <li><a class="dropdown-item" th:href="@{/pqrs/new}">Crear</a></li>
                             </ul>
                         </li>
 
@@ -96,7 +96,7 @@
                         <li sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown-submenu"><a
                                 class="dropdown-item dropdown-toggle" href="">PQRS</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/pqrs-admin/all}">All</a></li>
+                                <li><a class="dropdown-item" th:href="@{/pqrs-admin/all}">Ver</a></li>
                             </ul>
                         </li>
 
@@ -132,7 +132,7 @@
                                     por los clientes</a></li>
 
                                 <li sec:authorize="hasAnyAuthority('USER')"><a class="dropdown-item"
-                                                                               th:href="@{/valoraciones-usuarios/new}">Create</a>
+                                                                               th:href="@{/valoraciones-usuarios/new}">Crear</a>
                                 </li>
                             </ul>
                         </li>
@@ -149,17 +149,17 @@
                         <!-- Submenu Conductores -->
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Conductores</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/conductor/}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/conductor/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/conductor/}">Ver</a></li>
+                                <li><a class="dropdown-item" th:href="@{/conductor/new}">Crear</a></li>
 
                             </ul>
                         </li>
 
                         <!-- Submenu Solicitudes -->
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Conductores</a>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Solicitudes</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/solicitudes/all}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/solicitudes/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/solicitudes/all}">Ver</a></li>
+                                <li><a class="dropdown-item" th:href="@{/solicitudes/new}">Crear</a></li>
 
                             </ul>
                         </li>
@@ -168,16 +168,16 @@
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Cronograma
                             Reservas</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/cronograma/all}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/cronograma/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/cronograma/all}">Ver</a></li>
+                                <li><a class="dropdown-item" th:href="@{/cronograma/new}">Crear</a></li>
                             </ul>
                         </li>
 
                         <!-- Submenu Tarifas -->
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">tarifas</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/tarifas/all}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/tarifas/new}">Create</a></li>
+                                <li><a class="dropdown-item" th:href="@{/tarifas/all}">Ver</a></li>
+                                <li><a class="dropdown-item" th:href="@{/tarifas/new}">Crear</a></li>
 
                             </ul>
                         </li>
