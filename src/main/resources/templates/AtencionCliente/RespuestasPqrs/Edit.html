@@ -10,7 +10,7 @@
     <form method="post" th:action="@{/respuestas/update/{id}(id=${respuesta.idrespuesta})}" th:object="${respuesta}">
 
         <div class="mb-3">
-            <label  class="form-label">contenido</label>
+            <label  class="form-label">Contenido</label>
             <textarea class="form-control"  rows="3" th:field="*{contenido}" placeholder="contenido" required></textarea>
         </div>
 
@@ -23,7 +23,7 @@
         </div>
         <br>
 
-        <input type="submit" class="btn btn-dark" value="Actualizar">
+        <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Actualizar"></div>
     </form>
 </div>
 <body>

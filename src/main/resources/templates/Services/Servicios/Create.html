@@ -26,19 +26,19 @@
         <div class="card-body" style="background: #000; color: #fff ">
     <form method="post" th:action="@{/servicios/save}" th:object="${servicio}">
         <div class="mb-3">
-            <label  class="form-label">Nombre del Servicio</label>
+            <label  class="form-label">Nombre del Servició</label>
             <input type="text" class="form-control" name="" required th:field="*{nomservicio}">
         </div>
         <div class="mb-3">
-            <label  class="form-label">Tipo de Servicio </label>
+            <label  class="form-label">Tipo de Servició </label>
             <input type="text" class="form-control" name="" required th:field="*{tipo}">
         </div>
         <div class="mb-3">
-            <label  class="form-label">Descripcion</label>
+            <label  class="form-label">Descripción</label>
             <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
         </div>
         <br>
-        <input type="submit" class="btn btn-dark" value="Guardar">
+        <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar"></div>
     </form>
 
 </div>
