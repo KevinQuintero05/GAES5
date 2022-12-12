@@ -40,49 +40,71 @@
 
         <div class="mb-3">
             <label  class="form-label">Placa</label>
-            <input type="text" class="form-control" name="" required th:field="*{placa}">
+            <input type="text" class="form-control" name=""  th:field="*{placa}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('placa')}" th:errors="*{placa}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Tipo de Vehículo</label>
-            <input type="text" class="form-control" name="" required th:field="*{tipovehiculo}">
+            <input type="text" class="form-control" name=""  th:field="*{tipovehiculo}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('tipovehiculo')}" th:errors="*{tipovehiculo}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Capacidad</label>
-            <input type="text" class="form-control" number="" required th:field="*{capacidad}">
+            <input type="text" class="form-control" number=""  th:field="*{capacidad}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('capacidad')}" th:errors="*{capacidad}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Marca</label>
-            <input type="text" class="form-control" name="" required th:field="*{marca}">
+            <input type="text" class="form-control" name=""  th:field="*{marca}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Soat</label>
-            <input type="text" class="form-control" name="" required th:field="*{soat}">
+            <input type="text" class="form-control" name=""  th:field="*{soat}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('soat')}" th:errors="*{soat}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Modelo</label>
-            <input type="text" class="form-control" name="" required th:field="*{modelo}">
+            <input type="text" class="form-control" name=""  th:field="*{modelo}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Descripcion</label>
-            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
+            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" ></textarea>
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 
         <div class="mb-3">
             <label  class="Estado del vehiculo">Modelo</label>
-            <input type="text" class="form-control" name="" required th:field="*{estadovehiculo}">
+            <input type="text" class="form-control" name=""  th:field="*{estadovehiculo}">
         </div>
 
-        <select th:field="*{servicio}" required>
-            <th:block th:each="servicio: ${servicios} ">
-                <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
-            </th:block>
-        </select>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('estadovehiculo')}" th:errors="*{estadovehiculo}"></div>
+
+        <div class="mb-3">
+            <label class="form-label">Seleccione el Servicio que usted ha reservado:</label>
+            <select th:field="*{servicio}" class="form-select" >
+                <option value="">Seleccione...</option>
+                <th:block th:each="servicio: ${servicios} ">
+                    <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('servicio')}" th:errors="*{servicio}"></div>
 
         <br>
         <br>
