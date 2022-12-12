@@ -64,7 +64,12 @@ public class ValoracionController {
     }
 
     @PostMapping("/valoraciones-usuarios/save")
-    public String SaveValoracion(@Valid Valoracion valoracion, BindingResult result){
+    public String SaveValoracion(@Valid Valoracion valoracion, Model model,BindingResult result){
+        List<Servicio> servicios = iservicioRepository.findAll();
+        List<Usuario> usuarios = iUsuarioRepository.findAll();
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("servicios", servicios);
+        model.addAttribute("valoracion", new Valoracion());
        if (result.hasErrors()){
            return "AtencionCliente/Valoraciones/Create";
         }

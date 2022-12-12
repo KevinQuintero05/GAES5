@@ -36,6 +36,9 @@
             <td th:text="${cronograma.direccionOrigen}"></td>
             <td th:text="${cronograma.direccionDestino}"></td>
             <td th:text="${cronograma.conductor.idConductor}"></td>
+            <td th:text="${cronograma.servicio.idservicio}"></td>
+            <td th:text="${cronograma.solicitudes.idSolicitudes}"></td>
+            <td th:text="${cronograma.vehiculos.idvehiculo}"></td>
 
             <td>
                 <button type="button" class="btn btn-light"><a th:href="@{'/cronograma/edit/' + ${cronograma.noReserva }}" style="text-decoration:none; color:#000">Editar</a></button>

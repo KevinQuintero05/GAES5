@@ -10,14 +10,17 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "cronograma")
+@Table(name ="solicitudes")
 @Getter
 @Setter
-public class Cronograma {
+public class Solicitudes {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "noReserva", unique = true)
-    private Long noReserva;
+    @Column(name = "idSolicitudes", unique = true)
+    private Long idSolicitudes;
+
+    @Column(length = 50, nullable = false)
+    private String estadoReserva;
 
     @CreationTimestamp
     @Column(length = 50, updatable = false)
@@ -45,9 +48,9 @@ public class Cronograma {
 
 
     @ManyToOne
-    @JoinColumn(name = "idConductor")
+    @JoinColumn(name = "idvehiculo")
     @JsonBackReference
-    private Conductor conductor;
+    private Vehiculos vehiculos;
 
     @ManyToOne
     @JoinColumn(name = "idservicio")
@@ -55,13 +58,7 @@ public class Cronograma {
     private Servicio servicio;
 
     @ManyToOne
-    @JoinColumn(name = "idSolicitudes")
+    @JoinColumn(name = "idusuario")
     @JsonBackReference
-    private Solicitudes solicitudes;
-
-    @ManyToOne
-    @JoinColumn(name = "idvehiculo")
-    @JsonBackReference
-    private Vehiculos vehiculos;
-
+    private Usuario usuario;
 }
