@@ -1,31 +1,26 @@
 package com.example.demo.controller;
 
-<<<<<<< HEAD
-=======
 import com.example.demo.Enums.TipoReporteEnum;
 import com.example.demo.Service.FacturaReservaService;
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
 import com.example.demo.entity.*;
 import com.example.demo.repository.*;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-=======
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -64,53 +59,50 @@ public class CronogramaController {
         }
     }
 
-<<<<<<< HEAD
-    @GetMapping("/cronograma-user/all")
-    public String GetCronogramaforUser(Model model){
-
-        try{
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            Usuario loginUser = (Usuario)authentication.getPrincipal();
-
-
-            List<Cronograma> cronogramaList = iCronogramaRepository.findAll();
-            model.addAttribute("cronogramaList", cronogramaList);
-            return "Reservas/Cronograma/Cronograma";
-=======
     @GetMapping("/cronograma-cliente/all")
     public String GetCronogramaCliente(Model model){
 
         try{
-            List<Cronograma> cronogramaList = iCronogramaRepository.findAll();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            Usuario loginUser = (Usuario)authentication.getPrincipal();
+            List<Cronograma> cronogramaList = iCronogramaRepository.getCronogramaByidusuario(loginUser.getIdusuario());
             model.addAttribute("cronogramaList", cronogramaList);
             return "Reservas/Cronograma/Cronograma-cliente";
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
         }catch (Exception ex){
             return "error";
         }
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
     @GetMapping("/cronograma/new")
     public  String GetShowCreateCronograma(Model model){
-        List<Conductor> conductor = iConductorRepository.findAll();
-        model.addAttribute("conductor", conductor);
-        List<Servicio> servicios = iservicioRepository.findAll();
-        model.addAttribute("servicios",servicios);
-        List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
-        model.addAttribute("vehiculos", vehiculos);
         List<Solicitudes> solicitudes = iSolicitudesRepository.findAll();
+        List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
+        List<Servicio> servicio = iservicioRepository.findAll();
+        List<Conductor> conductor = iConductorRepository.findAll();
+        model.addAttribute("vehiculos", vehiculos);
+        model.addAttribute("servicio", servicio);
         model.addAttribute("solicitudes",solicitudes);
+        model.addAttribute("conductor",conductor);
 
         model.addAttribute("cronograma", new Cronograma());
-        return "Reservas/Cronograma/Create";
+        return "Reservas/Cronograma/CrearReserva";
     }
 
     @PostMapping("/cronograma/save")
-    public String SaveCronograma(Cronograma cronograma){
+    public String SaveCronograma(@Valid Cronograma cronograma, BindingResult result, Model model){
+
+        if(result.hasErrors()){
+            List<Solicitudes> solicitudes = iSolicitudesRepository.findAll();
+            List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
+            List<Servicio> servicio = iservicioRepository.findAll();
+            List<Conductor> conductor = iConductorRepository.findAll();
+            model.addAttribute("vehiculos", vehiculos);
+            model.addAttribute("servicio", servicio);
+            model.addAttribute("solicitudes",solicitudes);
+            model.addAttribute("conductor",conductor);
+            return "Reservas/Cronograma/CrearReserva";
+        }
         iCronogramaRepository.save(cronograma);
         return "redirect:/cronograma/all";
     }
@@ -141,7 +133,6 @@ public class CronogramaController {
     }
 
     /* ------------ Reporte --------------------*/
-    /*@GetMapping("/cronograma/tarifa")*/
     @GetMapping("/cronograma/tarifa")
     public ResponseEntity<Resource> download(@RequestParam Map<String, Object> params) throws JRException, IOException, SQLException {
         FacturaReservaDTO dto = facturaReservaService.obtenerReporteProducto(params);
@@ -159,4 +150,3 @@ public class CronogramaController {
     }
 
 }
-

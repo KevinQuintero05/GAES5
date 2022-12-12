@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ICronogramaRepository extends JpaRepository<Cronograma, Long> {
-    @Query(value ="SELECT * FROM cronograma  WHERE idusuario = idusuario",nativeQuery = true)
-    List<Cronograma> getCronogramaByIdsuario(@Param("idsuario")long idusuario);
+    @Query("SELECT c FROM Cronograma c WHERE c.solicitudes.usuario.idusuario = :id")
+    List<Cronograma> getCronogramaByidusuario(@Param("id")Long id);
 }

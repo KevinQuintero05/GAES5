@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ISolicitudesRepository extends JpaRepository<Solicitudes, Long> {
-    @Query(value = "SELECT * FROM solicitudes  WHERE idusuario = idusuario",nativeQuery = true)
-    List<Solicitudes> getSolicitudByIdusuario(@Param("idusuario")long idusuario);
+    @Query("SELECT s FROM Solicitudes s WHERE s.usuario.idusuario = :id")
+    List<Solicitudes> getSolicitudesByIdusuario(@Param("id")Long id);
 }
 

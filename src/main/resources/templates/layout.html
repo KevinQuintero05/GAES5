@@ -31,7 +31,7 @@
     <div class="container-fluid">
 
         <a class="nav-link active" aria-current="page" th:href="@{/concord}"><img th:src="@{/img/LOGO-B1-sin-relleno-blanco.png}" width="200px"
-             style="padding:15px; height: 100%;" class="img-fluid" alt="Responsive image"></a>
+                                                                                  style="padding:15px; height: 100%;" class="img-fluid" alt="Responsive image"></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -140,12 +140,7 @@
                 </li>
 
 
-<<<<<<< HEAD
-
-                <!-- Resrevas -->
-=======
                 <!-- Reservas -->
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
                 <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"> Reservas </a>
@@ -154,46 +149,18 @@
                         <!-- Submenu Conductores -->
                         <li sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Conductores</a>
                             <ul class="dropdown-menu">
-<<<<<<< HEAD
-                                <li><a class="dropdown-item" th:href="@{/conductor/}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/conductor/new}">Create</a></li>
-
-                            </ul>
-                        </li>
-                        <!-- Submenu cronograma -->
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Cronograma
-                            Reservas</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/cronograma/all}">All</a></li>
-                                <li><a sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown-item" th:href="@{/cronograma/new}">Create</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- Submenu Tarifas -->
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">tarifas</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/tarifas/all}">All</a></li>
-                                <li><a class="dropdown-item" th:href="@{/tarifas/new}">Create</a></li>
-=======
                                 <li><a class="dropdown-item" th:href="@{/conductor/}">Ver</a></li>
                                 <li><a class="dropdown-item" th:href="@{/conductor/new}">Crear</a></li>
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
 
                             </ul>
                         </li>
 
                         <!-- Submenu Solicitudes -->
-<<<<<<< HEAD
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">tarifas</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/solicitudes/all}">All</a></li>
-                                <li><a sec:authorize="hasAnyAuthority('USER')" class="dropdown-item" th:href="@{/solicitudes/new}">Create</a></li>
-=======
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="">Solicitudes</a>
                             <ul class="dropdown-menu">
                                 <li><a sec:authorize="hasAnyAuthority('USER')" class="dropdown-item" th:href="@{/solicitudes/all}">Ver</a></li>
                                 <li><a sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown-item" th:href="@{/solicitudes-admin/all}">Ver</a></li>
-                                <li><a class="dropdown-item" th:href="@{/solicitudes/new}">Crear</a></li>
+                                <li><a sec:authorize="hasAnyAuthority('USER')" class="dropdown-item" th:href="@{/solicitudes/new}">Crear</a></li>
 
                             </ul>
                         </li>
@@ -213,7 +180,6 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" th:href="@{/tarifas/all}">Ver</a></li>
                                 <li><a class="dropdown-item" th:href="@{/tarifas/new}">Crear</a></li>
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
 
                             </ul>
                         </li>
@@ -221,10 +187,6 @@
                 </li>
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
             </ul>
 
             <form class="d-flex" role="search">

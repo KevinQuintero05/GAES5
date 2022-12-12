@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}"
-      lang="en">
+      layout:decorate="~{layout}" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Editar Cronograma Reservas</title>
+    <title>Crear</title>
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
-<body>
 <div layout:fragment="content">
+
     <header class="container-fluid  d-flex justify-content-start text-center ">
         <div class="containerimg">
             <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
@@ -20,9 +19,8 @@
     </header>
     <div class="card">
         <div class="card-body" style="background: #000; color: #fff ">
+            <form method="post" th:action="@{/cronograma/save}" th:object="${cronograma}">
 
-            <form method="post" th:action="@{/cronograma/update/{id}(id=${cronograma.noReserva})}"
-                  th:object="${cronograma}">
 
                 <div class="mb-3">
                     <label class="form-label">Fecha Partida</label>
@@ -154,12 +152,13 @@
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('solicitudes')}" th:errors="*{solicitudes}"></div>
 
 
-
-                <input type="submit" class="btn btn-dark" value="Actualizar">
-
+                <input type="submit" class="btn btn-dark" value="Guardar">
             </form>
+
         </div>
     </div>
 </div>
+<body>
+
 </body>
 </html>

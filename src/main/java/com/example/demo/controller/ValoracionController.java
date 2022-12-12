@@ -34,9 +34,9 @@ public class ValoracionController {
     @GetMapping("/valoraciones/all")
     public String GetValoraciones (Model model){
         try{
-           List<Valoracion> valoracionList = iValoracionRepository.findAll();
-           model.addAttribute("valoraciones", valoracionList);
-           return "AtencionCliente/Valoraciones/Valoraciones";
+            List<Valoracion> valoracionList = iValoracionRepository.findAll();
+            model.addAttribute("valoraciones", valoracionList);
+            return "AtencionCliente/Valoraciones/Valoraciones";
         } catch (Exception ex){
             return "error";
         }
@@ -69,23 +69,14 @@ public class ValoracionController {
     }
 
     @PostMapping("/valoraciones-usuarios/save")
-<<<<<<< HEAD
-    public String SaveValoracion(@Valid Valoracion valoracion, Model model,BindingResult result){
-        List<Servicio> servicios = iservicioRepository.findAll();
-        List<Usuario> usuarios = iUsuarioRepository.findAll();
-        model.addAttribute("usuarios", usuarios);
-        model.addAttribute("servicios", servicios);
-        model.addAttribute("valoracion", new Valoracion());
-=======
     public String SaveValoracion(@Valid Valoracion valoracion, BindingResult result,Model model){
 
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
-       if (result.hasErrors()){
-           List<Servicio> servicios = iservicioRepository.findAll();
-           List<Usuario> usuarios = iUsuarioRepository.findAll();
-           model.addAttribute("usuarios", usuarios);
-           model.addAttribute("servicios", servicios);
-           return "AtencionCliente/Valoraciones/Create";
+        if (result.hasErrors()){
+            List<Servicio> servicios = iservicioRepository.findAll();
+            List<Usuario> usuarios = iUsuarioRepository.findAll();
+            model.addAttribute("usuarios", usuarios);
+            model.addAttribute("servicios", servicios);
+            return "AtencionCliente/Valoraciones/Create";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Usuario loginUser = (Usuario)authentication.getPrincipal();

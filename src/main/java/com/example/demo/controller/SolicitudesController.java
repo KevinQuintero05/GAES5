@@ -13,10 +13,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -39,7 +41,9 @@ public class SolicitudesController {
     public String GetSolicitudes(Model model) {
 
         try {
-            List<Solicitudes> solicitudesList = iSolicitudesRepository.findAll();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            Usuario loginUser = (Usuario)authentication.getPrincipal();
+            List<Solicitudes> solicitudesList = iSolicitudesRepository.getSolicitudesByIdusuario(loginUser.getIdusuario());
             model.addAttribute("solicitudesList", solicitudesList);
             return "Reservas/Solicitudes/Solicitudes";
         } catch (Exception ex) {
@@ -48,35 +52,19 @@ public class SolicitudesController {
     }
 
     @GetMapping("/solicitudes-admin/all")
-<<<<<<< HEAD
-    public String GetSolicitudesforAdmin(Model model) {
-
-        try {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            Usuario loginUser = (Usuario)authentication.getPrincipal();
-
-            List<Solicitudes> solicitudesList = iSolicitudesRepository.getSolicitudByIdusuario(loginUser.getIdusuario());
-            // List<Solicitudes> solicitudesList = iSolicitudesRepository.findAll();
-            model.addAttribute("solicitudesList", solicitudesList);
-            return "Reservas/Solicitudes/Solicitudes";
-=======
     public String GetSolicitudesAdmin(Model model) {
 
         try {
             List<Solicitudes> solicitudesList = iSolicitudesRepository.findAll();
             model.addAttribute("solicitudesList", solicitudesList);
             return "Reservas/Solicitudes/Solicitudes-admin";
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
         } catch (Exception ex) {
             return "error";
         }
     }
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
     @GetMapping("/solicitudes/new")
     public String GetShowCreateSolicitudes(Model model) {
         List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
@@ -89,7 +77,17 @@ public class SolicitudesController {
         return "Reservas/Solicitudes/Create";
     }
     @PostMapping("/solicitudes/save")
-    public String SaveSolicitudes(Solicitudes solicitudes){
+    public String SaveSolicitudes(@Valid Solicitudes solicitudes, BindingResult result, Model model){
+
+        if(result.hasErrors()){
+            List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
+            List<Servicio> servicio = iservicioRepository.findAll();
+            List<Usuario> usuario = iUsuarioRepository.findAll();
+            model.addAttribute("vehiculos", vehiculos);
+            model.addAttribute("servicio", servicio);
+            model.addAttribute("usuario", usuario);
+        }
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Usuario loginUser = (Usuario)authentication.getPrincipal();
 
