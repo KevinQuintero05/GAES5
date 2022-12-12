@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Factura</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<div layout:fragment="content">
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
+                 alt="Responsive image">
+        </div>
+        <br>
+
+    </header>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
+
+
+            <form method="post" th:action="@{/facturas/save}" th:object="${facturas}">
+
+                <div class="mb-3">
+                    <label class="form-label">Ruta</label>
+                    <input type="text" class="form-control" name="" required th:field="*{ruta}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tarifa ruta</label>
+                    <input type="text" class="form-control" name="" required th:field="*{tarifaRuta}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Servicio</label>
+                    <input type="text" class="form-control" name="" required th:field="*{servicio}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tarifa Servicio</label>
+                    <input type="text" class="form-control" name="" required th:field="*{tarifaServicio}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Costo total</label>
+                    <input type="text" class="form-control" name="" required th:field="*{costoTotal}">
+                </div>
+
+                <div class="mb-3">
+                    <select th:field="*{cronograma}" class="form-select" required>
+                        <th:block th:each="cronograma: ${cronograma} ">
+                            <option th:text="${cronograma}" th:value="${cronograma.noReserva}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <input type="submit" class="btn btn-dark" value="Guardar">
+            </form>
+
+        </div>
+    </div>
+</div>
+<body>
+
+</body>
+</html>
