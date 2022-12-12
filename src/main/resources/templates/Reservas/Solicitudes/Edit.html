@@ -6,79 +6,97 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Solicitudes </title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
 <div layout:fragment="content">
 
-
-    <form method="post" th:action="@{/solicitudes/update/{id}(id=${solicitudes.idSolicitudes})}" th:object="${solicitudes}">
-
-        <div class="mb-3">
-            <label  class="form-label">Estado Reserva</label>
-            <input class="form-control"  rows="3" th:field="*{estadoReserva}" required>
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
+                 alt="Responsive image">
         </div>
+        <br>
 
-        <div class="mb-3">
-            <label  class="form-label">fecha Registro</label>
-            <input class="form-control"  rows="3" th:field="*{fechaRegistro}" required>
-        </div>
+    </header>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
 
-        <div class="mb-3">
-            <label  class="form-label">fecha partida</label>
-            <input class="form-control"  rows="3" th:field="*{fechaPartida}" required>
-        </div>
 
-        <div class="mb-3">
-            <label  class="form-label">fecha llegada</label>
-            <input class="form-control"  rows="3" th:field="*{fechaLlegada}" required>
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">ciudad Destino</label>
-            <input class="form-control"  rows="3" th:field="*{ciudadDestino}" required>
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">ciudad Origen </label>
-            <input class="form-control"  rows="3" th:field="*{ciudadOrigen}" required>
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">direccion Origen</label>
-            <input class="form-control"  rows="3" th:field="*{direccionOrigen}" required>
-
-            <div class="mb-3">
-                <label  class="form-label">direccion Destino</label>
-                <input class="form-control"  rows="3" th:field="*{direccionDestino}" required>
-
+            <form method="post" th:action="@{/solicitudes/update/{id}(id=${solicitudes.idSolicitudes})}"
+                  th:object="${solicitudes}">
 
                 <div class="mb-3">
-                    <select th:field="*{vehiculos}"  class="form-select" required>
-                        <th:block th:each="vehiculos: ${vehiculos} ">
-                            <option th:text="${vehiculos.placa}" th:value="${vehiculos.idvehiculo}"></option>
-                        </th:block>
-                    </select>
+                    <label class="form-label">Estado Reserva</label>
+                    <input class="form-control" rows="3" th:field="*{estadoReserva}" required>
                 </div>
 
                 <div class="mb-3">
-                    <select th:field="*{servicio}"  class="form-select" required>
-                        <th:block th:each="servicio: ${servicio} ">
-                            <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
-                        </th:block>
-                    </select>
+                    <label class="form-label">fecha Registro</label>
+                    <input class="form-control" rows="3" th:field="*{fechaRegistro}" required>
                 </div>
 
                 <div class="mb-3">
-                    <select th:field="*{usuario}"  class="form-select" required>
-                        <th:block th:each="usuario: ${usuario} ">
-                            <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
-                        </th:block>
-                    </select>
+                    <label class="form-label">fecha partida</label>
+                    <input class="form-control" rows="3" th:field="*{fechaPartida}" required>
                 </div>
 
-            <input type="submit" class="btn btn-dark" value="Actualizar">
+                <div class="mb-3">
+                    <label class="form-label">fecha llegada</label>
+                    <input class="form-control" rows="3" th:field="*{fechaLlegada}" required>
+                </div>
 
-    </form>
+                <div class="mb-3">
+                    <label class="form-label">ciudad Destino</label>
+                    <input class="form-control" rows="3" th:field="*{ciudadDestino}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">ciudad Origen </label>
+                    <input class="form-control" rows="3" th:field="*{ciudadOrigen}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">direccion Origen</label>
+                    <input class="form-control" rows="3" th:field="*{direccionOrigen}" required>
+
+                    <div class="mb-3">
+                        <label class="form-label">direccion Destino</label>
+                        <input class="form-control" rows="3" th:field="*{direccionDestino}" required>
+
+
+                        <div class="mb-3">
+                            <select th:field="*{vehiculos}" class="form-select" required>
+                                <th:block th:each="vehiculos: ${vehiculos} ">
+                                    <option th:text="${vehiculos.placa}" th:value="${vehiculos.idvehiculo}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <select th:field="*{servicio}" class="form-select" required>
+                                <th:block th:each="servicio: ${servicio} ">
+                                    <option th:text="${servicio.nomservicio}"
+                                            th:value="${servicio.idservicio}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <select th:field="*{usuario}" class="form-select" required>
+                                <th:block th:each="usuario: ${usuario} ">
+                                    <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+
+                        <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Actualizar"></div>
+
+            </form>
+        </div>
+    </div>
 </div>
+<br>
+
 </body>
 </html>

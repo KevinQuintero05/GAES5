@@ -62,3 +62,4 @@ public class Solicitudes {
     @JsonBackReference
     private Usuario usuario;
 }
+

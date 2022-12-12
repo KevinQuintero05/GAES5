@@ -5,7 +5,7 @@
       lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Respuestas PQRS</title>
+    <title>Cronograma</title>
 
     <th:block layout:fragment="addhead">
         <!-- Bootstrap CSS -->
@@ -25,33 +25,40 @@
 
     </th:block>
 
+
 </head>
 <body>
 <div layout:fragment="content">
     <table id="example" class="table table-hover table-dark" cellspacing="0" width="100%">
         <thead>
         <tr>
-            <th>Gestión Número:</th>
-            <th>Contenido</th>
-            <th>Pqrs a responder</th>
+            <th>Numero Reserva</th>
+            <th>fecha Registro</th>
+            <th>fecha partida</th>
+            <th>fecha llegada</th>
+            <th>Ciudad destino</th>
+            <th>Ciudad Origen</th>
+            <th>Direccion Origen</th>
+            <th>Direccion Destino</th>
+            <th>ID Conductor</th>
+            <th></th>
 
-            <th></th>
-            <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each=" respuesta: ${respuestasPqrs}">
-            <td th:text="${respuesta.idrespuesta}"></td>
-            <td th:text="${respuesta.contenido}"></td>
-            <td th:text="${respuesta.pqrs.descripcion}"></td>
-
+        <tr th:each=" cronograma: ${cronogramaList}">
+            <td th:text="${cronograma.noReserva}"></td>
+            <td th:text="${cronograma.fechaRegistro}"></td>
+            <td th:text="${cronograma.fechaPartida}"></td>
+            <td th:text="${cronograma.fechaLlegada}"></td>
+            <td th:text="${cronograma.ciudadDestino}"></td>
+            <td th:text="${cronograma.ciudadOrigen}"></td>
+            <td th:text="${cronograma.direccionOrigen}"></td>
+            <td th:text="${cronograma.direccionDestino}"></td>
+            <td th:text="${cronograma.conductor.idConductor}"></td>
 
             <td>
-                <button type="button" class="btn btn-light"><a th:href="@{'/respuestas/edit/' + ${respuesta.idrespuesta }}" style="text-decoration:none; color:#000">EDITAR <i class="bi bi-pencil-square"></i></a></button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-danger"><a th:href="@{'/respuestas/delete/' + ${respuesta.idrespuesta }}" style="text-decoration:none; color:#fff">ELIMINAR <i class="bi bi-trash3"></i></a></button>
-
+                <button type="button" class="btn btn-light"><a th:href="@{'/cronograma/edit/' + ${cronograma.noReserva }}" style="text-decoration:none; color:#000">Facturar <i class="bi bi-receipt-cutoff"></i></a></button>
             </td>
 
         </tr>

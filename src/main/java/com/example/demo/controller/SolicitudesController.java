@@ -48,6 +48,7 @@ public class SolicitudesController {
     }
 
     @GetMapping("/solicitudes-admin/all")
+<<<<<<< HEAD
     public String GetSolicitudesforAdmin(Model model) {
 
         try {
@@ -58,11 +59,24 @@ public class SolicitudesController {
             // List<Solicitudes> solicitudesList = iSolicitudesRepository.findAll();
             model.addAttribute("solicitudesList", solicitudesList);
             return "Reservas/Solicitudes/Solicitudes";
+=======
+    public String GetSolicitudesAdmin(Model model) {
+
+        try {
+            List<Solicitudes> solicitudesList = iSolicitudesRepository.findAll();
+            model.addAttribute("solicitudesList", solicitudesList);
+            return "Reservas/Solicitudes/Solicitudes-admin";
+>>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
         } catch (Exception ex) {
             return "error";
         }
     }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
     @GetMapping("/solicitudes/new")
     public String GetShowCreateSolicitudes(Model model) {
         List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
@@ -76,6 +90,11 @@ public class SolicitudesController {
     }
     @PostMapping("/solicitudes/save")
     public String SaveSolicitudes(Solicitudes solicitudes){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Usuario loginUser = (Usuario)authentication.getPrincipal();
+
+        solicitudes.setUsuario(loginUser);
+
         iSolicitudesRepository.save(solicitudes);
         return "redirect:/solicitudes/all";
     }
@@ -90,6 +109,12 @@ public class SolicitudesController {
     }
     @PostMapping("/solicitudes/update/{id}")
     public String updateSolicitudes(@PathVariable("id") long id, Solicitudes solicitudes, Model model){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Usuario loginUser = (Usuario)authentication.getPrincipal();
+
+        solicitudes.setUsuario(loginUser);
+
         solicitudes.setIdSolicitudes(id);
         iSolicitudesRepository.save(solicitudes);
         return "redirect:/solicitudes/all";

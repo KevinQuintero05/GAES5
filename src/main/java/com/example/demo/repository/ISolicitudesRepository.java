@@ -11,3 +11,4 @@ public interface ISolicitudesRepository extends JpaRepository<Solicitudes, Long>
     @Query(value = "SELECT * FROM solicitudes  WHERE idusuario = idusuario",nativeQuery = true)
     List<Solicitudes> getSolicitudByIdusuario(@Param("idusuario")long idusuario);
 }
+

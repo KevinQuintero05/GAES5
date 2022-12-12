@@ -23,11 +23,11 @@ public class Cronograma {
     @Column(length = 50, updatable = false)
     private Date fechaRegistro;
 
-    @CreationTimestamp
+
     @Column(length = 50, updatable = false)
     private Date fechaPartida;
 
-    @CreationTimestamp
+
     @Column(length = 50, updatable = false)
     private Date fechaLlegada;
 
@@ -49,19 +49,5 @@ public class Cronograma {
     @JsonBackReference
     private Conductor conductor;
 
-    @ManyToOne
-    @JoinColumn(name = "idservicio")
-    @JsonBackReference
-    private Servicio servicio;
-
-    @ManyToOne
-    @JoinColumn(name = "idSolicitudes")
-    @JsonBackReference
-    private Solicitudes solicitudes;
-
-    @ManyToOne
-    @JoinColumn(name = "idvehiculo")
-    @JsonBackReference
-    private Vehiculos vehiculos;
 
 }

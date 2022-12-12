@@ -19,7 +19,7 @@
             <form method="post" th:action="@{/valoraciones-usuarios/update/{id}(id=${valoracion.idvaloracionservicio})}"
                   th:object="${valoracion}">
                 <div class="mb-3">
-                    <label class="form-label">Puntuacion</label>
+                    <label class="form-label">Puntuación</label>
                     <select class="form-control" th:field="*{puntuacion}">
                         <option value="">Select</option>
                         <option value="Buena">Buena</option>
@@ -32,7 +32,7 @@
                      th:errors="*{puntuacion}"></div>
 
                 <div class="mb-3">
-                    <label class="form-label">comentario</label>
+                    <label class="form-label">Comentario</label>
                     <textarea type="text" class="form-control" name="" required th:field="*{comentario}"></textarea>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('comentario')}"
@@ -50,7 +50,7 @@
 
 
                 <br>
-                <input type="submit" class="btn btn-danger" value="Actualizar">
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Actualizar"></div>
             </form>
         </div>
     </div>

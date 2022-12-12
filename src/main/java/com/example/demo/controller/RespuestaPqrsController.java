@@ -7,10 +7,12 @@ import com.example.demo.repository.IRespuestaPqrsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -51,9 +53,23 @@ public class RespuestaPqrsController {
         model.addAttribute("respuesta", new RespuestaPqrs());
         return "AtencionCliente/RespuestasPqrs/Create";
     }
+    /*@GetMapping("/respuestas/new/{id}" )
+    public String GetShowCreateRespuesta( Model model,  @PathVariable long id){
+        Pqrs pqrsbd = iPqrsRepository.findById(id).get();
+        model.addAttribute("pqrs",pqrsbd);
+        List<Pqrs> pqrsList = iPqrsRepository.findAll();
+        model.addAttribute("pqrsList", pqrsList);
+        model.addAttribute("respuesta", new RespuestaPqrs());
+        return "AtencionCliente/RespuestasPqrs/Create";
+    }*/
 
     @PostMapping("/respuestas/save")
-    public String SaveRespuesta(RespuestaPqrs respuestaPqrs){
+    public String SaveRespuesta(@Valid RespuestaPqrs respuestaPqrs, BindingResult result, Model model){
+        if (result.hasErrors()){
+            List<Pqrs> pqrsList = iPqrsRepository.findAll();
+            model.addAttribute("pqrsList", pqrsList);
+            return "AtencionCliente/RespuestasPqrs/Create";
+        }
         iRespuestaPqrsRepository.save(respuestaPqrs);
         return "redirect:/respuestas/all";
     }

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}"lang="en">
+      layout:decorate="~{layout}" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CreateConductor</title>
+    <title>Crear conductor</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <div layout:fragment="content">
     <!--<form method="post" th:action="@{/servicios/save}" th:object="${servicio}">
@@ -15,44 +16,52 @@
         <input type="submit" value="Save">
     </form>-->
 
-    <form method="post" th:action="@{/conductor/save}" th:object="${conductor}">
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
+                 alt="Responsive image">
+        </div>
+        <br>
 
-        <div class="mb-3">
-            <label  class="form-label">Categoria de la licencia</label>
-            <input type="text" class="form-control" name="" required th:field="*{Categoria_licencia}">
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Arl</label>
-            <input type="text" class="form-control" name="" required th:field="*{Arl}">
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Cedula </label>
-            <input type="text" class="form-control" name="" required th:field="*{Cedula}">
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Eps</label>
-            <input type="text" class="form-control" name="" required th:field="*{Eps}">
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Seguro</label>
-            <input type="text" class="form-control" name="" required th:field="*{Seguro}">
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Telefono</label>
-            <input type="text" class="form-control" name="" required th:field="*{Telefono}">
-        </div>
+    </header>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
+            <form method="post" th:action="@{/conductor/save}" th:object="${conductor}">
 
-        </br>
+                <div class="mb-3">
+                    <label class="form-label">Categoria de la licencia</label>
+                    <input type="text" class="form-control" name="" required th:field="*{Categoria_licencia}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Arl</label>
+                    <input type="text" class="form-control" name="" required th:field="*{Arl}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Cedula </label>
+                    <input type="text" class="form-control" name="" required th:field="*{Cedula}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Eps</label>
+                    <input type="text" class="form-control" name="" required th:field="*{Eps}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Seguro</label>
+                    <input type="text" class="form-control" name="" required th:field="*{Seguro}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Telefono</label>
+                    <input type="text" class="form-control" name="" required th:field="*{Telefono}">
+                </div>
+
+                </br>
 
 
-
-        <input type="submit" class="btn btn-dark" value="Guardar">
-    </form>
+                <input type="submit" class="btn btn-dark" value="Guardar">
+            </form>
+        </div>
+    </div>
 
 </div>
-
-
-
 
 
 <body>

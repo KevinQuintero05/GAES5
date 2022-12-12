@@ -6,44 +6,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Tarifas</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
 <div layout:fragment="content">
-
-
-    <form method="post" th:action="@{/tarifas/update/{id}(id=${tarifas.idTarifa})}" th:object="${tarifas}">
-
-        <div class="mb-3">
-            <label  class="form-label">Ruta</label>
-            <input class="form-control"  rows="3" th:field="*{ruta}" required>
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
+                 alt="Responsive image">
         </div>
+        <br>
 
-        <div class="mb-3">
-            <label  class="form-label">tarifa Ruta</label>
-            <input class="form-control"  rows="3" th:field="*{tarifaRuta}" required>
+    </header>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
+            <form method="post" th:action="@{/tarifas/update/{id}(id=${tarifas.idTarifa})}" th:object="${tarifas}">
+
+                <div class="mb-3">
+                    <label class="form-label">Ruta</label>
+                    <input class="form-control" rows="3" th:field="*{ruta}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">tarifa Ruta</label>
+                    <input class="form-control" rows="3" th:field="*{tarifaRuta}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">servicio</label>
+                    <input class="form-control" rows="3" th:field="*{servicio}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">tarifa Servicio</label>
+                    <input class="form-control" rows="3" th:field="*{tarifaServicio}" required>
+                </div>
+
+                <div class="mb-3">
+                    <select th:field="*{cronograma}" class="form-select" required>
+                        <th:block th:each="cronograma: ${cronograma} ">
+                            <option th:text="${cronograma}" th:value="${cronograma.noReserva}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Actualizar"></div>
+
+            </form>
         </div>
-
-        <div class="mb-3">
-            <label  class="form-label">servicio</label>
-            <input class="form-control"  rows="3" th:field="*{servicio}" required>
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">tarifa Servicio</label>
-            <input class="form-control"  rows="3" th:field="*{tarifaServicio}" required>
-        </div>
-
-            <div class="mb-3">
-                <select th:field="*{cronograma}"  class="form-select" required>
-                    <th:block th:each="cronograma: ${cronograma} ">
-                        <option th:text="${cronograma}" th:value="${cronograma.noReserva}"></option>
-                    </th:block>
-                </select>
-            </div>
-
-            <input type="submit" class="btn btn-dark" value="Actualizar">
-
-    </form>
+    </div>
 </div>
 </body>
+
 </html>

@@ -5,7 +5,7 @@
       lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Respuestas PQRS</title>
+    <title>Solicitudes</title>
 
     <th:block layout:fragment="addhead">
         <!-- Bootstrap CSS -->
@@ -31,27 +31,39 @@
     <table id="example" class="table table-hover table-dark" cellspacing="0" width="100%">
         <thead>
         <tr>
-            <th>Gestión Número:</th>
-            <th>Contenido</th>
-            <th>Pqrs a responder</th>
+            <th>Numero Solicitud</th>
+            <th>estado Reserva</th>
+            <th>fecha Registro</th>
+            <th>fecha partida</th>
+            <th>fecha llegada</th>
+            <th>Ciudad destino</th>
+            <th>Ciudad Origen</th>
+            <th>direccionOrigen</th>
+            <th>direccionDestino</th>
+            <th>idvehiculo</th>
+            <th>idservicio</th>
+            <th>idusuario</th>
+            <th></th>
 
-            <th></th>
-            <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each=" respuesta: ${respuestasPqrs}">
-            <td th:text="${respuesta.idrespuesta}"></td>
-            <td th:text="${respuesta.contenido}"></td>
-            <td th:text="${respuesta.pqrs.descripcion}"></td>
-
+        <tr th:each=" solicitudes: ${solicitudesList}">
+            <td th:text="${solicitudes.idSolicitudes}"></td>
+            <td th:text="${solicitudes.estadoReserva}"></td>
+            <td th:text="${solicitudes.fechaRegistro}"></td>
+            <td th:text="${solicitudes.fechaPartida}"></td>
+            <td th:text="${solicitudes.fechaLlegada}"></td>
+            <td th:text="${solicitudes.ciudadDestino}"></td>
+            <td th:text="${solicitudes.ciudadOrigen}"></td>
+            <td th:text="${solicitudes.direccionOrigen}"></td>
+            <td th:text="${solicitudes.direccionDestino}"></td>
+            <td th:text="${solicitudes.vehiculos.idvehiculo}"></td>
+            <td th:text="${solicitudes.servicio.idservicio}"></td>
+            <td th:text="${solicitudes.usuario.idusuario}"></td>
 
             <td>
-                <button type="button" class="btn btn-light"><a th:href="@{'/respuestas/edit/' + ${respuesta.idrespuesta }}" style="text-decoration:none; color:#000">EDITAR <i class="bi bi-pencil-square"></i></a></button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-danger"><a th:href="@{'/respuestas/delete/' + ${respuesta.idrespuesta }}" style="text-decoration:none; color:#fff">ELIMINAR <i class="bi bi-trash3"></i></a></button>
-
+                <button type="button" class="btn btn-light"><a th:href="@{/cronograma/new}" style="text-decoration:none; color:#000">Confirmar <i class="bi bi-calendar-check"></i></a></button>
             </td>
 
         </tr>

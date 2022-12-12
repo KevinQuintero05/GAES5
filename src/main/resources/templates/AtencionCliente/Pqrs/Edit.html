@@ -28,12 +28,12 @@
     <form method="post" th:action="@{/pqrs/update/{id}(id=${pqrs.noregistro})}" th:object="${pqrs}">
 
         <div class="mb-3">
-            <label  class="form-label">grupo de interes</label>
+            <label  class="form-label">Grupo de interés</label>
             <input class="form-control"  rows="3" th:field="*{grupointeres}" required>
         </div>
 
         <div class="mb-3">
-            <label  class="form-label">persona de interes</label>
+            <label  class="form-label">Persona de interés</label>
             <input class="form-control"  rows="3" th:field="*{personainteres}" required>
         </div>
 
@@ -48,22 +48,22 @@
         </div>
 
         <div class="mb-3">
-            <label  class="form-label">asunto pqrs</label>
+            <label  class="form-label">Asunto PQRS</label>
             <input class="form-control"  rows="3" th:field="*{asuntopqrs}" required>
         </div>
 
         <div class="mb-3">
-            <label  class="form-label">descripcion</label>
+            <label  class="form-label">Descripción</label>
             <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
         </div>
 
         <div class="mb-3">
-            <label  class="form-label">email</label>
+            <label  class="form-label">Correo</label>
             <input  readonly class="form-control"  rows="3" th:field="*{email}"  required>
         </div>
 
 
-        <input type="submit" class="btn btn-dark" value="Actualizar">
+        <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Actualizar"></div>
     </form>
 </div>
 </body>

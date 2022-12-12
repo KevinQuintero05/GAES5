@@ -53,12 +53,17 @@ public class WebSecurityConfig {
         // URL Acceso por Rol
                 .antMatchers("/concord", "/login", "/register").permitAll()
 
+                .antMatchers("/admin/**", "/servicios/**","/pqrs/**","/vehiculos/**","/respuestas/**", "/valoraciones/**", "/conductor/**", "/cronograma/**","/tarifas/**","/solicitudes-admin/**").hasAnyAuthority("ADMIN")
 
+<<<<<<< HEAD
                 .antMatchers("/admin/**", "/servicios/**","/pqrs/**","/vehiculos/**","/respuestas/**", "/valoraciones/**", "/conductor/**", "/cronograma/**","/tarifas/**","/solicitudes-admin/**").hasAnyAuthority("ADMIN")
 
 
 
                 .antMatchers("/pqrs/**","/respuestas-usuario/**","/valoraciones-usuarios/**","/solicitudes/**","/tarifas/**").hasAnyAuthority("USER")
+=======
+                .antMatchers("/pqrs/**","/respuestas-usuario/**","/valoraciones-usuarios/**","/solicitudes/**","/cronograma-cliente/").hasAnyAuthority("USER")
+>>>>>>> 152cdbb1a1bcd98b52679b574c19c57d75fd22f5
                 .anyRequest().authenticated()
                 .and()
                 //formulario login
