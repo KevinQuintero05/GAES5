@@ -10,14 +10,17 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -60,7 +63,9 @@ public class CronogramaController {
     public String GetCronogramaCliente(Model model){
 
         try{
-            List<Cronograma> cronogramaList = iCronogramaRepository.findAll();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            Usuario loginUser = (Usuario)authentication.getPrincipal();
+            List<Cronograma> cronogramaList = iCronogramaRepository.getCronogramaByidusuario(loginUser.getIdusuario());
             model.addAttribute("cronogramaList", cronogramaList);
             return "Reservas/Cronograma/Cronograma-cliente";
         }catch (Exception ex){
@@ -71,21 +76,33 @@ public class CronogramaController {
 
     @GetMapping("/cronograma/new")
     public  String GetShowCreateCronograma(Model model){
-        List<Conductor> conductor = iConductorRepository.findAll();
-        model.addAttribute("conductor", conductor);
-        List<Servicio> servicios = iservicioRepository.findAll();
-        model.addAttribute("servicios",servicios);
-        List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
-        model.addAttribute("vehiculos", vehiculos);
         List<Solicitudes> solicitudes = iSolicitudesRepository.findAll();
+        List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
+        List<Servicio> servicio = iservicioRepository.findAll();
+        List<Conductor> conductor = iConductorRepository.findAll();
+        model.addAttribute("vehiculos", vehiculos);
+        model.addAttribute("servicio", servicio);
         model.addAttribute("solicitudes",solicitudes);
+        model.addAttribute("conductor",conductor);
 
         model.addAttribute("cronograma", new Cronograma());
-        return "Reservas/Cronograma/Create";
+        return "Reservas/Cronograma/CrearReserva";
     }
 
     @PostMapping("/cronograma/save")
-    public String SaveCronograma(Cronograma cronograma){
+    public String SaveCronograma(@Valid Cronograma cronograma, BindingResult result, Model model){
+
+        if(result.hasErrors()){
+            List<Solicitudes> solicitudes = iSolicitudesRepository.findAll();
+            List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
+            List<Servicio> servicio = iservicioRepository.findAll();
+            List<Conductor> conductor = iConductorRepository.findAll();
+            model.addAttribute("vehiculos", vehiculos);
+            model.addAttribute("servicio", servicio);
+            model.addAttribute("solicitudes",solicitudes);
+            model.addAttribute("conductor",conductor);
+            return "Reservas/Cronograma/CrearReserva";
+        }
         iCronogramaRepository.save(cronograma);
         return "redirect:/cronograma/all";
     }

@@ -60,7 +60,7 @@
             <td th:text="${solicitudes.direccionDestino}"></td>
             <td th:text="${solicitudes.vehiculos.descripcion}"></td>
             <td th:text="${solicitudes.servicio.nomservicio}"></td>
-            <td th:text="${solicitudes.usuario.idusuario}"></td>
+            <td th:text="${solicitudes.usuario.nombreusuario}"></td>
 
             <td>
                 <button type="button" class="btn btn-light"><a th:href="@{'/solicitudes/edit/' + ${solicitudes.idSolicitudes}}" style="text-decoration:none; color:#000">EDITAR <i class="bi bi-pencil-square"></i></a></button>

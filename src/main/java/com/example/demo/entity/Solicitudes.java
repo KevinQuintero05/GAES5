@@ -6,7 +6,10 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.sql.Date;
 
 
 @Entity
@@ -26,32 +29,37 @@ public class Solicitudes {
     @Column(length = 50, updatable = false)
     private Date fechaRegistro;
 
-    @CreationTimestamp
+    @FutureOrPresent
     @Column(length = 50, updatable = false)
     private Date fechaPartida;
 
-    @CreationTimestamp
+    @FutureOrPresent
     @Column(length = 50, updatable = false)
     private Date fechaLlegada;
 
+    @NotEmpty
     @Column(length = 50, nullable = false)
     private String ciudadDestino;
 
+    @NotEmpty
     @Column(length = 50, nullable = false)
     private String ciudadOrigen;
 
+    @NotEmpty
     @Column(length = 50, nullable = false)
     private String direccionOrigen;
 
+    @NotEmpty
     @Column(length = 50, nullable = false)
     private String direccionDestino;
 
-
+    @NotNull(message = "Debe de Asignar un Vehículo")
     @ManyToOne
     @JoinColumn(name = "idvehiculo")
     @JsonBackReference
     private Vehiculos vehiculos;
 
+    @NotNull (message = "Debe de seleccionar un servicio")
     @ManyToOne
     @JoinColumn(name = "idservicio")
     @JsonBackReference

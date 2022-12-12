@@ -4,7 +4,7 @@
       layout:decorate="~{layout}" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Crear Solicitud</title>
+    <title>Crear</title>
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <div layout:fragment="content">
@@ -19,9 +19,8 @@
     </header>
     <div class="card">
         <div class="card-body" style="background: #000; color: #fff ">
+            <form method="post" th:action="@{/cronograma/save}" th:object="${cronograma}">
 
-
-            <form method="post" th:action="@{/solicitudes/save}" th:object="${solicitudes}">
 
                 <div class="mb-3">
                     <label class="form-label">Fecha Partida</label>
@@ -130,8 +129,30 @@
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('servicio')}" th:errors="*{servicio}"></div>
 
+                <div class="mb-3">
+                    <label class="form-label">Asignar Conductor</label>
+                    <select th:field="*{conductor}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <th:block th:each="conductor: ${conductor} ">
+                            <option th:text="${conductor.nombre}" th:value="${conductor.idConductor}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('conductor')}" th:errors="*{conductor}"></div>
 
-                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar"></div>
+                <div class="mb-3">
+                    <label class="form-label">Solicitud a Confirmar</label>
+                    <select th:field="*{solicitudes}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <th:block th:each="solicitudes: ${solicitudes} ">
+                            <option th:text="${solicitudes.idSolicitudes}"  th:value="${solicitudes.idSolicitudes}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('solicitudes')}" th:errors="*{solicitudes}"></div>
+
+
+                <input type="submit" class="btn btn-dark" value="Guardar">
             </form>
 
         </div>
@@ -141,4 +162,3 @@
 
 </body>
 </html>
-

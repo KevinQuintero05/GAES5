@@ -58,9 +58,9 @@
             <td th:text="${solicitudes.ciudadOrigen}"></td>
             <td th:text="${solicitudes.direccionOrigen}"></td>
             <td th:text="${solicitudes.direccionDestino}"></td>
-            <td th:text="${solicitudes.vehiculos.idvehiculo}"></td>
-            <td th:text="${solicitudes.servicio.idservicio}"></td>
-            <td th:text="${solicitudes.usuario.idusuario}"></td>
+            <td th:text="${solicitudes.vehiculos.descripcion}"></td>
+            <td th:text="${solicitudes.servicio.nomservicio}"></td>
+            <td th:text="${solicitudes.usuario.nombreusuario}"></td>
 
             <td>
                 <button type="button" class="btn btn-light"><a th:href="@{/cronograma/new}" style="text-decoration:none; color:#000">Confirmar <i class="bi bi-calendar-check"></i></a></button>

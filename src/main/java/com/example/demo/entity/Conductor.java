@@ -22,6 +22,8 @@ public class Conductor {
 
     private String Arl;
 
+    private String nombre;
+
     private String Cedula;
 
     private String Eps;
@@ -38,17 +40,15 @@ public class Conductor {
     public Conductor() {
     }
 
-    public Conductor(Long idConductor, String categoria_licencia, String Cedula, String Telefono, String Seguro, String Eps, String Arl) {
+    public Conductor(Long idConductor, String categoria_licencia, String arl, String nombre, String cedula, String eps, String seguro, String telefono) {
         this.idConductor = idConductor;
         this.categoria_licencia = categoria_licencia;
-        this.Arl = Arl;
-        this.Cedula = Cedula;
-        this.Eps = Eps;
-        this.Seguro = Seguro;
-        this.Telefono = Telefono;
-
-
-
+        Arl = arl;
+        this.nombre = nombre;
+        Cedula = cedula;
+        Eps = eps;
+        Seguro = seguro;
+        Telefono = telefono;
     }
 }
 

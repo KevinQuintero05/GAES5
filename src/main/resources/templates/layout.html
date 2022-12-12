@@ -160,7 +160,7 @@
                             <ul class="dropdown-menu">
                                 <li><a sec:authorize="hasAnyAuthority('USER')" class="dropdown-item" th:href="@{/solicitudes/all}">Ver</a></li>
                                 <li><a sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown-item" th:href="@{/solicitudes-admin/all}">Ver</a></li>
-                                <li><a class="dropdown-item" th:href="@{/solicitudes/new}">Crear</a></li>
+                                <li><a sec:authorize="hasAnyAuthority('USER')" class="dropdown-item" th:href="@{/solicitudes/new}">Crear</a></li>
 
                             </ul>
                         </li>
