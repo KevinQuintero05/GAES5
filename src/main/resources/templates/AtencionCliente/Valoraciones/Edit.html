@@ -20,8 +20,8 @@
                   th:object="${valoracion}">
                 <div class="mb-3">
                     <label class="form-label">Puntuación</label>
-                    <select class="form-control" th:field="*{puntuacion}">
-                        <option value="">Select</option>
+                    <select class="form-control" th:field="*{puntuacion}" required>
+                        <option value="">Seleccione...</option>
                         <option value="Buena">Buena</option>
                         <option value="Regular">Regular</option>
                         <option value="Mala">Mala</option>
@@ -41,6 +41,7 @@
                 <div class="mb-3">
                     <label class="form-label">Seleccione el Servicio que usted ha reservado:</label>
                     <select th:field="*{servicio}" class="form-select" required>
+                        <option value="">Seleccione...</option>
                         <th:block th:each="servicio: ${servicios} ">
                             <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
                         </th:block>

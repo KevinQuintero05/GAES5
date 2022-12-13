@@ -32,35 +32,49 @@
 
             <form method="post" th:action="@{/conductor/update/{id}(id=${conductor.idConductor})}" th:object="${conductor}">
                 <div class="mb-3">
-                    <label  class="form-label">Categoria Licencia</label>
-                    <input type="text" class="form-control" name="" required th:field="*{Categoria_licencia}">
+                    <label class="form-label">Categoria de la licencia</label>
+                    <input type="text" class="form-control" name=""  th:field="*{categorialicencia}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('categorialicencia')}" th:errors="*{categorialicencia}"></div>
+
                 <div class="mb-3">
-                    <label  class="form-label">Arl</label>
-                    <input type="text" class="form-control" name="" required th:field="*{Arl}">
+                    <label class="form-label">Arl</label>
+                    <input type="text" class="form-control" name=""  th:field="*{Arl}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('Arl')}" th:errors="*{Arl}"></div>
+
                 <div class="mb-3">
-                    <label  class="form-label">Cedula</label>
-                    <input type="text" class="form-control" name="" required th:field="*{Cedula}">
+                    <label class="form-label">Cedula </label>
+                    <input type="text" class="form-control" name=""  th:field="*{Cedula}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('Cedula')}" th:errors="*{Cedula}"></div>
+
 
                 <div class="mb-3">
                     <label class="form-label">Nombres y Apellidos Completo</label>
-                    <input type="text" class="form-control" name="" required th:field="*{nombre}">
+                    <input type="text" class="form-control" name=""  th:field="*{nombre}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+
 
                 <div class="mb-3">
-                    <label  class="form-label">Eps</label>
-                    <input type="text" class="form-control" name="" required th:field="*{Eps}">
+                    <label class="form-label">Eps</label>
+                    <input type="text" class="form-control" name=""  th:field="*{Eps}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('Eps')}" th:errors="*{Eps}"></div>
+
                 <div class="mb-3">
-                    <label  class="form-label">Seguro</label>
-                    <input type="text" class="form-control" name="" required th:field="*{Seguro}">
+                    <label class="form-label">Seguro</label>
+                    <input type="text" class="form-control" name=""  th:field="*{Seguro}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('Seguro')}" th:errors="*{Seguro}"></div>
+
                 <div class="mb-3">
-                    <label  class="form-label">Telefono</label>
-                    <input type="text" class="form-control" name="" required th:field="*{Telefono}">
+                    <label class="form-label">Telefono</label>
+                    <input type="text" class="form-control" name=""  th:field="*{Telefono}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('Telefono')}" th:errors="*{Telefono}"></div>
+
 
 
 

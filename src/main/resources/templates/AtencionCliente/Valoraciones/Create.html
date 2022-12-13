@@ -46,8 +46,8 @@
                 <div class="mb-3">
                     <label class="form-label">Seleccione el Servicio que usted ha reservado:</label>
                     <select th:field="*{servicio}" class="form-select" >
+                        <option value="">Seleccione...</option>
                         <th:block th:each="servicio: ${servicios} ">
-                            <option value="">Seleccione...</option>
                             <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
                         </th:block>
                     </select>

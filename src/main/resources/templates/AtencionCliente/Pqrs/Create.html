@@ -63,44 +63,6 @@
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('personainteres')}" th:errors="*{personainteres}"></div>
 
-                <div class="mb-3">
-                    <label  class="form-label">Departamento</label>
-                    <select th:field="*{departamento}" class="form-select"  >
-                        <option value="">seleccione...</option>
-                        <option value="Amazonas">Amazonas</option>
-                        <option value="Antioquia">Antioquia</option>
-                        <option value="Arauca">Arauca</option>
-                        <option value="BogotA">Bogotá</option>
-                        <option value="Bolivar">Bolívar</option>
-                        <option value="Boyaca">Boyacá</option>
-                        <option value="Caldas">Caldas</option>
-                        <option value="Caqueta">Caquetá</option>
-                        <option value="Casanare">Casanare</option>
-                        <option value="Cauca">Cauca</option>
-                        <option value="Cesar">Cesar</option>
-                        <option value="Choco">Chocó</option>
-                        <option value="Cordoba">Córdoba</option>
-                        <option value="Cundinamarca">Cundinamarca</option>
-                        <option value="Guainia">Guainía</option>
-                        <option value="Guaviare">Guaviare</option>
-                        <option value="Huila">Huila</option>
-                        <option value="Guajira">Guajira</option>
-                        <option value="Magdalena">Magdalena</option>
-                        <option value="Meta">Meta</option>
-                        <option value="Nariño">Nariño</option>
-                        <option value="NorteSantander">Norte de Santander</option>
-                        <option value="Putumayo">Putumayo</option>
-                        <option value="Quindio">Quindío</option>
-                        <option value="Risaralda">Risaralda</option>
-                        <option value="Santander">Santander</option>
-                        <option value="Sucre">Sucre</option>
-                        <option value="Tolima">Tolima</option>
-                        <option value="ValleCauca">Valle del Cauca</option>
-                        <option value="Vaupés">Vaupés</option>
-                        <option value="Vichada">Vichada</option>
-                    </select>
-                </div>
-                <div class="alert alert-warning" th:if="${#fields.hasErrors('departamento')}" th:errors="*{departamento}"></div>
 
                 <div class="mb-3">
                     <label  class="form-label">Ciudad</label>
@@ -130,6 +92,18 @@
                     </select>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Seleccione el Servicio que usted ha reservado:</label>
+                    <select th:field="*{servicio}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <th:block th:each="servicio: ${servicios} ">
+                            <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('servicio')}" th:errors="*{servicio}"></div>
+
 
                 <div class="mb-3">
                     <label  class="form-label">asunto pqrs</label>

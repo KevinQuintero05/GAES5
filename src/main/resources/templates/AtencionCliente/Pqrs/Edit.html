@@ -27,40 +27,104 @@
 
     <form method="post" th:action="@{/pqrs/update/{id}(id=${pqrs.noregistro})}" th:object="${pqrs}">
 
-        <div class="mb-3">
-            <label  class="form-label">Grupo de interés</label>
-            <input class="form-control"  rows="3" th:field="*{grupointeres}" required>
-        </div>
 
         <div class="mb-3">
-            <label  class="form-label">Persona de interés</label>
-            <input class="form-control"  rows="3" th:field="*{personainteres}" required>
+            <label  class="form-label">grupo de interes</label>
+            <select th:field="*{grupointeres}" class="form-select"  >
+                <option value="">seleccione...</option>
+                <option value="adulto mayor">Adulto mayor</option>
+                <option value="ciudadano">ciudadano</option>
+                <option value="comunidad Internacional">comunidad Internacional</option>
+                <option value="Empresa">Empresa</option>
+                <option value="Entidades del estado y/o Autoridades">Entidades del estado y/o Autoridades</option>
+                <option value="Persona con discapacidad">Persona con discapacidad</option>
+                <option value="Servidor Publico">Servidor Publico</option>
+            </select>
         </div>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('grupointeres')}" th:errors="*{grupointeres}"></div>
 
         <div class="mb-3">
-            <label  class="form-label">Departamento</label>
-            <input class="form-control"  rows="3" th:field="*{departamento}" required>
+            <label  class="form-label">persona de interes</label>
+            <select th:field="*{personainteres}" class="form-select" required >
+                <option value="">seleccione...</option>
+                <option value="Persona natural">Persona natural</option>
+                <option value="Persona Juridica">Persona Juridica</option>
+                <option value="Representante de una entidad">Representante de una entidad</option>
+            </select>
         </div>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('personainteres')}" th:errors="*{personainteres}"></div>
+
 
         <div class="mb-3">
             <label  class="form-label">Ciudad</label>
-            <input class="form-control"  rows="3" th:field="*{ciudad}" required>
+            <select th:field="*{ciudad}" class="form-select"  required>
+                <option value="">seleccione...</option>
+                <option value="Bogota">Bogotá</option>
+                <option value="Medellin">Medellin</option>
+                <option value="Cali">Cali</option>
+                <option value="Barranquilla">Barranquilla</option>
+                <option value="Cartagena">Cartagena de indias</option>
+                <option value="Soacha">Soacha</option>
+                <option value="Cucuta">Cucuta</option>
+                <option value="Soledad">Soledad</option>
+                <option value="Bucaramanga">Bucaramanga</option>
+                <option value="Bello">Bello</option>
+                <option value="Villavicencio">Villavicencio</option>
+                <option value="Ibague">Ibagué</option>
+                <option value="SantaMarta">Santa Marta</option>
+                <option value="Huila">Huila</option>
+                <option value="Valledupar">Valledupar</option>
+                <option value="Manizales">Manizales</option>
+                <option value="Pereira">Pereira</option>
+                <option value="Montería">Montería</option>
+                <option value="Neiva">Neiva</option>
+                <option value="Pasto">Pasto</option>
+                <option value="Armenia">Armenia</option>
+            </select>
         </div>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></div>
 
         <div class="mb-3">
-            <label  class="form-label">Asunto PQRS</label>
-            <input class="form-control"  rows="3" th:field="*{asuntopqrs}" required>
+            <label class="form-label">Seleccione el Servicio que usted ha reservado:</label>
+            <select th:field="*{servicio}" class="form-select" required>
+                <option value="">Seleccione...</option>
+                <th:block th:each="servicio: ${servicios} ">
+                    <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
+                </th:block>
+            </select>
         </div>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('servicio')}" th:errors="*{servicio}"></div>
+
 
         <div class="mb-3">
-            <label  class="form-label">Descripción</label>
-            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
+            <label  class="form-label">asunto pqrs</label>
+            <select th:field="*{asuntopqrs}" class="form-select" required >
+                <option value="">Seleccione...</option>
+                <option value="Pregunta">Pregunta</option>
+                <option value="Queja">Queja</option>
+                <option value="Reclamo">Reclamo</option>
+                <option value="Sugerencia">Sugerencia</option>
+            </select>
         </div>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('asuntopqrs')}" th:errors="*{asuntopqrs}"></div>
 
         <div class="mb-3">
-            <label  class="form-label">Correo</label>
-            <input  readonly class="form-control"  rows="3" th:field="*{email}"  required>
+            <label  class="form-label">descripcion</label>
+            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion"  required></textarea>
         </div>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+        <!--<div class="mb-3">
+            <label  class="form-label">Correo Electronico</label>
+            <input type="text" class="form-control" name="" required th:field="*{email}">
+        </div>-->
+
+        <!--<div class="mb-3">
+            <select th:field="*{usuario}"  class="form-select" required>
+                <th:block th:each="usuario: ${usuarios} ">
+                    <option th:text="${usuario.nombreusuario}" th:value="${usuario.idusuario}"></option>
+                </th:block>
+            </select>
+        </div>-->
 
 
         <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Actualizar"></div>

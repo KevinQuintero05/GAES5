@@ -53,8 +53,9 @@ public class RespuestaPqrsController {
         model.addAttribute("respuesta", new RespuestaPqrs());
         return "AtencionCliente/RespuestasPqrs/Create";
     }
-    /*@GetMapping("/respuestas/new/{id}" )
-    public String GetShowCreateRespuesta( Model model,  @PathVariable long id){
+    /*
+    @GetMapping("/respuestas/new/{id}" )
+    public String GetShowCreateRespuestaByid( Model model,  @PathVariable long id){
         Pqrs pqrsbd = iPqrsRepository.findById(id).get();
         model.addAttribute("pqrs",pqrsbd);
         List<Pqrs> pqrsList = iPqrsRepository.findAll();
@@ -62,12 +63,12 @@ public class RespuestaPqrsController {
         model.addAttribute("respuesta", new RespuestaPqrs());
         return "AtencionCliente/RespuestasPqrs/Create";
     }*/
-
     @PostMapping("/respuestas/save")
     public String SaveRespuesta(@Valid RespuestaPqrs respuestaPqrs, BindingResult result, Model model){
+        List<Pqrs> pqrsList = iPqrsRepository.findAll();
+        model.addAttribute("pqrsList", pqrsList);
         if (result.hasErrors()){
-            List<Pqrs> pqrsList = iPqrsRepository.findAll();
-            model.addAttribute("pqrsList", pqrsList);
+
             return "AtencionCliente/RespuestasPqrs/Create";
         }
         iRespuestaPqrsRepository.save(respuestaPqrs);
@@ -83,7 +84,12 @@ public class RespuestaPqrsController {
     }
 
     @PostMapping("/respuestas/update/{id}")
-    public String updateRespuestas(@PathVariable("id") long id, RespuestaPqrs respuestaPqrs,Model model){
+    public String updateRespuestas(@PathVariable("id") long id,@Valid RespuestaPqrs respuestaPqrs,BindingResult result,Model model){
+        if (result.hasErrors()){
+            List<Pqrs> pqrsList = iPqrsRepository.findAll();
+            model.addAttribute("pqrsList", pqrsList);
+            return "AtencionCliente/RespuestasPqrs/edit";
+        }
         respuestaPqrs.setIdrespuesta(id);
         iRespuestaPqrsRepository.save(respuestaPqrs);
         return "redirect:/respuestas/all";
@@ -91,7 +97,11 @@ public class RespuestaPqrsController {
 
     @GetMapping("/respuestas/delete/{id}")
     public String deleteRespuesta(Model model, @PathVariable long id){
-        iRespuestaPqrsRepository.deleteById(id);
-        return "redirect:/respuestas/all";
+        try {
+            iRespuestaPqrsRepository.deleteById(id);
+            return "redirect:/respuestas/all";
+        }catch (Exception exception){
+            return "redirect:/respuestas/all";
+        }
     }
 }

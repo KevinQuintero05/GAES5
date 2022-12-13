@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "servicios")
@@ -16,9 +17,17 @@ public class Servicio {
     @Column(name = "idServicio", unique = true)
     private Long idservicio;
 
+
+    @NotEmpty(message = "Por favor ingresé el nombre del servicio.")
+    @Column(length = 50, nullable = false)
     private String nomservicio;
+
+    @NotEmpty(message = "Por favor ingresé el tipo.")
+    @Column(length = 50, nullable = false)
     private String tipo;
 
+    @NotEmpty(message = "Por favor ingresé la descripción.")
+    @Column(length = 50, nullable = false)
     private String descripcion;
 
     /* Super constructor*/

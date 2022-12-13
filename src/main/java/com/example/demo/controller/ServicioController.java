@@ -5,10 +5,12 @@ import com.example.demo.repository.IservicioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -35,11 +37,14 @@ public class ServicioController {
     }
 
     @PostMapping("/servicios/save")
-    public String SaveServicio(Servicio servicio){
+    public String SaveServicio(@Valid Servicio servicio, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "Services/Servicios/Create";
+        }
         iservicioRepository.save(servicio);
         return "redirect:/servicios";
     }
-
     @GetMapping("/servicios/edit/{id}")
     public String showUpdateServicios(Model model, @PathVariable long id){
         Servicio serviciobd = iservicioRepository.findById(id).get();
@@ -48,15 +53,21 @@ public class ServicioController {
     }
 
     @PostMapping("/servicios/update/{id}")
-    public String updateServicios(@PathVariable("id") long id,Servicio servicio,Model model){
+    public String updateServicios(@PathVariable("id") long id,@Valid Servicio servicio, BindingResult result){
+
         servicio.setIdservicio(id);
         iservicioRepository.save(servicio);
         return "redirect:/servicios";
+
     }
 
     @GetMapping("/servicios/delete/{id}")
     public String deleteServicios(Model model,@PathVariable long id){
-        iservicioRepository.deleteById(id);
-        return "redirect:/servicios";
+        try {
+            iservicioRepository.deleteById(id);
+            return "redirect:/servicios";
+        }catch (Exception exception){
+            return "redirect:/servicios";
+        }
     }
 }

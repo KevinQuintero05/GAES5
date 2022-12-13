@@ -55,15 +55,18 @@
             <td th:text="${cronograma.ciudadOrigen}"></td>
             <td th:text="${cronograma.direccionOrigen}"></td>
             <td th:text="${cronograma.direccionDestino}"></td>
-            <td th:text="${cronograma.conductor.idConductor}"></td>
+            <td th:text="${cronograma.conductor.nombre}"></td>
 
             <td>
-                <button type="button" class="btn btn-light"><a th:href="@{'/cronograma/edit/' + ${cronograma.noReserva }}" style="text-decoration:none; color:#000">Facturar <i class="bi bi-receipt-cutoff"></i></a></button>
+                <button type="button" class="btn btn-light"><a th:href="@{/cronograma-cliente/factura}" style="text-decoration:none; color:#000">Facturar <i class="bi bi-receipt-cutoff"></i></a></button>
             </td>
 
         </tr>
         </tbody>
     </table>
+
+    <form action=" " ></form>
+
 </div>
 
 <div layout:fragment="addjs">

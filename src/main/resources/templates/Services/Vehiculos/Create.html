@@ -8,24 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <div layout:fragment="content">
-   <!-- <form method="post" th:action="@{/vehiculos/save}" th:object="${vehiculos}">
-        <input placeholder="placa" type="text" name="" required th:field="*{placa}">
-        <input placeholder="tipo de vehiculo" type="text" name="" required th:field="*{tipovehiculo}">
-        <input placeholder="capacidad" type="text" name="" required th:field="*{capacidad}">
-        <input placeholder="marca" type="text" name="" required th:field="*{marca}">
-        <input placeholder="soat" type="text" name="" required th:field="*{soat}">
-        <input placeholder="modelo" type="text" name="" required th:field="*{modelo}">
-        <textarea  th:field="*{descripcion}" placeholder="descripcion" required></textarea><br>
-        <input placeholder="estado del vehiculo" type="text" name="" required th:field="*{estadovehiculo}">
-        <select th:field="*{servicio}" required>
-            <th:block th:each="servicio: ${servicios} ">
-                <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
-            </th:block>
-        </select>
 
-        <input type="submit" value="Save">
-    </form>
-    -->
     <header class="container-fluid  d-flex justify-content-start text-center ">
         <div class="containerimg">
             <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid" alt="Responsive image">
@@ -40,49 +23,71 @@
 
         <div class="mb-3">
             <label  class="form-label">Placa</label>
-            <input type="text" class="form-control" name="" required th:field="*{placa}">
+            <input type="text" class="form-control" name=""  th:field="*{placa}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('placa')}" th:errors="*{placa}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Tipo de Vehículo</label>
-            <input type="text" class="form-control" name="" required th:field="*{tipovehiculo}">
+            <input type="text" class="form-control" name=""  th:field="*{tipovehiculo}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('tipovehiculo')}" th:errors="*{tipovehiculo}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Capacidad</label>
-            <input type="text" class="form-control" number="" required th:field="*{capacidad}">
+            <input type="text" class="form-control" number=""  th:field="*{capacidad}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('capacidad')}" th:errors="*{capacidad}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Marca</label>
-            <input type="text" class="form-control" name="" required th:field="*{marca}">
+            <input type="text" class="form-control" name=""  th:field="*{marca}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Soat</label>
-            <input type="text" class="form-control" name="" required th:field="*{soat}">
+            <input type="text" class="form-control" name=""  th:field="*{soat}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('soat')}" th:errors="*{soat}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Modelo</label>
-            <input type="text" class="form-control" name="" required th:field="*{modelo}">
+            <input type="text" class="form-control" name=""  th:field="*{modelo}">
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}"></div>
 
         <div class="mb-3">
             <label  class="form-label">Descripcion</label>
-            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
+            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" ></textarea>
         </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 
         <div class="mb-3">
-            <label  class="Estado del vehiculo">Modelo</label>
-            <input type="text" class="form-control" name="" required th:field="*{estadovehiculo}">
+            <label  class="Estado del vehiculo">Estado del Vehículo</label>
+            <input type="text" class="form-control" name=""  th:field="*{estadovehiculo}">
         </div>
 
-        <select th:field="*{servicio}" required>
-            <th:block th:each="servicio: ${servicios} ">
-                <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
-            </th:block>
-        </select>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('estadovehiculo')}" th:errors="*{estadovehiculo}"></div>
+
+        <div class="mb-3">
+            <label class="form-label">Seleccione el Servicio que usted ha reservado:</label>
+            <select th:field="*{servicio}" class="form-select" >
+                <option value="">Seleccione...</option>
+                <th:block th:each="servicio: ${servicios} ">
+                    <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('servicio')}" th:errors="*{servicio}"></div>
 
         <br>
         <br>

@@ -30,6 +30,15 @@
 
 <div layout:fragment="content">
 
+  <div class="card text-center">
+    <div class="card-body">
+      <h3 class="card-title"><i class="bi bi-exclamation-triangle"></i> </h3>
+      <h5 class="card-text">Señor Usuario, tenga en cuenta que si usted no responde una solicitud, el autor de la misma podrá eliminarla </h5>
+    </div>
+  </div>
+
+  <br>
+
   <table id="example" class="table table-hover table-dark" cellspacing="0" width="100%">
     <thead>
     <tr>
@@ -38,8 +47,8 @@
       <th>Grupo</th>
 
       <th>Cargo</th>
-      <th>Departamento</th>
       <th>Ciudad</th>
+      <th>Servicio Reservado</th>
       <th>Asunto</th>
       <th>Descripción</th>
       <th>Fecha de Registro</th>
@@ -55,8 +64,8 @@
       <td th:text="${pqrs.noregistro}"></td>
       <td th:text="${pqrs.grupointeres}"></td>
       <td th:text="${pqrs.personainteres}"></td>
-      <td th:text="${pqrs.departamento}"></td>
       <td th:text="${pqrs.ciudad}"></td>
+      <td th:text="${pqrs.servicio.nomservicio}"></td>
       <td th:text="${pqrs.asuntopqrs}"></td>
       <td th:text="${pqrs.descripcion}"></td>
       <td th:text="${pqrs.fecharegistroPQRS}"></td>

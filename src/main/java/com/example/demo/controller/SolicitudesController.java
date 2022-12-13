@@ -97,6 +97,7 @@ public class SolicitudesController {
         iSolicitudesRepository.save(solicitudes);
         return "redirect:/solicitudes/all";
     }
+
     @GetMapping("/solicitudes/edit/{id}")
     public String showUpdatesSolicitudes(Model model, @PathVariable long id){
         Solicitudes solicitudesbd = iSolicitudesRepository.findById(id).get();
@@ -106,9 +107,19 @@ public class SolicitudesController {
         model.addAttribute("solicitudes",solicitudesbd);
         return "Reservas/Solicitudes/edit";
     }
-    @PostMapping("/solicitudes/update/{id}")
-    public String updateSolicitudes(@PathVariable("id") long id, Solicitudes solicitudes, Model model){
 
+
+    @PostMapping("/solicitudes/update/{id}")
+    public String updateSolicitudes(@PathVariable("id") long id,@Valid Solicitudes solicitudes, BindingResult result,Model model){
+        if(result.hasErrors()){
+            List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
+            List<Servicio> servicio = iservicioRepository.findAll();
+            List<Usuario> usuario = iUsuarioRepository.findAll();
+            model.addAttribute("vehiculos", vehiculos);
+            model.addAttribute("servicio", servicio);
+            model.addAttribute("usuario", usuario);
+            return "Reservas/Solicitudes/Edit";
+        }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Usuario loginUser = (Usuario)authentication.getPrincipal();
 

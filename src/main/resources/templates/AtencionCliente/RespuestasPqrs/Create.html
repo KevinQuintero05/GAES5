@@ -23,20 +23,22 @@
 
                 <div class="mb-3">
                     <select th:field="*{pqrs}" class="form-select" required>
+                        <option value="">seleccione...</option>
                         <th:block th:each="pqrs: ${pqrsList} ">
                             <option th:text="${pqrs.descripcion}" th:value="${pqrs.noregistro}"></option>
                         </th:block>
                     </select>
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('pqrs')}" th:errors="*{pqrs}"></div>
 
 
                 <div class="mb-3">
                     <label class="form-label">Contenido</label>
-                    <textarea class="form-control" rows="3" th:field="*{contenido}" placeholder="contenido"required></textarea>
+                    <textarea class="form-control" rows="3" th:field="*{contenido}" required placeholder="contenido" ></textarea>
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('contenido')}" th:errors="*{contenido}"></div>
 
 
-                <br>
 
                 <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar"></div>
             </form>

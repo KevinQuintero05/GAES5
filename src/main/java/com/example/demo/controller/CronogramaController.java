@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.Enums.TipoReporteEnum;
 import com.example.demo.Service.FacturaReservaService;
+import com.example.demo.Service.ReporteCronogramaService;
 import com.example.demo.entity.*;
 import com.example.demo.repository.*;
 import net.sf.jasperreports.engine.JRException;
@@ -45,6 +46,9 @@ public class CronogramaController {
 
     @Autowired
     private FacturaReservaService facturaReservaService;
+
+    @Autowired
+    private ReporteCronogramaService reporteCronogramaService;
 
 
     @GetMapping("/cronograma/all")
@@ -110,17 +114,31 @@ public class CronogramaController {
     @GetMapping("/cronograma/edit/{id}")
     public String showUpdateCronograma(Model model, @PathVariable long id){
         Cronograma cronogramabd = iCronogramaRepository.findById(id).get();
-        model.addAttribute("conductor", iConductorRepository.findAll());
-        model.addAttribute("servicios", iservicioRepository.findAll());
-        model.addAttribute("servicios", iVehiculosRepository.findAll());
-        model.addAttribute("solicitudes", iSolicitudesRepository.findAll());
-        model.addAttribute("conductor", iConductorRepository.findAll());
+        List<Solicitudes> solicitudes = iSolicitudesRepository.findAll();
+        List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
+        List<Servicio> servicio = iservicioRepository.findAll();
+        List<Conductor> conductor = iConductorRepository.findAll();
+        model.addAttribute("vehiculos", vehiculos);
+        model.addAttribute("servicio", servicio);
+        model.addAttribute("solicitudes",solicitudes);
+        model.addAttribute("conductor",conductor);;
         model.addAttribute("cronograma",cronogramabd);
         return "Reservas/Cronograma/edit";
     }
 
     @PostMapping("/cronograma/update/{id}")
-    public String updateCronograma(@PathVariable("id") long id, Cronograma cronograma, Model model){
+    public String updateCronograma(@PathVariable("id") long id,@Valid Cronograma cronograma, BindingResult result, Model model){
+        if(result.hasErrors()){
+            List<Solicitudes> solicitudes = iSolicitudesRepository.findAll();
+            List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
+            List<Servicio> servicio = iservicioRepository.findAll();
+            List<Conductor> conductor = iConductorRepository.findAll();
+            model.addAttribute("vehiculos", vehiculos);
+            model.addAttribute("servicio", servicio);
+            model.addAttribute("solicitudes",solicitudes);
+            model.addAttribute("conductor",conductor);
+            return "Reservas/Cronograma/edit";
+        }
         cronograma.setNoReserva(id);
         iCronogramaRepository.save(cronograma);
         return "redirect:/cronograma/all";
@@ -132,9 +150,26 @@ public class CronogramaController {
         return "redirect:/cronograma/all";
     }
 
-    /* ------------ Reporte --------------------*/
-    /*@GetMapping("/cronograma/tarifa")*/
-    @GetMapping("/cronograma/tarifa")
+    @GetMapping("/cronograma-cliente/factura")
+    public String showFormReport(){
+
+        return "Reportes/Factura";
+    }
+
+    @GetMapping("/cronograma/adminreporte")
+    public String showFormReport1(Model model){
+        List<Vehiculos> vehiculos = iVehiculosRepository.findAll();
+        List<Servicio> servicio = iservicioRepository.findAll();
+        List<Conductor> conductor = iConductorRepository.findAll();
+        model.addAttribute("vehiculos", vehiculos);
+        model.addAttribute("servicio", servicio);
+        model.addAttribute("conductor",conductor);
+        return "Reportes/Cronograma";
+    }
+
+
+    /* ------------ Reporte Tarifa--------------------*/
+    @GetMapping("/cronograma-cliente/tarifa")
     public ResponseEntity<Resource> download(@RequestParam Map<String, Object> params) throws JRException, IOException, SQLException {
         FacturaReservaDTO dto = facturaReservaService.obtenerReporteProducto(params);
         InputStreamResource streamResource = new InputStreamResource(dto.getStream());
@@ -150,5 +185,19 @@ public class CronogramaController {
 
     }
 
-}
 
+    /* ------------ Reporte Cronograma--------------------*/
+    @GetMapping("/cronograma-admin/reporte")
+    public ResponseEntity<Resource> report(@RequestParam Map<String, Object> params) throws  JRException, IOException, SQLException {
+        ReporteCronogramaDTO dto = reporteCronogramaService.obtenerCronograma(params);
+        InputStreamResource streamResource = new InputStreamResource(dto.getStream());
+        MediaType mediaType = null;
+        if (params.get("tipo").toString().equalsIgnoreCase(TipoReporteEnum.EXCEL.name())){
+            mediaType = MediaType.APPLICATION_OCTET_STREAM;
+        }else {
+            mediaType = MediaType.APPLICATION_PDF;
+        }
+        return  ResponseEntity.ok().header("Content-Disposition","inline; filename=\"" + dto.getFileName() + "\"")
+                .contentLength(dto.getLenght()).contentType(mediaType).body(streamResource);
+    }
+}

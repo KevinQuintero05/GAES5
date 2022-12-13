@@ -31,6 +31,8 @@
 
 <div layout:fragment="content">
 
+
+
     <table id="example" class="table table-hover table-dark" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -39,7 +41,7 @@
             <th>Descripción</th>
 
             <th></th>
-            <th></th>
+
         </tr>
         </thead>
         <tbody>
@@ -63,15 +65,21 @@
                                                                style="text-decoration:none; color:#000">EDITAR <i class="bi bi-pencil-square"></i></a>
                 </button>
             </td>
+            <!--
             <td>
                 <button type="button" class="btn btn-danger"><a
                         th:href="@{'/servicios/delete/' + ${servicio.idservicio}}"
                         style="text-decoration:none; color:#fff">ELIMINAR <i class="bi bi-trash3"></i></a></button>
 
             </td>
+            -->
         </tr>
         </tbody>
     </table>
+    <br>
+
+
+
 </div>
 
 <div layout:fragment="addjs">

@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,31 +19,35 @@ public class Conductor {
     @Column(name ="idConductor", unique = true)
     private Long idConductor;
 
-    private String categoria_licencia;
+    @NotEmpty
+    private String categorialicencia;
 
+    @NotEmpty
     private String Arl;
 
+    @NotEmpty
     private String nombre;
 
+    @NotEmpty
     private String Cedula;
 
+    @NotEmpty
     private String Eps;
 
+    @NotEmpty
     private String Seguro;
 
+    @NotEmpty
     private String Telefono;
-
-
-
 
     /* Super constructor*/
 
     public Conductor() {
     }
 
-    public Conductor(Long idConductor, String categoria_licencia, String arl, String nombre, String cedula, String eps, String seguro, String telefono) {
+    public Conductor(Long idConductor, String categorialicencia, String arl, String nombre, String cedula, String eps, String seguro, String telefono) {
         this.idConductor = idConductor;
-        this.categoria_licencia = categoria_licencia;
+        this.categorialicencia = categorialicencia;
         Arl = arl;
         this.nombre = nombre;
         Cedula = cedula;

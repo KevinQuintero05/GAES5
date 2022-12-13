@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
@@ -29,12 +30,16 @@ public class Solicitudes {
     @Column(length = 50, updatable = false)
     private Date fechaRegistro;
 
+    @NotNull(message = "Debe agregar una fecha de Partida")
     @FutureOrPresent
-    @Column(length = 50, updatable = false)
+   // @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@Column(length = 50, updatable = false)
     private Date fechaPartida;
 
-    @FutureOrPresent
-    @Column(length = 50, updatable = false)
+    @NotNull(message = "Debe agregar una fecha de LLegada")
+    // @FutureOrPresent
+    //@DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@Column(length = 50, updatable = false)
     private Date fechaLlegada;
 
     @NotEmpty

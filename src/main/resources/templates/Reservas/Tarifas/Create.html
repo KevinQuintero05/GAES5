@@ -24,31 +24,40 @@
 
                 <div class="mb-3">
                     <label class="form-label">ruta</label>
-                    <input type="text" class="form-control" name="" required th:field="*{ruta}">
+                    <input type="text" class="form-control" name=""  th:field="*{ruta}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('ruta')}" th:errors="*{ruta}"></div>
 
                 <div class="mb-3">
                     <label class="form-label">tarifa Ruta</label>
-                    <input type="text" class="form-control" name="" required th:field="*{tarifaRuta}">
+                    <input type="text" class="form-control" name=""  th:field="*{tarifaRuta}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('tarifaRuta')}" th:errors="*{tarifaRuta}"></div>
 
                 <div class="mb-3">
                     <label class="form-label">servicio</label>
-                    <input type="text" class="form-control" name="" required th:field="*{servicio}">
+                    <input type="text" class="form-control" name=""  th:field="*{servicio}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('servicio')}" th:errors="*{servicio}"></div>
 
                 <div class="mb-3">
                     <label class="form-label">tarifa Servicio</label>
-                    <input type="text" class="form-control" name="" required th:field="*{tarifaServicio}">
+                    <input type="text" class="form-control" name=""  th:field="*{tarifaServicio}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('tarifaServicio')}" th:errors="*{tarifaServicio}"></div>
 
+
+                <label class="form-label">Reserva Número:</label>
                 <div class="mb-3">
-                    <select th:field="*{cronograma}" class="form-select" required>
+                    <select th:field="*{cronograma}" class="form-select" >
+                        <option value="">Seleccione...</option>
                         <th:block th:each="cronograma: ${cronograma} ">
-                            <option th:text="${cronograma.fechaRegistro}" th:value="${cronograma.noReserva}"></option>
+                            <option th:text="${cronograma.noReserva}" th:value="${cronograma.noReserva}"></option>
                         </th:block>
                     </select>
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('cronograma')}" th:errors="*{cronograma}"></div>
+
 
                 <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar"></div>
             </form>

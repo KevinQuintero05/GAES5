@@ -1,32 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}"
-      lang="en">
+      layout:decorate="~{layout}"lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Editar vehiculo</title>
+    <title>Editar vehiculos</title>
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
-<body>
 <div layout:fragment="content">
-    <!--
-    <form method="post" th:action="@{/vehiculos/update/{id}(id=${vehiculos.idvehiculo})}" th:object="${vehiculos}">
-        <input placeholder="placa" type="text" name="" required th:field="*{placa}">
-        <input placeholder="tipo de vehiculo" type="text" name="" required th:field="*{tipovehiculo}">
-        <input placeholder="capacidad" type="text" name="" required th:field="*{capacidad}">
-        <input placeholder="marca" type="text" name="" required th:field="*{marca}">
-        <input placeholder="soat" type="text" name="" required th:field="*{soat}">
-        <input placeholder="modelo" type="text" name="" required th:field="*{modelo}">
-        <textarea  th:field="*{descripcion}" placeholder="descripcion" required></textarea><br>
-        <input placeholder="estado del vehiculo" type="text" name="" required th:field="*{estadovehiculo}">
-        <select th:field="*{servicio}" required>
-            <th:block th:each="servicio: ${servicios} ">
-                <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
-            </th:block>
-        </select>
-        <input type="submit" value="Save">
-    </form>-->
+
     <header class="container-fluid  d-flex justify-content-start text-center ">
         <div class="containerimg">
             <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid" alt="Responsive image">
@@ -37,63 +19,64 @@
     <div class="card">
         <div class="card-body" style="background: #000; color: #fff ">
 
-    <form method="post" th:action="@{/vehiculos/update/{id}(id=${vehiculos.idvehiculo})}" th:object="${vehiculos}">
+            <form method="post" th:action="@{/vehiculos/update/{id}(id=${vehiculos.idvehiculo})}" th:object="${vehiculos}">
 
-        <div class="mb-3">
-            <label  class="form-label">Placa</label>
-            <input type="text" class="form-control" name="" required th:field="*{placa}">
+
+                <div class="mb-3">
+                    <label  class="form-label">Placa</label>
+                    <input type="text" class="form-control" name="" required th:field="*{placa}" placeholder="Placa" >
+                </div>
+                <div class="mb-3">
+                    <label  class="form-label">Tipo de Vehículo</label>
+                    <input type="text" class="form-control" name="" required th:field="*{tipovehiculo}" >
+                </div>
+
+                <div class="mb-3">
+                    <label  class="form-label">Capacidad</label>
+                    <input type="text" class="form-control" name="" required th:field="*{capacidad}" >
+                </div>
+
+                <div class="mb-3">
+                    <label  class="form-label">Marca</label>
+                    <input type="text" class="form-control" name="" required th:field="*{marca}" >
+                </div>
+
+                <div class="mb-3">
+                    <label  class="form-label">Soat</label>
+                    <input type="text" class="form-control" name="" required th:field="*{soat}" >
+                </div>
+
+                <div class="mb-3">
+                    <label  class="form-label">Modelo</label>
+                    <input type="text" class="form-control" name="" required th:field="*{modelo}" >
+                </div>
+
+                <div class="mb-3">
+                    <label  class="form-label">Descripcion</label>
+                    <textarea class="form-control"  rows="3" required th:field="*{descripcion}" placeholder="descripcion" ></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label  class="Estado del vehiculo">Estado del Vehículo</label>
+                    <input type="text" class="form-control" name="" required th:field="*{estadovehiculo}" >
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">Seleccione el Servicio que usted ha reservado:</label>
+                    <select th:field="*{servicio}" class="form-select" required >
+                        <option value="">Seleccione...</option>
+                        <th:block th:each="servicio: ${servicios} ">
+                            <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}" ></option>
+                        </th:block>
+                    </select>
+                </div>
+
+
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Actualizar"></div>
+
+            </form>
+
         </div>
-
-        <div class="mb-3">
-            <label  class="form-label">Tipo del vehículo</label>
-            <input type="text" class="form-control" name="" required th:field="*{tipovehiculo}">
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">Capacidad</label>
-            <input type="number" class="form-control" name="" required th:field="*{capacidad}">
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">Marca</label>
-            <input type="text" class="form-control" name="" required th:field="*{marca}">
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">Soat</label>
-            <input type="text" class="form-control" name="" required th:field="*{soat}">
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">Modelo</label>
-            <input type="text" class="form-control" name="" required th:field="*{modelo}">
-        </div>
-
-        <div class="mb-3">
-            <label  class="form-label">Descripción</label>
-            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label  class="Estado del vehiculo">Estado vehiculo</label>
-            <input type="text" class="form-control" name="" required th:field="*{estadovehiculo}">
-        </div>
-
-        <select th:field="*{servicio}" required>
-            <th:block th:each="servicio: ${servicios} ">
-                <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
-            </th:block>
-        </select>
-
-        <br>
-        <br>
-        <br>
-        <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Actualizar"></div>
-    </form>
-
+    </div>
 </div>
-
-
-</div>
-</body>
-</html>

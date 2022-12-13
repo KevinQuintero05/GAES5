@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facturar</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<div layout:fragment="content">
+    <header class="container-fluid  d-flex justify-content-start text-center ">
+        <div class="containerimg">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
+                 alt="Responsive image">
+        </div>
+        <br>
+
+    </header>
+    <div class="card">
+        <div class="card-body" style="background: #000; color: #fff ">
+            <h2>Gracias por elegirnos!</h2>
+            <div class="borde"></div>
+            <h3>Apreciado usuario por favor Diligencie el siguiente formulario para realizar la factuación de su reserva:</h3>
+            <br>
+            <form th:action="@{/cronograma-cliente/tarifa}" method="GET">
+                <div class="mb-3">
+                    <label class="form-label">Introduzca en número de su reserva:</label>
+                    <input class="form-control" name="reserva" type="text">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Sleecione el tipo de archivo a exportar:</label>
+                    <select class="form-control" name="tipo" type="text">
+                        <option value="PDF">PDF</option>
+                        <option value="EXCEL">EXCEL</option>
+                    </select>
+
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Facturar"> </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<body>
+
+</body>
+</html>

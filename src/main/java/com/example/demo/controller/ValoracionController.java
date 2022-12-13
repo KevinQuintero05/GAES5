@@ -34,9 +34,9 @@ public class ValoracionController {
     @GetMapping("/valoraciones/all")
     public String GetValoraciones (Model model){
         try{
-           List<Valoracion> valoracionList = iValoracionRepository.findAll();
-           model.addAttribute("valoraciones", valoracionList);
-           return "AtencionCliente/Valoraciones/Valoraciones";
+            List<Valoracion> valoracionList = iValoracionRepository.findAll();
+            model.addAttribute("valoraciones", valoracionList);
+            return "AtencionCliente/Valoraciones/Valoraciones";
         } catch (Exception ex){
             return "error";
         }
@@ -71,12 +71,12 @@ public class ValoracionController {
     @PostMapping("/valoraciones-usuarios/save")
     public String SaveValoracion(@Valid Valoracion valoracion, BindingResult result,Model model){
 
-       if (result.hasErrors()){
-           List<Servicio> servicios = iservicioRepository.findAll();
-           List<Usuario> usuarios = iUsuarioRepository.findAll();
-           model.addAttribute("usuarios", usuarios);
-           model.addAttribute("servicios", servicios);
-           return "AtencionCliente/Valoraciones/Create";
+        if (result.hasErrors()){
+            List<Servicio> servicios = iservicioRepository.findAll();
+            List<Usuario> usuarios = iUsuarioRepository.findAll();
+            model.addAttribute("usuarios", usuarios);
+            model.addAttribute("servicios", servicios);
+            return "AtencionCliente/Valoraciones/Create";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Usuario loginUser = (Usuario)authentication.getPrincipal();

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}"lang="en">
+      layout:decorate="~{layout}" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Crear servicio</title>
@@ -17,37 +17,63 @@
     </form>-->
     <header class="container-fluid  d-flex justify-content-start text-center ">
         <div class="containerimg">
-            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid" alt="Responsive image">
+            <img th:src="@{/img/LOGO B1 sin relleno negro.png}" width="300px" style="padding:5px;" class="img-fluid"
+                 alt="Responsive image">
         </div>
         <br>
 
     </header>
+    <div class="card text-center">
+        <div class="card-body" style="background:#000;">
+            <h3 class="card-title"><i class="bi bi-exclamation-triangle"></i></h3>
+            <h5 class="card-text">Apreciado Usuario, tenga en cuenta que una vez creado el servico No podra ser
+                eliminado.</h5>
+        </div>
+    </div>
+
     <div class="card">
+
         <div class="card-body" style="background: #000; color: #fff ">
-    <form method="post" th:action="@{/servicios/save}" th:object="${servicio}">
-        <div class="mb-3">
-            <label  class="form-label">Nombre del Servició</label>
-            <input type="text" class="form-control" name="" required th:field="*{nomservicio}">
+
+
+            <form method="post" th:action="@{/servicios/save}" th:object="${servicio}">
+
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre del Servicio</label>
+                    <input type="text" class="form-control" name="" th:field="*{nomservicio}">
+                </div>
+
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('nomservicio')}"
+                     th:errors="*{nomservicio}"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tipo de Servicio </label>
+                    <input type="text" class="form-control" name="" th:field="*{tipo}">
+                </div>
+
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Descripción</label>
+                    <textarea class="form-control" rows="3" th:field="*{descripcion}"
+                              placeholder="descripcion"></textarea>
+                </div>
+
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}"
+                     th:errors="*{descripcion}"></div>
+
+                <br>
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar">
+                </div>
+
+            </form>
+
         </div>
-        <div class="mb-3">
-            <label  class="form-label">Tipo de Servició </label>
-            <input type="text" class="form-control" name="" required th:field="*{tipo}">
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Descripción</label>
-            <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion" required></textarea>
-        </div>
-        <br>
-        <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar"></div>
-    </form>
+    </div>
 
-</div>
+    <body>
 
-
-
-
-
-<body>
-
-</body>
+    </body>
 </html>

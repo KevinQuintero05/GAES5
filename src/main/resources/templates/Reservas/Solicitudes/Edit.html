@@ -26,15 +26,26 @@
             <form method="post" th:action="@{/solicitudes/update/{id}(id=${solicitudes.idSolicitudes})}"
                   th:object="${solicitudes}">
 
-                <div class="mb-3">
-                    <label class="form-label">Fecha Partida</label>
-                    <input type="date" class="form-control" name="" required th:field="*{fechaPartida}"   >
+                <div hidden class="mb-3">
+                    <label class="form-label">Estado Reserva</label>
+                    <input type="text" class="form-control" name="" required th:field="*{estadoReserva}" readonly>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Fecha Llegada</label>
-                    <input type="date" class="form-control" name="" required th:field="*{fechaLlegada}"  >
+                    <label class="form-label">Fecha Partida</label>
+                    <input type="date" class="form-control" name="" required th:field="*{fechaPartida}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('fechaPartida')}"
+                     th:errors="*{fechaPartida}"></div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Fecha Llegada</label>
+                    <input type="date" class="form-control" name="" required th:field="*{fechaLlegada}">
+                </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('fechaLlegada')}"
+                     th:errors="*{fechaLlegada}"></div>
+
 
                 <div class="mb-3">
                     <label class="form-label">Ciudad destino</label>
@@ -63,6 +74,8 @@
                         <option value="Armenia">Armenia</option>
                     </select>
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudadDestino')}"
+                     th:errors="*{ciudadDestino}"></div>
 
                 <div class="mb-3">
                     <label class="form-label">Ciudad origen</label>
@@ -91,17 +104,22 @@
                         <option value="Armenia">Armenia</option>
                     </select>
                 </div>
-
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudadOrigen')}"
+                     th:errors="*{ciudadOrigen}"></div>
 
                 <div class="mb-3">
                     <label class="form-label">Direccion Origen</label>
                     <input type="text" class="form-control" name="" required th:field="*{direccionOrigen}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudadOrigen')}"
+                     th:errors="*{ciudadOrigen}"></div>
 
                 <div class="mb-3">
                     <label class="form-label">Direccion Destino</label>
                     <input type="text" class="form-control" name="" required th:field="*{direccionDestino}">
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('direccionDestino')}"
+                     th:errors="*{ciudadOrigen}"></div>
 
                 <div class="mb-3">
                     <label class="form-label">Asignar vehículo</label>
@@ -111,6 +129,9 @@
                         </th:block>
                     </select>
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('vehiculos')}"
+                     th:errors="*{vehiculos}"></div>
+
 
                 <div class="mb-3">
                     <label class="form-label">Servicio a Solicitar</label>
@@ -120,10 +141,11 @@
                         </th:block>
                     </select>
                 </div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('servicio')}" th:errors="*{servicio}"></div>
 
 
-
-                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar"></div>
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar">
+                </div>
             </form>
         </div>
     </div>

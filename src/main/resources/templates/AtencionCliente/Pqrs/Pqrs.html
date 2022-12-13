@@ -29,17 +29,27 @@
 </head>
 <body>
 <div layout:fragment="content">
+
+
+
+    <div class="card text-center">
+        <div class="card-body">
+            <h3 class="card-title"><i class="bi bi-exclamation-triangle"></i> </h3>
+            <h5 class="card-text">Apreciado Usuario, tenga en cuenta que su solicitud no podrá ser eliminada una vez que sea respondida por nuestro personal.</h5>
+        </div>
+    </div>
+
+    <br>
+
     <table id="example" class="table table-hover table-dark" cellspacing="0" width="100%">
         <thead>
         <tr>
 
 
             <th>Grupo</th>
-
-
             <th>Cargo</th>
-            <th>Departamento</th>
             <th>Ciudad</th>
+            <th>Servicio Reservado</th>
             <th>Asunto</th>
             <th>Descripción</th>
             <th>Fecha de Registro</th>
@@ -54,8 +64,8 @@
         <tr th:each=" pqrs: ${pqrsList}">
             <td th:text="${pqrs.grupointeres}"></td>
             <td th:text="${pqrs.personainteres}"></td>
-            <td th:text="${pqrs.departamento}"></td>
             <td th:text="${pqrs.ciudad}"></td>
+            <td th:text="${pqrs.servicio.nomservicio}"></td>
             <td th:text="${pqrs.asuntopqrs}"></td>
             <td th:text="${pqrs.descripcion}"></td>
             <td th:text="${pqrs.fecharegistroPQRS}"></td>

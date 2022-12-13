@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,10 +27,6 @@ public class Pqrs {
     @NotEmpty
     @Column(length = 50, nullable = false)
     private String personainteres;
-
-    @NotEmpty
-    @Column(length = 50, nullable = false)
-    private String departamento;
 
     @NotEmpty
     @Column(length = 50, nullable = false)
@@ -62,7 +59,11 @@ public class Pqrs {
     @JsonBackReference
     private Usuario usuario;
 
-
+    @NotNull(message = "Debe seleccionar un servicio")
+    @ManyToOne
+    @JoinColumn(name = "idservicio")
+    @JsonBackReference
+    private Servicio servicio;
 
 
 }

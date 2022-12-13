@@ -29,6 +29,9 @@
 </head>
 <body>
 <div layout:fragment="content">
+
+    <button type="button" class="btn btn-light"><a th:href="@{/cronograma/adminreporte}" style="text-decoration:none; color:#000">Generar un Reporte <i class="bi bi-file-earmark"></i></a></button>
+
     <table id="example" class="table table-hover table-dark" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -55,7 +58,7 @@
             <td th:text="${cronograma.ciudadOrigen}"></td>
             <td th:text="${cronograma.direccionOrigen}"></td>
             <td th:text="${cronograma.direccionDestino}"></td>
-            <td th:text="${cronograma.conductor.idConductor}"></td>
+            <td th:text="${cronograma.conductor.nombre}"></td>
 
             <td>
                 <button type="button" class="btn btn-light"><a th:href="@{'/cronograma/edit/' + ${cronograma.noReserva }}" style="text-decoration:none; color:#000">EDITAR <i class="bi bi-pencil-square"></i></a></button>
@@ -86,11 +89,11 @@
         $(document).ready(function() {
     $('#example').DataTable({
         language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
+                "lengthMenu": "Mostrar MENU registros",
                 "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "info": "Mostrando registros del START al END de un total de TOTAL registros",
                 "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "infoFiltered": "(filtrado de un total de MAX registros)",
                 "sSearch": "Buscar:",
                 "oPaginate": {
                     "sFirst": "Primero",

@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Pqrs;
+import com.example.demo.entity.Servicio;
 import com.example.demo.entity.Usuario;
 import com.example.demo.repository.IPqrsRepository;
 import com.example.demo.repository.IUsuarioRepository;
+import com.example.demo.repository.IservicioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -27,6 +29,9 @@ public class PqrsController {
 
     @Autowired
     private IUsuarioRepository iUsuarioRepository;
+
+    @Autowired
+    private IservicioRepository iservicioRepository;
 
     @GetMapping("/pqrs/all")
     public String GetPqrs(Model model){
@@ -61,15 +66,22 @@ public class PqrsController {
     @GetMapping("/pqrs/new")
     public  String GetShowCreatePqrs(Model model ){
         List<Usuario> usuarios = iUsuarioRepository.findAll();
+        List<Servicio> servicios = iservicioRepository.findAll();
         model.addAttribute("usuarios", usuarios);
+        model.addAttribute("servicios", servicios);
         model.addAttribute("pqrs", new Pqrs());
         return "AtencionCliente/Pqrs/Create";
     }
 
     @PostMapping("/pqrs/save")
-    public String SavePqrs(@Valid Pqrs pqrs, BindingResult result){
+    public String SavePqrs(@Valid Pqrs pqrs, BindingResult result, Model model){
 
         if(result.hasErrors()){
+            List<Usuario> usuarios = iUsuarioRepository.findAll();
+            List<Servicio> servicios = iservicioRepository.findAll();
+            model.addAttribute("usuarios", usuarios);
+            model.addAttribute("servicios", servicios);
+
             return "AtencionCliente/Pqrs/Create";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -89,10 +101,11 @@ public class PqrsController {
     public String showUpdatePqrs(Model model, @PathVariable long id){
         Pqrs pqrsbd = iPqrsRepository.findById(id).get();
         model.addAttribute("usuarios", iUsuarioRepository.findAll());
+        model.addAttribute("servicios", iservicioRepository.findAll());
         model.addAttribute("pqrs",pqrsbd);
         return "AtencionCliente/pqrs/edit";
     }
-
+/*
     @GetMapping("/pqrs-admin/respond/{id}")
     public String showPqrsAdmin(Model model, @PathVariable long id){
         Pqrs pqrsbd = iPqrsRepository.findById(id).get();
@@ -100,7 +113,7 @@ public class PqrsController {
         model.addAttribute("pqrs",pqrsbd);
         return "AtencionCliente/pqrs/respond";
     }
-
+*/
     @PostMapping("/pqrs/update/{id}")
     public String updatePqrs(@PathVariable("id") long id, Pqrs pqrs, Model model){
 
