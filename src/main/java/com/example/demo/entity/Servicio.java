@@ -4,7 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "servicios")
@@ -29,6 +31,14 @@ public class Servicio {
     @NotEmpty(message = "Por favor ingresé la descripción.")
     @Column(length = 50, nullable = false)
     private String descripcion;
+
+    @NotNull(message="El precio es obligatorio")
+    @Min(value=50000, message="El precio mínimo es 50.000")
+    @Column(length = 50, nullable = false)
+    private String precio;
+
+
+
 
     /* Super constructor*/
 

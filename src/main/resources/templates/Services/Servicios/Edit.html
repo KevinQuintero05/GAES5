@@ -31,20 +31,28 @@
     <form method="post" th:action="@{/servicios/update/{id}(id=${servicio.idservicio})}" th:object="${servicio}">
         <div class="mb-3">
             <label  class="form-label">Nombre del Servicio</label>
-            <input type="text" class="form-control" name=""  required th:field="*{nomservicio}">
+            <input type="text" class="form-control" name="" required  th:field="*{nomservicio}">
         </div>
+
 
 
         <div class="mb-3">
             <label  class="form-label">Tipo de Servicio </label>
-            <input type="text" class="form-control" name="" required th:field="*{tipo}">
+            <input type="text" class="form-control" name="" required  th:field="*{tipo}">
         </div>
 
 
 
         <div class="mb-3">
             <label  class="form-label">Descripción</label>
-            <textarea class="form-control"  rows="3" th:field="*{descripcion}" required placeholder="descripcion" ></textarea>
+            <textarea class="form-control" required rows="3" th:field="*{descripcion}"  placeholder="descripcion" ></textarea>
+        </div>
+
+
+
+        <div class="mb-3">
+            <label class="form-label">Precio del Servicio</label>
+            <input type="number" min="50000" class="form-control" name="" required  th:field="*{precio}">
         </div>
 
 

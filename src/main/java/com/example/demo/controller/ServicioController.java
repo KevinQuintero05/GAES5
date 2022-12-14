@@ -53,7 +53,14 @@ public class ServicioController {
     }
 
     @PostMapping("/servicios/update/{id}")
-    public String updateServicios(@PathVariable("id") long id,@Valid Servicio servicio, BindingResult result){
+    public String updateServicios(@PathVariable("id") long id,@Valid Servicio servicio, BindingResult result, Model model){
+
+        if (result.hasErrors()) {
+            Servicio serviciobd = iservicioRepository.findById(id).get();
+            model.addAttribute("servicio", serviciobd);
+            return "Services/Servicios/Edit";
+
+        }
 
         servicio.setIdservicio(id);
         iservicioRepository.save(servicio);
