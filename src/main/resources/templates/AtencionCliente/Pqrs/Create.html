@@ -34,11 +34,11 @@
                 <h2>Radique su PQRS</h2>
                 <br>
                 <div class="borde"></div>
-                <h3>Estimado cliente, recuerde que la respuesta a su solicitud sera enviada a su direccion de correo electronico o podra ser consulada en la plataforma</h3>
+                <h3>Estimado cliente, recuerde que la respuesta a su solicitud será enviada a su dirección de correo electrónico o podrá ser consultada en la plataforma</h3>
                 <br>
 
                 <div class="mb-3">
-                    <label  class="form-label">grupo de interes</label>
+                    <label  class="form-label">grupo de interés</label>
                     <select th:field="*{grupointeres}" class="form-select"  >
                         <option value="">seleccione...</option>
                         <option value="adulto mayor">Adulto mayor</option>
@@ -118,7 +118,7 @@
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('asuntopqrs')}" th:errors="*{asuntopqrs}"></div>
 
                 <div class="mb-3">
-                    <label  class="form-label">descripcion</label>
+                    <label  class="form-label">descripción</label>
                     <textarea class="form-control"  rows="3" th:field="*{descripcion}" placeholder="descripcion"  ></textarea>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>

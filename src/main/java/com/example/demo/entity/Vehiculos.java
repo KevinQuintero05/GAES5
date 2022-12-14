@@ -44,7 +44,7 @@ public class Vehiculos {
     private String modelo;
 
     @NotEmpty(message = "Por favor ingresé la descripción")
-    @Column(length = 50, updatable = false)
+    @Column(columnDefinition = "text")
     private String descripcion;
 
     @NotEmpty(message = "Por favor ingresé el estado del vehículo")
