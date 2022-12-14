@@ -50,9 +50,12 @@
             <th>fecha llegada</th>
             <th>Ciudad destino</th>
             <th>Ciudad Origen</th>
-            <th>Direccion Origen</th>
-            <th>Direccion Destino</th>
-            <th>ID Conductor</th>
+            <th>Dirección Origen</th>
+            <th>Dirección Destino</th>
+            <th>Conductor Asignado</th>
+            <th>Servicio Asignado</th>
+            <th>Vehículo Asignado</th>
+
             <th></th>
             <th></th>
         </tr>
@@ -68,7 +71,8 @@
             <td th:text="${cronograma.direccionOrigen}"></td>
             <td th:text="${cronograma.direccionDestino}"></td>
             <td th:text="${cronograma.conductor.nombre}"></td>
-
+            <td th:text="${cronograma.servicio.nomservicio}"></td>
+            <td th:text="${cronograma.vehiculos.descripcion}"></td>
             <td>
                 <button type="button" class="btn btn-light"><a th:href="@{'/cronograma/edit/' + ${cronograma.noReserva }}" style="text-decoration:none; color:#000">EDITAR <i class="bi bi-pencil-square"></i></a></button>
             </td>
