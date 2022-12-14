@@ -56,7 +56,7 @@ public class Usuario implements UserDetails {
     @NotEmpty
     @Size(min = 8)
     @NotNull(message = "Password cannot be empty")
-    @Length(min = 7, message = "Password should be atleast 7 characters long")
+    @Length(min = 7, message = "La contraseña debe de tener mínimo 7 carácteres")
     @Column(name = "password")
     private String password;
 

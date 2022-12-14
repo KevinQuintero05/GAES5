@@ -146,8 +146,12 @@ public class CronogramaController {
 
     @GetMapping("/cronograma/delete/{id}")
     public String deleteCronograma(Model model, @PathVariable long id){
-        iCronogramaRepository.deleteById(id);
-        return "redirect:/cronograma/all";
+        try {
+            iCronogramaRepository.deleteById(id);
+            return "redirect:/cronograma/all";
+        }catch (Exception exception){
+            return "redirect:/cronograma/all";
+        }
     }
 
     /*
