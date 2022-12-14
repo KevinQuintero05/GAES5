@@ -43,18 +43,26 @@
         <thead>
         <tr>
             <th>ID Usuario</th>
+            <th>CC</th>
             <th>Nombre</th>
             <th>Apellido</th>
+            <th>Nombre de usuario</th>
+            <th>Numero de Contacto</th>
+            <th>Correo</th>
 
             <th>Rol</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each=" usuario: ${usuarioList}">
+
             <td th:text="${usuario.idusuario}"></td>
+            <td th:text="${usuario.nocedula}"></td>
             <td th:text="${usuario.nombres}"></td>
             <td th:text="${usuario.apellidos}"></td>
-
+            <td th:text="${usuario.nombreusuario}"></td>
+            <td th:text="${usuario.telefono}"></td>
+            <td th:text="${usuario.email}"></td>
             <td th:text="${usuario.role}"></td>
         </tr>
         </tbody>
