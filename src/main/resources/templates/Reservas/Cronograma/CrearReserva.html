@@ -44,22 +44,10 @@
                         <option value="Cali">Cali</option>
                         <option value="Barranquilla">Barranquilla</option>
                         <option value="Cartagena">Cartagena de indias</option>
-                        <option value="Soacha">Soacha</option>
                         <option value="Cucuta">Cucuta</option>
-                        <option value="Soledad">Soledad</option>
-                        <option value="Bucaramanga">Bucaramanga</option>
-                        <option value="Bello">Bello</option>
                         <option value="Villavicencio">Villavicencio</option>
                         <option value="Ibague">Ibagué</option>
                         <option value="SantaMarta">Santa Marta</option>
-                        <option value="Huila">Huila</option>
-                        <option value="Valledupar">Valledupar</option>
-                        <option value="Manizales">Manizales</option>
-                        <option value="Pereira">Pereira</option>
-                        <option value="Montería">Montería</option>
-                        <option value="Neiva">Neiva</option>
-                        <option value="Pasto">Pasto</option>
-                        <option value="Armenia">Armenia</option>
                     </select>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudadDestino')}" th:errors="*{ciudadDestino}"></div>
@@ -73,22 +61,10 @@
                         <option value="Cali">Cali</option>
                         <option value="Barranquilla">Barranquilla</option>
                         <option value="Cartagena">Cartagena de indias</option>
-                        <option value="Soacha">Soacha</option>
                         <option value="Cucuta">Cucuta</option>
-                        <option value="Soledad">Soledad</option>
-                        <option value="Bucaramanga">Bucaramanga</option>
-                        <option value="Bello">Bello</option>
                         <option value="Villavicencio">Villavicencio</option>
                         <option value="Ibague">Ibagué</option>
                         <option value="SantaMarta">Santa Marta</option>
-                        <option value="Huila">Huila</option>
-                        <option value="Valledupar">Valledupar</option>
-                        <option value="Manizales">Manizales</option>
-                        <option value="Pereira">Pereira</option>
-                        <option value="Montería">Montería</option>
-                        <option value="Neiva">Neiva</option>
-                        <option value="Pasto">Pasto</option>
-                        <option value="Armenia">Armenia</option>
                     </select>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('ciudadOrigen')}" th:errors="*{ciudadOrigen}"></div>
@@ -152,7 +128,8 @@
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('solicitudes')}" th:errors="*{solicitudes}"></div>
 
 
-                <input type="submit" class="btn btn-dark" value="Guardar">
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Guardar"></div>
+
             </form>
 
         </div>

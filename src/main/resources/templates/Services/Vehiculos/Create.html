@@ -37,7 +37,7 @@
 
         <div class="mb-3">
             <label  class="form-label">Capacidad</label>
-            <input type="text" class="form-control" number=""  th:field="*{capacidad}">
+            <input type="number" class="form-control" number=""  th:field="*{capacidad}">
         </div>
 
         <div class="alert alert-warning" th:if="${#fields.hasErrors('capacidad')}" th:errors="*{capacidad}"></div>

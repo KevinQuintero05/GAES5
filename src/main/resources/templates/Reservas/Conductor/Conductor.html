@@ -33,6 +33,7 @@
         <thead>
         <tr>
             <th>id Conductor</th>
+            <th>Nombre</th>
             <th>Categoria Licencia</th>
             <th>Arl</th>
             <th>Cedula</th>
@@ -47,6 +48,7 @@
         <tbody>
         <tr th:each=" conductor: ${conductor}">
             <td th:text="${conductor.idConductor}"></td>
+            <td th:text="${conductor.nombre}"></td>
             <td th:text="${conductor.categorialicencia}"></td>
             <td th:text="${conductor.arl}"></td>
             <td th:text="${conductor.cedula}"></td>

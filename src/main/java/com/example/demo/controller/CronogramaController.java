@@ -150,11 +150,23 @@ public class CronogramaController {
         return "redirect:/cronograma/all";
     }
 
+    /*
     @GetMapping("/cronograma-cliente/factura")
     public String showFormReport(){
 
         return "Reportes/Factura";
+    }*/
+
+    @GetMapping("/cronograma-cliente/factura")
+    public String showFormReport(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Usuario loginUser = (Usuario)authentication.getPrincipal();
+        List<Cronograma> cronogramaList = iCronogramaRepository.getCronogramaByidusuario(loginUser.getIdusuario());
+        model.addAttribute("cronogramaList", cronogramaList);
+        return "Reportes/Factura";
     }
+
+
 
     @GetMapping("/cronograma/adminreporte")
     public String showFormReport1(Model model){

@@ -37,7 +37,7 @@ public class Solicitudes {
     private Date fechaPartida;
 
     @NotNull(message = "Debe agregar una fecha de LLegada")
-    // @FutureOrPresent
+    @FutureOrPresent
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     //@Column(length = 50, updatable = false)
     private Date fechaLlegada;

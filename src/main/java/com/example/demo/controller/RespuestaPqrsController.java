@@ -2,9 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Pqrs;
 import com.example.demo.entity.RespuestaPqrs;
+import com.example.demo.entity.Usuario;
 import com.example.demo.repository.IPqrsRepository;
 import com.example.demo.repository.IRespuestaPqrsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,7 +41,9 @@ public class RespuestaPqrsController {
     @GetMapping("/respuestas-usuario/all")
     public String GetRespuestasUsuario(Model model){
         try{
-            List<RespuestaPqrs> respuestasPqrs = iRespuestaPqrsRepository.findAll();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            Usuario loginUser = (Usuario)authentication.getPrincipal();
+            List<RespuestaPqrs> respuestasPqrs = iRespuestaPqrsRepository.getRespuestaByidusuario(loginUser.getIdusuario());
             model.addAttribute("respuestasPqrs", respuestasPqrs);
             return "AtencionCliente/RespuestasPqrs/Respuestas-usuario";
         }catch (Exception ex){

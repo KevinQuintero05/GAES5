@@ -29,6 +29,14 @@
 </head>
 <body>
 <div layout:fragment="content">
+    <div class="card mb-3">
+        <img th:src="@{/img/travel-1.jpg}"  class="card-img-top" alt="...">
+        <div class="card-body">
+            <h2>Cronograma de reservas</h2>
+            <p>Para realizar una reserva, realize una solicitud</p>
+            <button type="button" class="btn btn-danger"><a th:href="@{/solicitudes/new}" style="text-decoration:none; color:#fff">Generar una Solicitud <i class="bi bi-calendar"></i></a></button>
+            <button type="button" class="btn btn-secondary"><a th:href="@{/cronograma-cliente/factura}" style="text-decoration:none; color:#fff">Generar factura de mi reserva <i class="bi bi-receipt"></i></a></button>        </div>
+    </div>
     <table id="example" class="table table-hover table-dark" cellspacing="0" width="100%">
         <thead>
         <tr>

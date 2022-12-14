@@ -32,14 +32,33 @@
 
             <form method="post" th:action="@{/conductor/update/{id}(id=${conductor.idConductor})}" th:object="${conductor}">
                 <div class="mb-3">
-                    <label class="form-label">Categoria de la licencia</label>
-                    <input type="text" class="form-control" name=""  th:field="*{categorialicencia}">
+                    <label class="form-label">categoría de la licencia</label>
+                    <select th:field="*{categorialicencia}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <option value="NOAPLICA">NO APLICA</option>
+                        <option value="A1: motos de bajo cilindraje">A1: motos de bajo cilindraje</option>
+                        <option value="A2">A2: motos de alto cilindraje</option>
+                        <option value="B1">B1: autos particulares</option>
+                        <option value="B2">B2: camiones y buses de uso particular</option>
+                        <option value="B3">B3: vehículos articulados particulares</option>
+                        <option value="C1">C1: autos pequeños de servicio público</option>
+                        <option value="C2">C2: autos grandes de servicio público</option>
+                        <option value="C3">C3: vehículos articulados de servicio público</option>
+                    </select>
                 </div>
+
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('categorialicencia')}" th:errors="*{categorialicencia}"></div>
 
                 <div class="mb-3">
-                    <label class="form-label">Arl</label>
-                    <input type="text" class="form-control" name=""  th:field="*{Arl}">
+                    <label class="form-label">ARL</label>
+                    <select th:field="*{Arl}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <option value="NOAPLICA">NO APLICA</option>
+                        <option value="SegurosBolivar">Seguros Bolivar</option>
+                        <option value="SURA">SURA</option>
+                        <option value="Colmena">Colmena</option>
+                        <option value="Colpatria">Colpatria</option>
+                    </select>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('Arl')}" th:errors="*{Arl}"></div>
 
@@ -58,14 +77,29 @@
 
 
                 <div class="mb-3">
-                    <label class="form-label">Eps</label>
-                    <input type="text" class="form-control" name=""  th:field="*{Eps}">
+                    <label class="form-label">EPS</label>
+                    <select th:field="*{Eps}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <option value="NOAPLICA">NO APLICA</option>
+                        <option value="SaludTotal">Salud Total</option>
+                        <option value="Compensar">Compensar</option>
+                        <option value="Sanitas">Sanitas</option>
+                        <option value="NuevaEps">Nueva Eps</option>
+                    </select>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('Eps')}" th:errors="*{Eps}"></div>
 
                 <div class="mb-3">
-                    <label class="form-label">Seguro</label>
-                    <input type="text" class="form-control" name=""  th:field="*{Seguro}">
+                    <label class="form-label">Enpresa Aseguradora</label>
+                    <select th:field="*{Seguro}" class="form-select" >
+                        <option value="">Seleccione...</option>
+                        <option value="NOAPLICA">NO APLICA</option>
+                        <option value="SEGUROS BOLIVAR">SEGUROS BOLIVAR</option>
+                        <option value="SEGUROS DEL ESTADO">SEGUROS DEL ESTADO</option>
+                        <option value="RSASEGUROS">Sanitas</option>
+                        <option value="QBESEGUROSCOLOMBIA">QBE SEGUROS COLOMBIA</option>
+                        <option value="SEGUROSSURA">SEGUROS SURA</option>
+                    </select>
                 </div>
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('Seguro')}" th:errors="*{Seguro}"></div>
 
@@ -81,7 +115,7 @@
 
 
                 <br>
-                <input type="submit" class="btn btn-dark" value="Actualizar">
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Actualizar"></div>
             </form>
 
 

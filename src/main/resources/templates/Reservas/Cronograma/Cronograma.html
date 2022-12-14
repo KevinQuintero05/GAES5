@@ -30,7 +30,16 @@
 <body>
 <div layout:fragment="content">
 
-    <button type="button" class="btn btn-light"><a th:href="@{/cronograma/adminreporte}" style="text-decoration:none; color:#000">Generar un Reporte <i class="bi bi-file-earmark"></i></a></button>
+    <div class="card mb-3">
+        <img th:src="@{/img/camera-1.jpg}"  class="card-img-top" alt="...">
+        <div class="card-body">
+            <h2>Cronograma de reservas</h2>
+            <button type="button" class="btn btn-secondary"><a th:href="@{/cronograma/adminreporte}" style="text-decoration:none; color:#fff">Generar un Reporte <i class="bi bi-file-earmark"></i></a></button>
+            <button type="button" class="btn btn-danger"><a th:href="@{/cronograma/new}" style="text-decoration:none; color:#fff">Confirmar una Reserva <i class="bi bi-calendar-check"></i></a></button>
+        </div>
+    </div>
+
+    <br>
 
     <table id="example" class="table table-hover table-dark" cellspacing="0" width="100%">
         <thead>

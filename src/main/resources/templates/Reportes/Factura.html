@@ -23,19 +23,32 @@
             <h3>Apreciado usuario por favor Diligencie el siguiente formulario para realizar la factuación de su reserva:</h3>
             <br>
             <form th:action="@{/cronograma-cliente/tarifa}" method="GET">
+                <!--
                 <div class="mb-3">
                     <label class="form-label">Introduzca en número de su reserva:</label>
                     <input class="form-control" name="reserva" type="text">
-                </div>
+                </div>-->
+
                 <div class="mb-3">
-                    <label class="form-label">Sleecione el tipo de archivo a exportar:</label>
+                    <label class="form-label">Seleccione el número de la reserva a facturar</label>
+                    <select  class="form-select" name="reserva" type="text" >
+                        <option value="">Seleccione...</option>
+                        <th:block th:each="cronograma: ${cronogramaList} ">
+                            <option th:text="${cronograma.noReserva}" th:value="${cronograma.noReserva}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Seleccione el tipo de archivo a exportar:</label>
                     <select class="form-control" name="tipo" type="text">
                         <option value="PDF">PDF</option>
                         <option value="EXCEL">EXCEL</option>
                     </select>
 
                 </div>
-                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Facturar"> </div>
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Generar Facturar"></div>
 
             </form>
         </div>

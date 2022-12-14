@@ -132,7 +132,11 @@ public class SolicitudesController {
 
     @GetMapping("/solicitudes/delete/{id}")
     public String deletesSolicitudes(Model model, @PathVariable long id){
-        iSolicitudesRepository.deleteById(id);
-        return "redirect:/solicitudes/all";
+        try{
+            iSolicitudesRepository.deleteById(id);
+            return "redirect:/solicitudes/all";
+        }catch (Exception exception){
+            return "redirect:/solicitudes/all";
+        }
     }
 }

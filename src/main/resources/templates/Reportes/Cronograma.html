@@ -24,7 +24,7 @@
             <br>
             <form th:action="@{/cronograma-admin/reporte}" method="GET">
 
-
+                <!--
                 <div class="mb-3">
                     <label class="form-label">Introduzca en número de su reserva:</label>
                     <input class="form-control" name="conductor" type="text">
@@ -40,10 +40,10 @@
                     <input class="form-control" name="vehiculo" type="text">
                 </div>
 
-                <!--
+                -->
                 <div class="mb-3">
                     <label class="form-label">Asignar Conductor</label>
-                    <select th:field="*{conductor}" class="form-select" name="conductor"  >
+                    <select  class="form-select" name="conductor" type="text" >
                         <option value="">Seleccione...</option>
                         <th:block th:each="conductor: ${conductor} ">
                             <option th:text="${conductor.nombre}" th:value="${conductor.idConductor}"></option>
@@ -53,7 +53,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Servicio a Solicitar</label>
-                    <select th:field="*{servicio}" class="form-select" name="servicio">
+                    <select  class="form-select" name="servicio" type="text">
                         <option value="">Seleccione...</option>
                         <th:block th:each="servicio: ${servicio} ">
                             <option th:text="${servicio.nomservicio}" th:value="${servicio.idservicio}"></option>
@@ -63,24 +63,24 @@
 
                 <div class="mb-3">
                     <label class="form-label">Asignar vehículo</label>
-                    <select th:field="*{vehiculos}" class="form-select" name="vehiculo">
+                    <select class="form-select" name="vehiculo" type="text">
                         <option value="">Seleccione...</option>
                         <th:block th:each="vehiculos: ${vehiculos} ">
                             <option th:text="${vehiculos.descripcion}" th:value="${vehiculos.idvehiculo}"></option>
                         </th:block>
                     </select>
                 </div>
-                -->
+
 
                 <div class="mb-3">
-                    <label class="form-label">Sleecione el tipo de archivo a exportar:</label>
+                    <label class="form-label">Seleccione el tipo de archivo a exportar:</label>
                     <select class="form-control" name="tipo" type="text">
                         <option value="PDF">PDF</option>
                         <option value="EXCEL">EXCEL</option>
                     </select>
 
                 </div>
-                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Facturar"> </div>
+                <div class="d-grid gap-2 col-6 mx-auto"><input type="submit" class="btn btn-danger" value="Generar Facturar"></div>
 
             </form>
         </div>
