@@ -1,10 +1,10 @@
 # GAES5
 PROJECT CONCORD
 
-sistema de información web, que permite optimizar los procesos de reservas de vehículos, 
+Sistema de información web, que permite optimizar los procesos de reservas de vehículos, 
 gestión de los servicios y la atención al usuario con el fin de brindar un servicio eficaz al cliente. 
 
-OBjetivos de la aplicación:
+Objetivos de la aplicación:
 
 * Validar las herramientas que permitan a los clientes obtener un mejor servicio al cliente, 
   en donde podrá redactar una PQRS y realizar una valoración.
