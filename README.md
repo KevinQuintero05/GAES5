@@ -1,5 +1,5 @@
 # GAES5
-PROJECT CONCOrD
+PROJECT CONCORD
 
 sistema de información web, que permite optimizar los procesos de reservas de vehículos, 
 gestión de los servicios y la atención al usuario con el fin de brindar un servicio eficaz al cliente. 
