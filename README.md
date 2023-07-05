@@ -16,3 +16,8 @@ Objetivos de la aplicación:
 * Facilitar los procesos de trazabilidad de la gestión de los servicios, los cuales ayudaran al administrador 
   a realizar el seguimiento, verificación de los servicios y de los vehículos los cuales están asignados para 
   cada uno de los servicios ofrecidos por la empresa.
+
+REQUISITOS PARA EJECUTAR:
+
+Ejecutar el proyecto con el Framweork Spring y Maven
+Se requiere de Jsapert Reports para la generación de reportes
